@@ -1,8 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import firebase from 'firebase';
 import '../css/login.css';
+import {useHistory} from 'react-router-dom';
 
 export default function Login() {
+
+
+    const history = useHistory();
+
+    const redirectToHomePage = useCallback(() => history.push('/'), [history]);
 
     const LoginEventListen = () => {
         const email = document.getElementById("txtEmail").value;
@@ -12,22 +18,11 @@ export default function Login() {
         promise.catch(e => console.log(e.message))
     }
 
-    const SignUpEventListen = () => {
-        const email = document.getElementById("txtEmail").value;
-        const pass = document.getElementById("txtPassword").value;
-        const auth = firebase.auth();
-        const promise = auth.createUserWithEmailAndPassword(email, pass);
-        promise.catch(e => console.log(e.message))
-    }
-
-    const LogoutEventListen = () =>{
-        firebase.auth().signOut();
-    }
-
     firebase.auth().onAuthStateChanged(firebaseUser => {
         if(firebaseUser) {
             console.log(firebaseUser);
             document.getElementById("btnLogout").classList.remove('hide');
+            redirectToHomePage()
         } else {
             console.log('not logged in');
             document.getElementById("btnLogout").classList.add('hide');
@@ -44,13 +39,6 @@ export default function Login() {
                 Log in
             </button>
 
-            <button id="btnSignUp" onClick={SignUpEventListen}>
-                Sign up
-            </button>
-
-            <button id="btnLogout" className="hide" onClick={LogoutEventListen}>
-                Log out
-            </button>
         </div>
     )
 }
