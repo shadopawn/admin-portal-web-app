@@ -22,6 +22,10 @@ function App() {
         <p>Takes you to Lessons page </p>
       </Link>
 
+      <Link to="/analytics">
+        <p>Takes you to Analytics page </p>
+      </Link>
+
       <Link to="/login">
         <p>Takes you to Log in page</p>
       </Link>
@@ -36,7 +40,10 @@ function App() {
           <LessonEditor />
         </PrivateRoute>
 
-        <Route path='/analytics' component={Analytics} />
+        <PrivateRoute path="/analytics">
+          <Analytics />
+        </PrivateRoute>
+
         <Route path="/login" component={Login}></Route>
       </Switch>
     </div>
