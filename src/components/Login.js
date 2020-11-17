@@ -8,7 +8,7 @@ export default function Login() {
 
     const history = useHistory();
 
-    const redirectToHomePage = useCallback(() => history.push('/'), [history]);
+    const redirectToLessonEditor = useCallback(() => history.push('/lesson-editor'), [history]);
 
     const LoginEventListen = () => {
         const email = document.getElementById("txtEmail").value;
@@ -21,7 +21,7 @@ export default function Login() {
     firebase.auth().onAuthStateChanged(firebaseUser => {
         if(firebaseUser) {
             console.log(firebaseUser);
-            redirectToHomePage()
+            redirectToLessonEditor();
         } else {
             console.log('not logged in');
         }
