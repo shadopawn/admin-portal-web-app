@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useCallback } from "react";
 import firebase from 'firebase';
 import '../css/login.css';
 import {useHistory} from 'react-router-dom';
@@ -21,11 +21,9 @@ export default function Login() {
     firebase.auth().onAuthStateChanged(firebaseUser => {
         if(firebaseUser) {
             console.log(firebaseUser);
-            document.getElementById("btnLogout").classList.remove('hide');
             redirectToHomePage()
         } else {
             console.log('not logged in');
-            document.getElementById("btnLogout").classList.add('hide');
         }
     })
 
