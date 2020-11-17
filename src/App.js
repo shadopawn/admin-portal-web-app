@@ -23,7 +23,7 @@ function App() {
       </Link>
 
       <Link to="/login">
-        <a>Takes you to Log in page</a>
+        <p>Takes you to Log in page</p>
       </Link>
 
       <button id="btnLogout" className="hide" onClick={LogoutEventListen}>
@@ -32,8 +32,8 @@ function App() {
 
       
       <Switch>
-        <PrivateRoute path="/lessons">
-          <Lessons />
+        <PrivateRoute path="/lesson-editor">
+          <LessonEditor />
         </PrivateRoute>
 
         <Route path='/analytics' component={Analytics} />
