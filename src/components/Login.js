@@ -9,7 +9,8 @@ export default function Login() {
     const history = useHistory();
     let { from } = location.state || { from: { pathname: "/" } };
     
-    const redirectToHomePage = useCallback(() => history.push(from), [history]);
+    const redirectToPreviousPage = useCallback(() => history.push(from), [history]);
+
 
     const LoginEventListen = () => {
         const email = document.getElementById("txtEmail").value;
@@ -23,7 +24,7 @@ export default function Login() {
         if(firebaseUser) {
             console.log(firebaseUser);
             document.getElementById("btnLogout").classList.remove('hide');
-            redirectToHomePage()
+            redirectToPreviousPage();
         } else {
             console.log('not logged in');
             document.getElementById("btnLogout").classList.add('hide');

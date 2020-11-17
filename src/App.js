@@ -1,8 +1,8 @@
 import { Link, Route, Switch } from 'react-router-dom';
 import firebase from 'firebase';
 
-import Lessons from "./components/Lessons"
-import Analytics from "./components/Analytics"
+import LessonEditor from "./components/LessonEditor";
+import Analytics from "./components/Analytics";
 import Login from './components/Login';
 import PrivateRoute from './components/PrivateRoute';
 
@@ -17,8 +17,9 @@ function App() {
   return (
     <div className="App">
 
-      <Link to="/lessons">
-        <a>Takes you to Lessons page </a><br />
+
+      <Link to="/lesson-editor">
+        <p>Takes you to Lessons page </p>
       </Link>
 
       <Link to="/login">
@@ -34,6 +35,7 @@ function App() {
         <PrivateRoute path="/lessons">
           <Lessons />
         </PrivateRoute>
+
         <Route path='/analytics' component={Analytics} />
         <Route path="/login" component={Login}></Route>
       </Switch>
