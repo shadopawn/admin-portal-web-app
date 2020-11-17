@@ -1,10 +1,11 @@
-import { Link, Route, Switch } from 'react-router-dom';
+import { Link, Route, Switch, Redirect } from 'react-router-dom';
 import firebase from 'firebase';
 
 import LessonEditor from "./components/LessonEditor";
 import Analytics from "./components/Analytics";
 import Login from './components/Login';
 import PrivateRoute from './components/PrivateRoute';
+import Home from './components/Home';
 
 import './App.css';
 
@@ -12,6 +13,7 @@ function App() {
 
   const LogoutEventListen = () =>{
     firebase.auth().signOut();
+    window.location.reload(false);
   }
 
   return (
@@ -45,6 +47,10 @@ function App() {
         </PrivateRoute>
 
         <Route path="/login" component={Login}></Route>
+        <Route path="/home" component={Home}></Route>
+        <Route exact path="/">
+          <Redirect to="/home" />
+        </Route>
       </Switch>
     </div>
   );
