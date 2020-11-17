@@ -1,26 +1,39 @@
-import './App.css';
 import { Link, Route, Switch } from 'react-router-dom';
+import firebase from 'firebase';
 
 import Lessons from "./components/Lessons"
 import Analytics from "./components/Analytics"
 import Login from './components/Login';
+import PrivateRoute from './components/PrivateRoute';
+
+import './App.css';
 
 function App() {
+
+  const LogoutEventListen = () =>{
+    firebase.auth().signOut();
+  }
+
   return (
     <div className="App">
 
       <Link to="/lessons">
-        <p>Takes you to Lessons page </p>
+        <a>Takes you to Lessons page </a><br />
       </Link>
 
       <Link to="/login">
-        <p>Takes you to Log in page</p>
+        <a>Takes you to Log in page</a>
       </Link>
 
-      {/* This will switch to different React components while keeping us in this component. If you run this, you'll notice the Links will stay in the window */}
-      {/* This will help us keep a header if we need one or if we don't want anything to persist we could put this in index */}
+      <button id="btnLogout" className="hide" onClick={LogoutEventListen}>
+        Log out
+      </button>
+
+      
       <Switch>
-        <Route path='/lessons' component={Lessons} />
+        <PrivateRoute path="/lessons">
+          <Lessons />
+        </PrivateRoute>
         <Route path='/analytics' component={Analytics} />
         <Route path="/login" component={Login}></Route>
       </Switch>
