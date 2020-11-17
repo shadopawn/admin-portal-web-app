@@ -1,11 +1,11 @@
 import { render, screen } from '@testing-library/react';
-import App from './App';
+import Home from '../components/Home';
 import { BrowserRouter } from 'react-router-dom';
 
-test('renders learn react link', () => {
+test('renders welcome message', () => {
   render(
     <BrowserRouter>
-      <App />
+      <Home />
     </BrowserRouter>);
   const linkElement = screen.getByText(/Welcome to the Admin Portal/i);
   expect(linkElement).toBeInTheDocument();
