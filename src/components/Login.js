@@ -7,11 +7,9 @@ export default function Login() {
 
     let location = useLocation();
     const history = useHistory();
-    console.log(location);
     let { from } = location.state || { from: { pathname: "/" } };
     
     const redirectToPreviousPage = useCallback(() => history.push(from), [history]);
-
 
     const LoginEventListen = () => {
         const email = document.getElementById("txtEmail").value;
@@ -23,11 +21,9 @@ export default function Login() {
 
     firebase.auth().onAuthStateChanged(firebaseUser => {
         if(firebaseUser) {
-            console.log(firebaseUser);
             document.getElementById("btnLogout").classList.remove('hide');
             redirectToPreviousPage();
         } else {
-            console.log('not logged in');
             document.getElementById("btnLogout").classList.add('hide');
         }
     })
@@ -38,10 +34,7 @@ export default function Login() {
 
             <input id="txtPassword" type="password" placeholder="Password"></input>
 
-            <button id="btnLogin" onClick={LoginEventListen}>
-                Log in
-            </button>
-
+            <button id="btnLogin" onClick={LoginEventListen}>Log in</button>
         </div>
     )
 }
