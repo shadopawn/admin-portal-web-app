@@ -30,6 +30,7 @@ export default function Login() {
 
     return (
         <div>
+            <h1 data-testid="loginHeader">Log in</h1>
             <input id="txtEmail" type="email" placeholder="Email"></input>
 
             <input id="txtPassword" type="password" placeholder="Password"></input>

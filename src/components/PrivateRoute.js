@@ -4,7 +4,6 @@ import '../css/login.css';
 import { Route, Redirect } from 'react-router-dom';
 
 export default function PrivateRoute({ children, ...rest }) {
-    const auth = firebase.auth();
 
     const isLogin = () => {
         var user = firebase.auth().currentUser;

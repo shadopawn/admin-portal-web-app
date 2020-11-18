@@ -19,22 +19,22 @@ function App() {
   return (
     <div className="App">
 
-
+      {/* We should make this a nav component */}
       <Link to="/lesson-editor">
-        <p>Takes you to Lessons page </p>
+        <p>Takes you to Lessons page</p>
       </Link>
 
       <Link to="/analytics">
         <p>Takes you to Analytics page </p>
       </Link>
 
-      <Link to="/login">
-        <p>Takes you to Log in page</p>
-      </Link>
+      <Link to="/login">Takes you to Log in page</Link>
 
       <button id="btnLogout" className="hide" onClick={LogoutEventListen}>
         Log out
       </button>
+
+      <button onClick={LogoutEventListen}>test</button>
 
       
       <Switch>

@@ -22,3 +22,4 @@ test('renders welcome message', () => {
   const linkElement = screen.getByText(/Welcome to the Admin Portal/i);
   expect(linkElement).toBeInTheDocument();
 });
+
