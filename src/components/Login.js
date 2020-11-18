@@ -7,6 +7,7 @@ export default function Login() {
 
     let location = useLocation();
     const history = useHistory();
+    console.log(location);
     let { from } = location.state || { from: { pathname: "/" } };
     
     const redirectToPreviousPage = useCallback(() => history.push(from), [history]);

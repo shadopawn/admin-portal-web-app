@@ -7,7 +7,7 @@ import Login from './components/Login';
 import PrivateRoute from './components/PrivateRoute';
 import Home from './components/Home';
 
-import './App.css';
+import './css/App.css';
 
 function App() {
 

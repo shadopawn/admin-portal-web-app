@@ -23,7 +23,7 @@ export default function LessonEditor() {
 
     return (
         <div>
-            <p>Lessons maker</p>
+            <p>Lesson Editor</p>
             <progress value="0" max="100" id="uploader">0%</progress> <br />
             <input type="file" id="fileButton" onChange={fileChangeEvent}/>
         </div>

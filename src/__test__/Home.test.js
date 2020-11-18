@@ -9,12 +9,12 @@ import { BrowserRouter } from 'react-router-dom';
 
 afterEach(cleanup);
 
-it("renders without crashing", () => {
+test("renders without crashing", () => {
   const div = document.createElement("div");
   ReactDOM.render(<BrowserRouter><Home /></BrowserRouter>, div);
 })
 
-it('renders welcome message', () => {
+test('renders welcome message', () => {
   render(
     <BrowserRouter>
       <Home />
