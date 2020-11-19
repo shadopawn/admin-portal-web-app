@@ -31,11 +31,11 @@ export default function Login() {
     return (
         <div>
             <h1 data-testid="loginHeader">Log in</h1>
-            <input id="txtEmail" type="email" placeholder="Email"></input>
+            <input id="txtEmail" type="email" data-testid="email" placeholder="Email"></input>
 
-            <input id="txtPassword" type="password" placeholder="Password"></input>
+            <input id="txtPassword" type="password" data-testid="password" placeholder="Password"></input>
 
-            <button id="btnLogin" onClick={LoginEventListen}>Log in</button>
+            <button id="btnLogin" data-testid="btnLogin" onClick={LoginEventListen}>Log in</button>
         </div>
     )
 }

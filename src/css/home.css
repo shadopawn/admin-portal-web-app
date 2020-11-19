@@ -5,9 +5,9 @@
   
   .linkChoice {
     text-align: center;
-    width: 20em;
+    width: 50%;
     min-height: 20em;
-    border: #bb86fc solid 4px;
+    border: #01CDC4 solid 4px;
     border-radius: 25px;
     margin: 0 auto;
     vertical-align: middle;
@@ -15,5 +15,5 @@
   }
   
   .linkChoice:hover{
-    background-color: #bb86fc;
+    background-color: #01CDC4;
   }

@@ -10,13 +10,15 @@ export default function Home() {
                 
                 <Link to="/lesson-editor">
                     <div className="linkChoice">
-                        <h2>Lessons page </h2>
+                        <h2>Lessons Editor</h2>
+                        <img src='../../lessons.png'></img>
                     </div>
                 </Link>
 
                 <Link to="/analytics">
                     <div className="linkChoice">
-                        <h2>Analytics page </h2>
+                        <h2>Analytics Dashboard</h2>
+                        <img src='../../analytics.png'></img>
                     </div>
                 </Link>
                 

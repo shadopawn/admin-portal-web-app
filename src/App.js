@@ -15,27 +15,28 @@ function App() {
     firebase.auth().signOut();
     window.location.reload(false);
   }
-
+  
   return (
     <div className="App">
 
       {/* We should make this a nav component */}
-      <Link to="/lesson-editor">
-        <p>Takes you to Lessons page</p>
-      </Link>
+      <div className="navBar">
+        <Link to="/lesson-editor" className="link">
+          <h3>Lessons Editor</h3>
+        </Link>
 
-      <Link to="/analytics">
-        <p>Takes you to Analytics page </p>
-      </Link>
+        <Link to="/analytics" className="link">
+          <h3>Analytics Dashboard</h3>
+        </Link>
 
-      <Link to="/login">Takes you to Log in page</Link>
+        <Link to="/login" className="link">
+          <h3>Log in window</h3>
+        </Link>
 
-      <button id="btnLogout" className="hide" onClick={LogoutEventListen}>
-        Log out
-      </button>
-
-      <button onClick={LogoutEventListen}>test</button>
-
+        <button id="btnLogout" className="hide logout" onClick={LogoutEventListen}>
+          Log out
+        </button>
+      </div>
       
       <Switch>
         <PrivateRoute path="/lesson-editor">
