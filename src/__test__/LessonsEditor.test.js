@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import LessonEditor from '../components/LessonEditor';
 import firebase from 'firebase';
+import 'firebase/storage'; 
 
 var firebaseConfig = {
   apiKey: "AIzaSyAtCRHSSIwa5UepmVBQE6sPAeqI28S3XRk",
@@ -15,14 +16,12 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
+
 test('renders heading message', () => {
   render(<LessonEditor />);
   const linkElement = screen.getByText(/Lesson Editor/i);
   expect(linkElement).toBeInTheDocument();
 });
 
-//Due to secuirty reaons we are unable to automatically uploaf flies to the firebase storage
+//Due to secuirty reaons we are unable to automatically upload flies to the firebase storage
 //Firebase also has no local storage emulator to test
-test('file upload', () => {
-  render(<LessonEditor />);
-});

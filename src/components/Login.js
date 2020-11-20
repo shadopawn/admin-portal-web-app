@@ -16,7 +16,7 @@ export default function Login() {
         const pass = document.getElementById("txtPassword").value;
         const auth = firebase.auth();
         const promise = auth.signInWithEmailAndPassword(email, pass);
-        promise.catch(e => console.log(e.message))
+        //promise.catch(e => console.log(e.message))
     }
 
     firebase.auth().onAuthStateChanged(firebaseUser => {

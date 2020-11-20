@@ -1,6 +1,5 @@
 import { Link, Route, Switch, Redirect } from 'react-router-dom';
 import firebase from 'firebase';
-
 import LessonEditor from "./components/LessonEditor";
 import Analytics from "./components/Analytics";
 import Login from './components/Login';
@@ -30,7 +29,7 @@ function App() {
         </Link>
 
         <Link to="/login" className="link">
-          <h3>Log in window</h3>
+          <h3>Login Page</h3>
         </Link>
 
         <button id="btnLogout" className="hide logout" onClick={LogoutEventListen}>

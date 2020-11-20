@@ -8,7 +8,6 @@ var firebaseConfig = {
     projectId: "admin-portal-firebase",
 };
 firebase.initializeApp(firebaseConfig);
-firebase.auth().useEmulator('http://localhost:9099/');
 
 
 test("renders without crashing", () => {

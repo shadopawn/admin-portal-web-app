@@ -1,19 +1,33 @@
 import { render, screen } from '@testing-library/react';
 import Login from '../components/Login';
-import firebase from 'firebase';
+import * as firebase from 'firebase'
 
-var firebaseConfig = {
-  apiKey: "AIzaSyAtCRHSSIwa5UepmVBQE6sPAeqI28S3XRk",
-  authDomain: "admin-portal-firebase.firebaseapp.com",
-  databaseURL: "https://admin-portal-firebase.firebaseio.com",
-  projectId: "admin-portal-firebase",
-  storageBucket: "admin-portal-firebase.appspot.com",
-  messagingSenderId: "718485621784",
-  appId: "1:718485621784:web:cac547629a659e8cd1c76d",
-  measurementId: "G-MS08DSSK4Y"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+const mockSet = jest.fn();
+mockSet.mockReturnValue(true);
+
+const mockUser = jest.fn();
+mockUser.mockReturnValue(false);
+
+const mockSign = jest.fn();
+mockSign.mockImplementation(() => {return Promise.resolve('result of createUserWithEmailAndPassword')});
+
+jest.mock("firebase", () => ({
+    initializeApp: jest.fn(),
+    auth: () => ({
+      onAuthStateChanged: jest.fn(path => ({
+        set:mockSet
+      })),
+      signInWithEmailAndPassword: mockSign,
+      currentUser: jest.fn(path => ({
+        set: mockSet
+      })),
+      promise: () => ({
+        catch: jest.fn(path => ({
+          set: mockSet
+        }))
+      })
+    })
+  }));
 
 jest.mock("react-router-dom", () => ({
     ...jest.requireActual("react-router-dom"),
@@ -22,7 +36,7 @@ jest.mock("react-router-dom", () => ({
     })
 }));
 
-test('renders button', () => {
+test('renders log in button button', () => {
   const location = {
     pathname: '/home',
     state: { fromDashboard: true }
@@ -32,20 +46,17 @@ test('renders button', () => {
   expect(linkElement).toHaveTextContent('Log in');
 });
 
-// test('Redirect after logging in', () => {
-//   const location = {
-//     pathname: '/home',
-//     state: { fromDashboard: true }
-//   }
-//   render(<Login to={location} />);
+test('Redirect after logging in', () => {
+  const location = {
+    pathname: '/home',
+    state: { fromDashboard: true }
+  }
+  render(<Login to={location} />);
 
-//   document.getElementById("txtEmail").value = "wpenglish27@gmail.com"
-//   document.getElementById("txtPassword").value = "passwordAdmin"
-//   console.log(screen.getByTestId("email").value)
-//   console.log(screen.getByTestId("password").value)
-//   screen.getByTestId("btnLogin").click();
-//   console.log(firebase.auth().currentUser)
+  screen.getByTestId("email").value = "test@email.com"
+  screen.getByTestId("password").value = "testpass"
+  screen.getByTestId("btnLogin").click();
 
-//   const linkElement = screen.getByText(/Welcome to the Admin Portal/i);
-//   expect(linkElement).toBeInTheDocument();
-// })
+  const linkElement = screen.getByText(/Welcome to the Admin Portal/i);
+  expect(linkElement).toBeInTheDocument();
+})
