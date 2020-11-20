@@ -46,6 +46,20 @@ test('renders log in button button', () => {
   expect(linkElement).toHaveTextContent('Log in');
 });
 
+test('Calls sign in function', () => {
+  const location = {
+    pathname: '/home',
+    state: { fromDashboard: true }
+  }
+  render(<Login to={location} />);
+
+  screen.getByTestId("email").value = "test@email.com"
+  screen.getByTestId("password").value = "testpass"
+  screen.getByTestId("btnLogin").click();
+
+  expect(mockSign).toHaveBeenCalled()
+})
+
 test('Redirect after logging in', () => {
   const location = {
     pathname: '/home',
