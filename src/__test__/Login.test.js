@@ -5,11 +5,6 @@ import * as firebase from 'firebase'
 const mockSet = jest.fn();
 mockSet.mockReturnValue(true);
 
-const mockUser = jest.fn();
-mockUser.mockReturnValue(false);
-
-const mockSign = jest.fn();
-mockSign.mockImplementation(() => {return Promise.resolve('result of createUserWithEmailAndPassword')});
 
 jest.mock("firebase", () => ({
     initializeApp: jest.fn(),
@@ -17,22 +12,22 @@ jest.mock("firebase", () => ({
       onAuthStateChanged: jest.fn(path => ({
         set:mockSet
       })),
-      signInWithEmailAndPassword: mockSign,
+      signInWithEmailAndPassword: mockSet,
       currentUser: jest.fn(path => ({
         set: mockSet
-      })),
-      promise: () => ({
-        catch: jest.fn(path => ({
-          set: mockSet
-        }))
-      })
+      }))
     })
   }));
+
+const mockHistoryPush = jest.fn();
 
 jest.mock("react-router-dom", () => ({
     ...jest.requireActual("react-router-dom"),
     useLocation: () => ({
       pathname: "localhost:3000/home"
+    }),
+    useHistory: () => ({
+      push: mockHistoryPush
     })
 }));
 
@@ -65,12 +60,11 @@ test('Redirect after logging in', () => {
     pathname: '/home',
     state: { fromDashboard: true }
   }
-  render(<Login to={location} />);
+  render(<div id="btnLogout" className="hide"><Login to={location} /></div>);
 
   screen.getByTestId("email").value = "test@email.com"
   screen.getByTestId("password").value = "testpass"
   screen.getByTestId("btnLogin").click();
 
-  const linkElement = screen.getByText(/Welcome to the Admin Portal/i);
-  expect(linkElement).toBeInTheDocument();
+  expect(mockHistoryPush).toHaveBeenCalled();
 })

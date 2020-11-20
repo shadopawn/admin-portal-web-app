@@ -3,9 +3,6 @@ import ReactDOM from 'react-dom';
 import { cleanup, render, screen } from '@testing-library/react';
 import Home from '../components/Home';
 import { Router, Switch, Route, BrowserRouter } from 'react-router-dom';
-import LessonEditor from '../components/LessonEditor'
-import { createMemoryHistory } from 'history'
-
 
 // The BrowserRouter is required for these test because Home contains "Links" from the same "react-router-dom" 
 // which cannot work without being in a BrowserRouter that is contained in the index element in our app

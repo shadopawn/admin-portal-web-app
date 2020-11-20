@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import firebase from 'firebase';
 import '../css/login.css';
 import {useHistory, useLocation} from 'react-router-dom';
@@ -7,26 +7,36 @@ export default function Login() {
 
     let location = useLocation();
     const history = useHistory();
+    console.log(history);
     let { from } = location.state || { from: { pathname: "/" } };
-    
-    const redirectToPreviousPage = useCallback(() => history.push(from), [history]);
+
+    useEffect(() => {
+        onSuccessfulLogin()
+    });
 
     const LoginEventListen = () => {
         const email = document.getElementById("txtEmail").value;
         const pass = document.getElementById("txtPassword").value;
         const auth = firebase.auth();
-        const promise = auth.signInWithEmailAndPassword(email, pass);
-        //promise.catch(e => console.log(e.message))
+        auth.signInWithEmailAndPassword(email, pass);
+        onSuccessfulLogin();
     }
 
-    firebase.auth().onAuthStateChanged(firebaseUser => {
-        if(firebaseUser) {
-            document.getElementById("btnLogout").classList.remove('hide');
+    const onSuccessfulLogin = () =>{
+        if(isUserLoggedIn()) {
             redirectToPreviousPage();
+            document.getElementById("btnLogout").classList.remove('hide');
         } else {
             document.getElementById("btnLogout").classList.add('hide');
         }
-    })
+    }
+
+    const isUserLoggedIn = () => {
+        var user = firebase.auth().currentUser;
+        return user ? true : false
+    }
+
+    const redirectToPreviousPage = useCallback(() => history.push(from), [history]);
 
     return (
         <div>
