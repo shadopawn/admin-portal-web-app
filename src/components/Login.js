@@ -7,40 +7,31 @@ export default function Login() {
 
     let location = useLocation();
     const history = useHistory();
-    console.log(history);
     let { from } = location.state || { from: { pathname: "/" } };
-
-    useEffect(() => {
-        onSuccessfulLogin()
-    });
 
     const LoginEventListen = () => {
         const email = document.getElementById("txtEmail").value;
         const pass = document.getElementById("txtPassword").value;
         const auth = firebase.auth();
         auth.signInWithEmailAndPassword(email, pass);
-        onSuccessfulLogin();
-    }
-
-    const onSuccessfulLogin = () =>{
-        if(isUserLoggedIn()) {
-            redirectToPreviousPage();
-            document.getElementById("btnLogout").classList.remove('hide');
-        } else {
-            document.getElementById("btnLogout").classList.add('hide');
-        }
-    }
-
-    const isUserLoggedIn = () => {
-        var user = firebase.auth().currentUser;
-        return user ? true : false
     }
 
     const redirectToPreviousPage = useCallback(() => history.push(from), [history]);
 
+    firebase.auth().onAuthStateChanged(firebaseUser => {
+        if(firebaseUser){
+            document.getElementById("btnLogout").classList.remove('hide');
+            document.getElementById("loginLink").classList.add('hide');
+            redirectToPreviousPage();
+        } else {
+            document.getElementById("btnLogout").classList.add('hide');
+            document.getElementById("loginLink").classList.remove('hide');
+        }
+    })
+
     return (
-        <div>
-            <h1 data-testid="loginHeader">Log in</h1>
+        <div className="loginContainer">
+            <h1 data-testid="loginHeader">Admin Portal Log in</h1>
             <input id="txtEmail" type="email" data-testid="email" placeholder="Email"></input>
 
             <input id="txtPassword" type="password" data-testid="password" placeholder="Password"></input>

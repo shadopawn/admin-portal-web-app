@@ -27,7 +27,7 @@ jest.mock("react-router-dom", () => ({
       pathname: "localhost:3000/home"
     }),
     useHistory: () => ({
-      push: mockHistoryPush
+      push: mockSet
     })
 }));
 
@@ -52,5 +52,5 @@ test('Redirect after logging in', () => {
   screen.getByTestId("password").value = "testpass"
   screen.getByTestId("btnLogin").click();
 
-  expect(mockHistoryPush).toHaveBeenCalled();
+  expect(mockSet).toHaveBeenCalled();
 })

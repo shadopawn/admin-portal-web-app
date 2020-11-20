@@ -20,7 +20,7 @@ function App() {
 
       {/* We should make this a nav component */}
       <div className="navBar">
-        <Link to="/lesson-editor" className="link" test-dataid="lessonLink">
+        <Link to="/lesson-editor" className="link" data-testid="lessonLink">
           <h3>Lessons Editor</h3>
         </Link>
 
@@ -28,7 +28,7 @@ function App() {
           <h3>Analytics Dashboard</h3>
         </Link>
 
-        <Link to="/login" className="link">
+        <Link to="/login" className="link" id="loginLink">
           <h3>Login Page</h3>
         </Link>
 

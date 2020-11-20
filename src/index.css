@@ -16,3 +16,7 @@ code {
 a, h1, p {
   color: white;
 }
+
+::placeholder {
+  color: white
+}
