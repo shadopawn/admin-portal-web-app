@@ -20,7 +20,7 @@ function App() {
 
       {/* We should make this a nav component */}
       <div className="navBar">
-        <Link to="/lesson-editor" className="link">
+        <Link to="/lesson-editor" className="link" test-dataid="lessonLink">
           <h3>Lessons Editor</h3>
         </Link>
 

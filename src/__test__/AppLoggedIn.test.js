@@ -19,14 +19,9 @@ jest.mock("firebase", () => ({
       })),
       currentUser: jest.fn(path => ({
         set: mockSet
-      })),
-      promise: () => ({
-        catch: jest.fn(path => ({
-          set: mockSet
-        }))
-      })
+      }))
     })
-  }));
+}));
   
 test('Navigation to Lesson Editor when logged in', () => {
     render(
@@ -38,7 +33,7 @@ test('Navigation to Lesson Editor when logged in', () => {
     screen.getByTestId("email").value = "test@email.com"
     screen.getByTestId("password").value = "testpass"
     screen.getByTestId("btnLogin").click();
-    screen.getByText(/Lessons Editor/i).click();
+    screen.getByTestId("lessonLink").click();
 
     expect(screen.getByText(/Lesson Editor Page/i)).toBeInTheDocument()
 })

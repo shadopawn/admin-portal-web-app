@@ -15,12 +15,7 @@ jest.mock("firebase", () => ({
     })),
     signInWithEmailAndPassword: jest.fn(path => ({
       set: mockSet
-    })),
-    promise: () => ({
-      catch: jest.fn(path => ({
-        set: mockSet
-      }))
-    })
+    }))
   })
 }));
 

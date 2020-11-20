@@ -5,7 +5,7 @@ import { Route, Redirect } from 'react-router-dom';
 
 export default function PrivateRoute({ children, ...rest }) {
 
-    const isLogin = () => {
+    const isUserLoggedIn = () => {
         var user = firebase.auth().currentUser;
         if (user) {
             return true;
@@ -18,7 +18,7 @@ export default function PrivateRoute({ children, ...rest }) {
       <Route
         {...rest}
         render={({ location }) =>
-          isLogin() ? (
+        isUserLoggedIn() ? (
             children
           ) : (
             <Redirect
