@@ -26,7 +26,7 @@ export default function LessonEditor() {
         <div>
             <h1>Lesson Editor Page</h1>
             <progress value="0" max="100" id="uploader">0%</progress> <br />
-            <input data-testid="upload" type="file" id="fileButton" onChange={fileChangeEvent}/>
+            <input data-testid="upload" type="file" id="fileButton" onChange={fileChangeEvent} />
         </div>
     )
 }

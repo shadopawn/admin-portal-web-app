@@ -67,3 +67,8 @@
   background-color: white;
   color: #3F3F3F;
 }
+
+#fileButton {
+  color: white;
+  padding: 10px 0px 10px 70px;
+}
