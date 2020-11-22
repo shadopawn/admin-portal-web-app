@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/admin-portal-web-app/static/css/main.8b896ced.chunk.css",
-    "main.js": "/admin-portal-web-app/static/js/main.fe48a6b2.chunk.js",
-    "main.js.map": "/admin-portal-web-app/static/js/main.fe48a6b2.chunk.js.map",
+    "main.js": "/admin-portal-web-app/static/js/main.a14dc7bb.chunk.js",
+    "main.js.map": "/admin-portal-web-app/static/js/main.a14dc7bb.chunk.js.map",
     "runtime-main.js": "/admin-portal-web-app/static/js/runtime-main.55fb0159.js",
     "runtime-main.js.map": "/admin-portal-web-app/static/js/runtime-main.55fb0159.js.map",
     "static/js/2.20adb4da.chunk.js": "/admin-portal-web-app/static/js/2.20adb4da.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.55fb0159.js",
     "static/js/2.20adb4da.chunk.js",
     "static/css/main.8b896ced.chunk.css",
-    "static/js/main.fe48a6b2.chunk.js"
+    "static/js/main.a14dc7bb.chunk.js"
   ]
 }
