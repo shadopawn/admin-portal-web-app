@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/admin-portal-web-app/static/css/main.8b896ced.chunk.css",
+    "main.js": "/admin-portal-web-app/static/js/main.3e30b93a.chunk.js",
+    "main.js.map": "/admin-portal-web-app/static/js/main.3e30b93a.chunk.js.map",
+    "runtime-main.js": "/admin-portal-web-app/static/js/runtime-main.55fb0159.js",
+    "runtime-main.js.map": "/admin-portal-web-app/static/js/runtime-main.55fb0159.js.map",
+    "static/js/2.20adb4da.chunk.js": "/admin-portal-web-app/static/js/2.20adb4da.chunk.js",
+    "static/js/2.20adb4da.chunk.js.map": "/admin-portal-web-app/static/js/2.20adb4da.chunk.js.map",
+    "static/js/3.80426f2e.chunk.js": "/admin-portal-web-app/static/js/3.80426f2e.chunk.js",
+    "static/js/3.80426f2e.chunk.js.map": "/admin-portal-web-app/static/js/3.80426f2e.chunk.js.map",
+    "index.html": "/admin-portal-web-app/index.html",
+    "static/css/main.8b896ced.chunk.css.map": "/admin-portal-web-app/static/css/main.8b896ced.chunk.css.map",
+    "static/js/2.20adb4da.chunk.js.LICENSE.txt": "/admin-portal-web-app/static/js/2.20adb4da.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.55fb0159.js",
+    "static/js/2.20adb4da.chunk.js",
+    "static/css/main.8b896ced.chunk.css",
+    "static/js/main.3e30b93a.chunk.js"
+  ]
+}
