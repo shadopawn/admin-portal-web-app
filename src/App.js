@@ -12,7 +12,7 @@ function App() {
 
   const LogoutEventListen = () =>{
     firebase.auth().signOut();
-    window.location.reload(false);
+    window.location.reload();
   }
   
   return (
