@@ -1,0 +1,19 @@
+.linkContainer{
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+  
+  .linkChoice {
+    text-align: center;
+    width: 50%;
+    min-height: 20em;
+    border: #01CDC4 solid 4px;
+    border-radius: 25px;
+    margin: 0 auto;
+    vertical-align: middle;
+    transition: 0.2s;
+  }
+  
+  .linkChoice:hover{
+    background-color: #01CDC4;
+  }
