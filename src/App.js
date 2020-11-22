@@ -47,7 +47,7 @@ function App() {
         </PrivateRoute>
 
         <Route path="/login" component={Login}></Route>
-        <Route path="/home" component={Home}></Route>
+        <Route path="/admin-portal-web-app" component={Home}></Route>
         <Route exact path="/">
           <Redirect to="/home" />
         </Route>
