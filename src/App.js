@@ -49,7 +49,7 @@ function App() {
         <Route path="/login" component={Login}></Route>
         <Route path="/admin-portal-web-app" component={Home}></Route>
         <Route exact path="/">
-          <Redirect to="/home" />
+          <Redirect to="/admin-portal-web-app" />
         </Route>
       </Switch>
     </div>
