@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import { React,  useCallback } from "react";
 import firebase from 'firebase';
 import '../css/login.css';
 import {useHistory, useLocation} from 'react-router-dom';
