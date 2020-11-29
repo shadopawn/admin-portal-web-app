@@ -39,7 +39,7 @@
 
 .navBar {
   display: grid;
-  grid-template-columns: 10% 10% 10% 10%;
+  grid-template-columns: 13% 13% 13% 13%;
   background-color: #3F3F3F;
 }
 

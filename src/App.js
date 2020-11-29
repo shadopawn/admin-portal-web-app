@@ -12,7 +12,7 @@ function App() {
 
   const LogoutEventListen = () =>{
     firebase.auth().signOut();
-    window.location.reload(false);
+    window.location.href="/admin-portal-web-app";
   }
   
   return (
