@@ -20,13 +20,3 @@ a, h1, h2, p {
 ::placeholder {
   color: white
 }
-
-.videoSelector {
-  width: 50%;
-  display: grid;
-  grid-template-columns: 85% 15%;
-}
-
-.addVideoButton {
-  margin: auto 0;
-}

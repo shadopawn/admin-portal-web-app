@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import VideoContainerModal from './VideoContainerModal'
+import '../css/LessonPair.css'
 
 export default function LessonPair(props) {
 
