@@ -13,7 +13,7 @@ export default function VideoContainerModal(props) {
 
         listRef.listAll().then(function(res) {
         res.items.forEach(function(itemRef) {
-            setVideoNameList(videoNameList => [...videoNameList, <VideoCard key={itemRef.name} name={itemRef.name} />])
+            setVideoNameList(videoNameList => [...videoNameList, <VideoCard key={itemRef.name} name={itemRef.name} handleClick={props.getNameOfVideo} />])
         });
         }).catch(function(error) {
             console.log(error);
