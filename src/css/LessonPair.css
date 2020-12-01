@@ -1,5 +1,5 @@
 .videoSelector {
-    width: 50%;
+    width: 30%;
     display: grid;
     grid-template-columns: 85% 15%;
 }
