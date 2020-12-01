@@ -1,6 +1,14 @@
 import React from 'react'
+import { Link} from 'react-router-dom';
+import firebase from 'firebase';
 
-export default function RenameMe() {
+export default function NavBar() {
+
+	const LogoutEventListen = () =>{
+		firebase.auth().signOut();
+		window.location.href="/admin-portal-web-app";
+	}
+
     return (
         <div className="navBar">
 			<Link to="/lesson-editor" className="link" data-testid="lessonLink">
