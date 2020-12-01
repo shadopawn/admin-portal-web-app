@@ -1,39 +1,22 @@
 import React, { useState } from 'react'
-import VideoContainerModal from './VideoContainerModal'
-import '../css/LessonPair.css'
+import VideoSelectionTool from './VideoSelectionTool';
 
 export default function LessonPair(props) {
+     
+    const [callVideoName, setcallVideoName] = useState("");
+    const [analysisVideoName, setanalysisVideoName] = useState("")
 
-    const [showVideoModal, setshowVideoModal] = useState(false)
-    const [name, setname] = useState("")
-
-    const hideVideoModal = () => {
-        setshowVideoModal(false);
+    const createLessonJSON = () => {
+        props.changeLessontree([callVideoName, analysisVideoName])
+        
     }
-
-    const showAVideoModal = () => {
-        setshowVideoModal(true);
-    }
-
-    const getNameOfVideo = (name) => {
-        setname(name);
-        hideVideoModal();
-    }
-
+    
     return (
         <div>
-            <VideoContainerModal show={showVideoModal} hide={hideVideoModal} getNameOfVideo={getNameOfVideo} />
-            <div className="videoSelector">
-                <div>
-                    <h2> {props.videoType} video selection:</h2>
-                    <p> {name} </p>
-                </div>
-                <div className='addVideoButton'>
-                <button onClick={showAVideoModal}>Add Video</button>
-                </div>
-                
-                
-            </div>
+            <VideoSelectionTool videoType="Call" changeLessonTree={setcallVideoName} />
+            <VideoSelectionTool videoType="Analysis" changeLessonTree={setanalysisVideoName} />
+            <button onClick={createLessonJSON} >Upload</button>
+
         </div>
     )
 }
