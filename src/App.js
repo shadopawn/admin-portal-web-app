@@ -33,6 +33,13 @@ function App() {
 					<Redirect to="/admin-portal-web-app" />
 				</Route>
 			</Switch>
+
+			<video
+				controls
+				width="250"
+				src="https://firebasestorage.googleapis.com/v0/b/admin-portal-firebase.appspot.com/o/training_videos%2Ftest.mp4?alt=media&token=2f9a77ee-5a68-455b-8440-acc47550a8bd">
+
+      		</video>
 		</div>
 	);
 }
