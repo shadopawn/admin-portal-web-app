@@ -13,10 +13,11 @@ code {
     monospace;
 }
 
-a, h1, p {
+a, h1, h2, p {
   color: white;
 }
 
 ::placeholder {
   color: white
 }
+

@@ -5,6 +5,7 @@ import Login from './components/Login';
 import PrivateRoute from './components/PrivateRoute';
 import Home from './components/Home';
 import NavBar from './components/NavBar';
+import LessonCreationTool from './components/LessonCreationTool';
 
 import './css/App.css';
 
@@ -23,6 +24,8 @@ function App() {
 				<PrivateRoute path="/analytics">
 					<Analytics />
 				</PrivateRoute>
+
+				<Route path="/lesson-creation" component={LessonCreationTool}></Route>
 
 				<Route path="/login" component={Login}></Route>
 				<Route path="/admin-portal-web-app" component={Home}></Route>
