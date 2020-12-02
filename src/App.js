@@ -8,6 +8,7 @@ import NavBar from './components/NavBar';
 import LessonCreationTool from './components/LessonCreationTool';
 
 import './css/App.css';
+import LessonPacks from './components/LessonPacks';
 
 function App() {
   
@@ -24,6 +25,8 @@ function App() {
 				<PrivateRoute path="/analytics">
 					<Analytics />
 				</PrivateRoute>
+
+				<Route path="/lesson-packs" component={LessonPacks}></Route>
 
 				<Route path="/lesson-creation" component={LessonCreationTool}></Route>
 
