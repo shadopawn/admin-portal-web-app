@@ -1,5 +1,4 @@
 import { Route, Switch, Redirect } from 'react-router-dom';
-import LessonEditor from "./components/LessonEditor";
 import Analytics from "./components/Analytics";
 import Login from './components/Login';
 import PrivateRoute from './components/PrivateRoute';
@@ -19,7 +18,7 @@ function App() {
 			
 			<Switch>
 				<PrivateRoute path="/lesson-packs">
-					<LessonEditor />
+					<LessonPacks />
 				</PrivateRoute>
 
 				<PrivateRoute path="/analytics">

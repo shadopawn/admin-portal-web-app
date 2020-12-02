@@ -11,7 +11,7 @@ export default function NavBar() {
 
     return (
         <div className="navBar">
-			<Link to="/lesson-editor" className="navLink" data-testid="lessonLink">
+			<Link to="/lesson-packs" className="navLink" data-testid="lessonLink">
 				<h3>Lessons Editor</h3>
 			</Link>
 
