@@ -8,6 +8,7 @@ import LessonCreationTool from './components/LessonCreationTool';
 
 import './css/App.css';
 import LessonPacks from './components/LessonPacks';
+import LessonCreation from './components/LessonCreation';
 
 function App() {
   
@@ -26,8 +27,8 @@ function App() {
 				</PrivateRoute>
 
 				<Route path="/lesson-packs" component={LessonPacks}></Route>
-
-				<Route path="/lesson-creation" component={LessonCreationTool}></Route>
+				
+				<Route path="/lesson-creation" component={LessonCreation}></Route>
 
 				<Route path="/login" component={Login}></Route>
 				<Route path="/admin-portal-web-app" component={Home}></Route>

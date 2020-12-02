@@ -8,7 +8,7 @@ export default function Home() {
             <h1>Welcome to the Admin Portal</h1>
             <div className="linkContainer">
                 
-                <Link to="/lesson-editor" data-testid="lessonLink">
+                <Link to="/lesson-packs" data-testid="lessonLink">
                     <div className="linkChoice">
                         <h2>Lessons Editor</h2>
                         <img src='https://github.com/shadopawn/admin-portal-web-app/blob/master/public/lessons.png?raw=true'></img>
