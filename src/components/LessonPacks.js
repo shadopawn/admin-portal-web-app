@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
 import LessonPackItem from './LessonPackItem'
 
+import '../css/LessonPacks.css';
+
+
 export default function LessonPacks() {
 
-    const [packNames, setPackNames] = useState(["Pack 1", "Pack 2", "Pack 3"])
+    const [packNames, setPackNames] = useState(["Lesson Pack Name", "Pack 2", "Pack 3"])
 
     function handleRemove(name) {
         const newList = packNames.filter((packName) => packName !== name);
@@ -16,11 +19,13 @@ export default function LessonPacks() {
 
     return (
         <div>
-            <h3>Lesson Packs</h3>
-            <button>Create Lesson Pack</button>
-            <table>
-                {lessonPackList}
-            </table>
+            <h1 className="lessonPackHeading">Lesson Packs</h1>
+            <div className="lessonPacks">
+                <button className="createButton">Create Lesson Pack</button>
+                <table>
+                    {lessonPackList}
+                </table>
+            </div>
         </div>
     )
 }
