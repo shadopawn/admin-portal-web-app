@@ -1,7 +1,7 @@
 import React from 'react'
 import firebase from 'firebase';
 
-export default function LessonEditor() {
+export default function VideoUploadButton() {
 
     const fileChangeEvent = (e) => {
         var file = e.target.files[0];
@@ -25,8 +25,8 @@ export default function LessonEditor() {
     return (
         <div>
             <h1>Lesson Editor Page</h1>
-            <progress value="0" max="100" id="uploader">0%</progress> <br />
             <input data-testid="upload" type="file" id="fileButton" onChange={fileChangeEvent} />
+            <progress value="0" max="100" id="uploader">0%</progress> <br />
         </div>
     )
 }

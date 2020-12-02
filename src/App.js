@@ -18,7 +18,7 @@ function App() {
 			<NavBar />
 			
 			<Switch>
-				<PrivateRoute path="/lesson-editor">
+				<PrivateRoute path="/lesson-packs">
 					<LessonEditor />
 				</PrivateRoute>
 
