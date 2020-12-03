@@ -11,16 +11,16 @@ export default function LessonTree() {
     }, [])
 
     return (
-        <div>
-            <h2>{currentLessonPack}</h2>
+        <div style={{textAlign:"left"}}>
+            <h3>{currentLessonPack}</h3>
 			<button>Add lesson Pair</button>
-            <dl>
+            <dl >
                 <dt>Lesson Pair 0 <button>Delete</button></dt>
-                <dd>callVideo</dd>
-				<dd>analysisVideo</dd>
+					<dd>callVideo</dd>
+					<dd>analysisVideo</dd>
                 <dt>Lesson Pair 1 <button>Delete</button></dt>
-                <dd>callVideo</dd>
-				<dd>analysisVideo</dd>
+					<dd>callVideo</dd>
+					<dd>analysisVideo</dd>
             </dl>
         </div>
     )
