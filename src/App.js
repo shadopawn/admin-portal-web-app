@@ -34,8 +34,9 @@ function App() {
 					<PrivateRoute path="/lesson-packs">
 						<LessonPacks />
 					</PrivateRoute>
-					
-					<Route path="/lesson-creation" component={LessonCreation}></Route>
+					<PrivateRoute path="/lesson-creation">
+						<LessonCreation />
+					</PrivateRoute>					
 				</Switch>
 			</LessonContextProvider>
 		</div>
