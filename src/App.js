@@ -4,11 +4,11 @@ import Login from './components/Login';
 import PrivateRoute from './components/PrivateRoute';
 import Home from './components/Home';
 import NavBar from './components/NavBar';
-import LessonCreationTool from './components/LessonCreationTool';
 
 import './css/App.css';
 import LessonPacks from './components/LessonPacks';
 import LessonCreation from './components/LessonCreation';
+import LessonContextProvider from './contexts/LessonDataContext';
 
 function App() {
   
@@ -16,26 +16,28 @@ function App() {
 		<div className="App">
 			
 			<NavBar />
-			
-			<Switch>
-				<PrivateRoute path="/lesson-packs">
-					<LessonPacks />
-				</PrivateRoute>
 
+			<Switch>
 				<PrivateRoute path="/analytics">
 					<Analytics />
 				</PrivateRoute>
-
-				<Route path="/lesson-packs" component={LessonPacks}></Route>
 				
-				<Route path="/lesson-creation" component={LessonCreation}></Route>
-
 				<Route path="/login" component={Login}></Route>
 				<Route path="/admin-portal-web-app" component={Home}></Route>
 				<Route exact path="/">
 					<Redirect to="/admin-portal-web-app" />
 				</Route>
 			</Switch>
+			
+			<LessonContextProvider>
+				<Switch>
+					<PrivateRoute path="/lesson-packs">
+						<LessonPacks />
+					</PrivateRoute>
+					
+					<Route path="/lesson-creation" component={LessonCreation}></Route>
+				</Switch>
+			</LessonContextProvider>
 		</div>
 	);
 }

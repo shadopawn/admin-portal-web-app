@@ -1,11 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useHistory } from 'react-router-dom';
+import { LessonDataContext } from '../contexts/LessonDataContext'
+
 
 export default function LessonPackItem({packName, deleteItem}) {
     let history = useHistory();
 
+    const { setCurrentLessonPack } = useContext(LessonDataContext)
+
     const redirect = () => {
-      history.push('/lesson-creation')
+        setCurrentLessonPack(packName)
+        history.push('/lesson-creation')
     }
 
     return (

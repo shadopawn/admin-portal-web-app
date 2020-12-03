@@ -3,16 +3,16 @@ import { LessonDataContext } from '../contexts/LessonDataContext'
 
 export default function LessonTree() {
 
-    const { lessonData } = useContext(LessonDataContext)
+    const { lessonData, currentLessonPack } = useContext(LessonDataContext)
     
     useEffect(() => {
-        console.log("Hello Was up")
+        console.log("Hello")
         console.log(lessonData)
     }, [])
 
     return (
         <div>
-            <h2>{lessonData[0].name}</h2>
+            <h2>{currentLessonPack}</h2>
 			<button>Add lesson Pair</button>
             <dl>
                 <dt>Lesson Pair 0 <button>Delete</button></dt>

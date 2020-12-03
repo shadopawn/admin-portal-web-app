@@ -1,17 +1,18 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
 import LessonPackItem from './LessonPackItem'
+import { LessonDataContext } from '../contexts/LessonDataContext'
 
 export default function LessonPacksList() {
 
-    const [packNames, setPackNames] = useState(["Lesson Pack Name", "Pack 2", "Pack 3"])
+    const { lessonData, setLessonData } = useContext(LessonDataContext)
 
     function handleRemove(name) {
-        const newList = packNames.filter((packName) => packName !== name);
-        setPackNames(newList);
+        const newList = lessonData.filter((lessonPack) => lessonPack.name !== name);
+        setLessonData(newList);
     }
 
-    const lessonPackList = packNames.map((name, index) =>
-        <LessonPackItem key={index} packName={name} deleteItem={() => handleRemove(name)}/>
+    const lessonPackList = lessonData.map((lessonPack, index) =>
+        <LessonPackItem key={index} packName={lessonPack.name} deleteItem={() => handleRemove(lessonPack.name)}/>
     );
 
     return (
