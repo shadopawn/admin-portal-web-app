@@ -4,7 +4,7 @@ import LessonPair from './LessonPair'
 
 export default function LessonTree() {
 
-    const { lessonData, currentLessonPack } = useContext(LessonDataContext)
+    const { currentLessonPack } = useContext(LessonDataContext)
     
     let lessonPairComponentList = [];
     let packName = "No Lesson Pack Selected"

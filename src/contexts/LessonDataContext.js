@@ -9,7 +9,7 @@ function LessonContextProvider(props) {
             name: "Example Lesson Pack Name",
             lessonPairs: [
                 {
-                    callVideo: "callVideoURL",
+                    callVideo: "Random Example url",
                     analysisVideo: "analysisVideoURL"
                 },
                 {

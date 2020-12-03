@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from 'react'
-import VideoSelectionTool from './VideoSelectionTool';
+import React from 'react'
 
 export default function LessonPair({index, lessonPair}) {
     
     return (
         <div>
             <dt>Lesson Pair {index} <button>Delete</button></dt>
-                <dd>{lessonPair.callVideo}</dd>
-                <dd>analysisVideo</dd>
+                <dd>Call Video: {lessonPair.callVideo}</dd>
+                <dd>Analysis Video: {lessonPair.analysisVideo}</dd>
         </div>
     )
 }
