@@ -35,5 +35,5 @@ test('Navigation to Lesson Editor when logged in', () => {
     screen.getByTestId("btnLogin").click();
     screen.getByTestId("lessonLink").click();
 
-    expect(screen.getByText(/Lesson Editor Page/i)).toBeInTheDocument()
+    expect(screen.getByText(/Lesson Packs/i)).toBeInTheDocument()
 })

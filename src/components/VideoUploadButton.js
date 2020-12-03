@@ -24,7 +24,6 @@ export default function VideoUploadButton() {
 
     return (
         <div>
-            <h1>Lesson Editor Page</h1>
             <input data-testid="upload" type="file" id="fileButton" onChange={fileChangeEvent} />
             <progress value="0" max="100" id="uploader">0%</progress> <br />
         </div>
