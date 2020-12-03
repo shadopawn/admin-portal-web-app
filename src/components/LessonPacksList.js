@@ -7,8 +7,11 @@ export default function LessonPacksList() {
     const { lessonData, setLessonData } = useContext(LessonDataContext)
 
     function handleRemove(name) {
-        const newList = lessonData.filter((lessonPack) => lessonPack.name !== name);
-        setLessonData(newList);
+        let choice = window.confirm("Are you sure you want to delete " + name)
+        if(choice){
+            const newList = lessonData.filter((lessonPack) => lessonPack.name !== name);
+            setLessonData(newList);
+        }
     }
 
     const lessonPackList = lessonData.map((lessonPack, index) =>
