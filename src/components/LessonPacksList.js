@@ -15,7 +15,7 @@ export default function LessonPacksList() {
     }
 
     const lessonPackList = lessonData.map((lessonPack, index) =>
-        <LessonPackItem key={index} packName={lessonPack.name} deleteItem={() => handleRemove(lessonPack.name)}/>
+        <LessonPackItem key={index} lessonPack={lessonPack} deleteItem={() => handleRemove(lessonPack.name)}/>
     );
 
     return (

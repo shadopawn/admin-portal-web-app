@@ -15,6 +15,10 @@ function LessonContextProvider(props) {
                 {
                     callVideo: "callVideoURL",
                     analysisVideo: "analysisVideoURL"
+                },
+                {
+                    callVideo: "callVideoURL",
+                    analysisVideo: "analysisVideoURL"
                 }
             ]
         },
@@ -42,7 +46,7 @@ function LessonContextProvider(props) {
         }
     ]);
 
-    const [currentLessonPack, setCurrentLessonPack] = useState("")
+    const [currentLessonPack, setCurrentLessonPack] = useState()
 
     return (
         <LessonDataContext.Provider value={{ lessonData, setLessonData, currentLessonPack, setCurrentLessonPack}}>
