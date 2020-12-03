@@ -31,9 +31,7 @@ export default function LessonPair(props) {
                 </div>
                 <div className='addVideoButton'>
                 <button onClick={showAVideoModal}>Add Video</button>
-                </div>
-                
-                
+                </div>                
             </div>
         </div>
     )
