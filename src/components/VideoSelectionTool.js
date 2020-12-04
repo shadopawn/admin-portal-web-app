@@ -1,8 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import VideoContainerModal from './VideoContainerModal'
 import '../css/LessonPair.css'
+import { LessonDataContext } from '../contexts/LessonDataContext'
 
-export default function LessonPair(props) {
+export default function LessonPair({index, videoType}) {
+
+    const { setVideoFileName } = useContext(LessonDataContext)
 
     const [showVideoModal, setshowVideoModal] = useState(false)
     const [name, setname] = useState("")
@@ -16,9 +19,9 @@ export default function LessonPair(props) {
     }
 
     const getNameOfVideo = (name) => {
-        props.changeLessonTree(name)
         setname(name);
         hideVideoModal();
+        setVideoFileName(index, videoType, name)
     }
 
     return (
@@ -26,8 +29,7 @@ export default function LessonPair(props) {
             <VideoContainerModal show={showVideoModal} hide={hideVideoModal} getNameOfVideo={getNameOfVideo} />
             <div className="videoSelector">
                 <div>
-                    <h2> {props.videoType} video selection:</h2>
-                    <p> {name} </p>
+                    <h2> {videoType} video selection:</h2>
                 </div>
                 <div className='addVideoButton'>
                 <button onClick={showAVideoModal}>Add Video</button>

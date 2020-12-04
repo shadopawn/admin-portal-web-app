@@ -6,7 +6,6 @@ export default function LessonCreation() {
     return (
         <div>
             <LessonTree />
-            <VideoSelectionTool />
         </div>
     )
 }

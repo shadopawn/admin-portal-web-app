@@ -1,16 +1,21 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useHistory } from 'react-router-dom';
 import { LessonDataContext } from '../contexts/LessonDataContext'
+import firebase from 'firebase'
 
 
 export default function LessonPackItem({lessonPack, deleteItem}) {
     let history = useHistory();
 
-    const { setCurrentLessonPack } = useContext(LessonDataContext)
+    const { setCurrentLessonPack, uploadCurrentLesson } = useContext(LessonDataContext)
 
     const redirect = () => {
         setCurrentLessonPack(lessonPack)
         history.push('/lesson-creation')
+    }
+
+    const publishPack = () => {
+        uploadCurrentLesson(lessonPack)
     }
 
     return (
@@ -20,7 +25,7 @@ export default function LessonPackItem({lessonPack, deleteItem}) {
                 <button onClick={redirect} className="tableButton editButton">Edit</button>
             </td>
             <td>
-                <button className="tableButton publishButton">Publish</button>
+                <button onClick={publishPack} className="tableButton publishButton">Publish</button>
             </td>
             <td>
                 <button className="tableButton deleteButton" onClick={() => deleteItem(lessonPack.name)} >Delete</button>
