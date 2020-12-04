@@ -41,7 +41,7 @@ test("navigation to child component while logged in", () => {
         <BrowserRouter>
             <Switch>
                 <PrivateRoute path="/">
-                  <Analytics />
+                  	<Analytics />
                 </PrivateRoute>
             </Switch>
         </BrowserRouter>
