@@ -12,7 +12,7 @@ function LessonContextProvider(props) {
         firebase.database().ref('/lesson_packs/').once('value').then((snapshot) => {
             snapshot.forEach(lesson => {
                 let lessonPairList = []
-                lesson.forEach(lessonPair => {
+                lesson.child("lesson_pairs").forEach(lessonPair => {
                     lessonPairList.push(lessonPair.val())
                 })
                 let tempLesson = {name:lesson.key, lessonPairs:lessonPairList}
@@ -41,7 +41,7 @@ function LessonContextProvider(props) {
     const uploadCurrentLesson = (lessonPack) => {
         console.log(lessonPack)
         for(let i = 0; i < lessonPack.lessonPairs.length; i++){
-            firebase.database().ref('lesson_packs/' + lessonPack.name + '/lesson_pair' + i.toString()).update({
+            firebase.database().ref('lesson_packs/' + lessonPack.name + '/lesson_pairs/lesson_pair' + i.toString()).update({
                 call_video:lessonPack.lessonPairs[i]["call_video"],
                 analysis_video:lessonPack.lessonPairs[i]["analysis_video"]
             })
