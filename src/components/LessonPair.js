@@ -16,8 +16,8 @@ export default function LessonPair({index, lessonPair, rerender, render, deleteP
                 <dd onClick={() => handleSelection(index, "call_video")}>Call Video: {lessonPair.call_video}
                     <VideoSelectionTool index={index} videoType={"call_video"} />
                 </dd>
-                <dd onClick={() => handleSelection(index, "analysis_video:")}>Analysis Video: {lessonPair.analysis_video}
-                    <VideoSelectionTool index={index} videoType={"analysis_video:"} />
+                <dd onClick={() => handleSelection(index, "analysis_video")}>Analysis Video: {lessonPair.analysis_video}
+                    <VideoSelectionTool index={index} videoType={"analysis_video"} />
                 </dd>
         </div>
     )

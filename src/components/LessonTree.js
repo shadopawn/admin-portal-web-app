@@ -15,8 +15,8 @@ export default function LessonTree() {
 
     const addLessonPair = () => {
         currentLessonPack["lessonPairs"].push({
-            callVideo: "Paceholder",
-            analysisVideo: "Placeholder"
+            call_video: "Paceholder",
+            analysis_video: "Placeholder"
         })
         lessonPairComponentList = currentLessonPack.lessonPairs.map((lessonPair, index) =>
             <LessonPair key={index} index={index} lessonPair={lessonPair} rerender={setrerender} render={rerender} deletePair={deleteLessonPair} />
