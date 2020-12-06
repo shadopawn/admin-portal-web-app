@@ -5,8 +5,6 @@ export const LessonDataContext = createContext();
 
 function LessonContextProvider(props) {
 
-    
-
     const [lessonData, setLessonData] = useState([
         {
             name: "Example Lesson Pack Name",
