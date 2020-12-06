@@ -7,3 +7,18 @@
 .addVideoButton {
     margin: auto 0;
 }
+
+.call{
+    display: flex;
+}
+
+.callTextbox{
+    height: 2em;
+    margin:auto 0 auto 0;
+    background-color: #3F3F3F;
+    color: white;
+    border: 2px solid #292929;;
+    border-radius: 10px;
+    padding-left: 10px;
+    margin-left: 10px;
+}

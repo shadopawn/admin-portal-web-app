@@ -6,6 +6,7 @@ export const LessonDataContext = createContext();
 function LessonContextProvider(props) {
 
     const [lessonData, setLessonData] = useState([]);
+    const [currentLessonPack, setCurrentLessonPack] = useState()
 
     const createLessonList = () => {
         let lessonList = []
@@ -15,15 +16,12 @@ function LessonContextProvider(props) {
                 lesson.child("lesson_pairs").forEach(lessonPair => {
                     lessonPairList.push(lessonPair.val())
                 })
-                let tempLesson = {name:lesson.key, lessonPairs:lessonPairList}
+                let tempLesson = {name:lesson.key, lessonPairs:lessonPairList, calls:lesson.child("calls").val()}
                 lessonList.push(tempLesson)
             })
-            setLessonData(lessonList)
-            
+            setLessonData(lessonList)  
         });
     }
-
-    const [currentLessonPack, setCurrentLessonPack] = useState()
 
     const setVideoFileName = (lessonPairIndex, videoType, videoName) => {
         lessonData.forEach(lessonPack => {
@@ -46,6 +44,11 @@ function LessonContextProvider(props) {
                 analysis_video:lessonPack.lessonPairs[i]["analysis_video"]
             })
         }
+        firebase.database().ref('lesson_packs/' + lessonPack.name + '/calls').update({
+            false_call0:lessonPack.calls["false_call0"],
+            false_call1:lessonPack.calls["false_call1"],
+            true_call:lessonPack.calls["true_call"],
+        })
     }
 
     useEffect(() => {

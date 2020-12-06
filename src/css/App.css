@@ -84,3 +84,16 @@
     border: 2px solid #01CDC4;
     border-radius: 25px;
 }
+
+::-webkit-input-placeholder { /* Chrome */
+  opacity: .5 !important;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  opacity: .5 !important;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  opacity: .5 !important;
+}
+:-moz-placeholder { /* Firefox 4 - 18 */
+  opacity: .5 !important;
+}

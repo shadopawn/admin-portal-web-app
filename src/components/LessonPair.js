@@ -1,5 +1,6 @@
 import React from 'react'
 import VideoSelectionTool from './VideoSelectionTool'
+import Call from './Call'
 import '../css/LessonTree.css';
 
 export default function LessonPair({index, lessonPair, rerender, render, deletePair}) {
@@ -18,6 +19,15 @@ export default function LessonPair({index, lessonPair, rerender, render, deleteP
                 </dd>
                 <dd onClick={() => handleSelection(index, "analysis_video")}>Analysis Video: {lessonPair.analysis_video}
                     <VideoSelectionTool index={index} videoType={"analysis_video"} />
+                </dd>
+                <dd>
+                    <Call callType={"True"} />
+                </dd>
+                <dd>
+                    <Call callType={"False"} />
+                </dd>
+                <dd>
+                    <Call callType={"False"} />
                 </dd>
         </div>
     )
