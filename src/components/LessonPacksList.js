@@ -4,10 +4,10 @@ import { LessonDataContext } from '../contexts/LessonDataContext'
 
 export default function LessonPacksList() {
 
-    const { lessonData, setLessonData, uploadCurrentLesson } = useContext(LessonDataContext)
+    const { lessonData, setLessonData } = useContext(LessonDataContext)
     const [rerender, setrerender] = useState(false)
 
-    function handleRemove(name) {
+    const handleRemove = (name) => {
         let choice = window.confirm("Are you sure you want to delete " + name)
         if(choice){
             const newList = lessonData.filter((lessonPack) => lessonPack.name !== name);
@@ -15,14 +15,14 @@ export default function LessonPacksList() {
         }
     }
 
-    let lessonPackList = lessonData.map((lessonPack, index) =>
-        <LessonPackItem key={index} lessonPack={lessonPack} deleteItem={() => handleRemove(lessonPack.name)} />
-    );
-
     const createLessonPack = () => {
         lessonData.push({name:"No name", lessonPairs:[]})
         setrerender(!rerender)
     }
+
+    let lessonPackList = lessonData.map((lessonPack, index) =>
+        <LessonPackItem key={index} lessonPack={lessonPack} deleteItem={() => handleRemove(lessonPack.name)} />
+    );
 
     return (
         <div className="lessonPacks">

@@ -1,17 +1,15 @@
-import { render } from '@testing-library/react'
 import React, { useContext,  useState } from 'react'
 import { LessonDataContext } from '../contexts/LessonDataContext'
 import LessonPair from './LessonPair'
+import '../css/LessonTree.css';
 
 export default function LessonTree() {
 
-    const { currentLessonPack, setCurrentLessonPack } = useContext(LessonDataContext)
+    const { currentLessonPack } = useContext(LessonDataContext)
     const [rerender, setrerender] = useState(false)
 
     const deleteLessonPair = (lessonPairIndex) => {
-        //setcurrentLessonPack(currentLessonPack)
-        const a = currentLessonPack["lessonPairs"].splice(lessonPairIndex, 1)
-        console.log(currentLessonPack)
+        currentLessonPack["lessonPairs"].splice(lessonPairIndex, 1)
         setrerender(!rerender)
     }
 

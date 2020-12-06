@@ -5,56 +5,23 @@ export const LessonDataContext = createContext();
 
 function LessonContextProvider(props) {
 
-    const [lessonData, setLessonData] = useState([
-        {
-            name: "Example Lesson Pack Name",
-            lessonPairs: [
-                {
-                    callVideo: "Random Example url 1",
-                    analysisVideo: "analysisVideoURL"
-                },
-                {
-                    callVideo: "andom Example url 2",
-                    analysisVideo: "analysisVideoURL"
-                },
-                {
-                    callVideo: "andom Example url 3",
-                    analysisVideo: "analysisVideoURL"
-                }
-            ]
-        },
-        {
-            name: "Example Lesson Pack 2",
-            lessonPairs: [
-                {
-                    callVideo: "callVideoURL",
-                    analysisVideo: "analysisVideoURL"
-                },
-                {
-                    callVideo: "callVideoURL",
-                    analysisVideo: "analysisVideoURL"
-                }
-            ]
-        },
-        {
-            name: "Football Lesson Pack",
-            lessonPairs: [
-                {
-                    callVideo: "callVideoURL",
-                    analysisVideo: "analysisVideoURL"
-                }
-            ]
-        }
-    ]);
+    const [lessonData, setLessonData] = useState([]);
 
-    // const createLessonList = () => {
-    //     firebase.database().ref('/lesson_packs/').once('value').then((snapshot) => {
-    //         var lessons = snapshot.val()
-    //         setLessonData([lessons])
-    //         console.log(lessons)
+    const createLessonList = () => {
+        let lessonList = []
+        firebase.database().ref('/lesson_packs/').once('value').then((snapshot) => {
+            snapshot.forEach(lesson => {
+                let lessonPairList = []
+                lesson.forEach(lessonPair => {
+                    lessonPairList.push(lessonPair.val())
+                })
+                let tempLesson = {name:lesson.key, lessonPairs:lessonPairList}
+                lessonList.push(tempLesson)
+            })
+            setLessonData(lessonList)
             
-    //     });
-    // }
+        });
+    }
 
     const [currentLessonPack, setCurrentLessonPack] = useState()
 
@@ -81,9 +48,9 @@ function LessonContextProvider(props) {
         }
     }
 
-    // useEffect(() => {
-    //     createLessonList();
-    // }, []);
+    useEffect(() => {
+        createLessonList();
+    }, []);
 
     return (
         <LessonDataContext.Provider value={{ lessonData, setLessonData, currentLessonPack, setCurrentLessonPack, setVideoFileName, uploadCurrentLesson}}>
