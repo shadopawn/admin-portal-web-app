@@ -35,7 +35,7 @@ export default function VideoContainerModal(props) {
             <section className='videoModal-main'>
                 <h2 className='heading'>What video would you like to add?</h2>
                 {videoNameList}
-                <button onClick={props.hide}>Close</button>
+                <button className="standardRedButton" onClick={props.hide}>Close</button>
             </section>
         </div>
     )

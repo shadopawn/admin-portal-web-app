@@ -28,11 +28,8 @@ export default function LessonPair({index, videoType}) {
         <div>
             <VideoContainerModal show={showVideoModal} hide={hideVideoModal} getNameOfVideo={getNameOfVideo} />
             <div className="videoSelector">
-                <div>
-                    <h2> {videoType} video selection:</h2>
-                </div>
                 <div className='addVideoButton'>
-                <button onClick={showAVideoModal}>Add Video</button>
+                <button className="standardButton" onClick={showAVideoModal}>Add Video</button>
                 </div>                
             </div>
         </div>

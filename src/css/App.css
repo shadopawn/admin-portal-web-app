@@ -48,3 +48,39 @@
   color: white;
   padding: 10px 0px 10px 70px;
 }
+
+.standardRedButton{
+	background-color: transparent;
+    color: white;
+    border: 2px solid #FF5656;
+	border-radius: 25px;
+	margin: 5px;
+    transition: .2s;
+	padding: 10px 25px;
+	font-size: 15px;
+}
+
+.standardRedButton:hover {
+    background-color: #FF5656;
+    color: white;
+    border: 2px solid #FF5656;
+    border-radius: 25px;
+}
+
+.standardButton{
+	background-color: transparent;
+    color: white;
+    border: 2px solid #01CDC4;
+	border-radius: 25px;
+	margin: 5px;
+    transition: .2s;
+	padding: 10px 25px;
+	font-size: 15px;
+}
+
+.standardButton:hover {
+    background-color: #01CDC4;
+    color: white;
+    border: 2px solid #01CDC4;
+    border-radius: 25px;
+}

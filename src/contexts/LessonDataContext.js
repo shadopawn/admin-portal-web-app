@@ -1,24 +1,26 @@
-import React, {createContext, useState} from 'react'
+import React, {createContext, useState, useEffect} from 'react'
 import firebase from 'firebase'
 
 export const LessonDataContext = createContext();
 
 function LessonContextProvider(props) {
 
+    
+
     const [lessonData, setLessonData] = useState([
         {
             name: "Example Lesson Pack Name",
             lessonPairs: [
                 {
-                    callVideo: "Random Example url",
+                    callVideo: "Random Example url 1",
                     analysisVideo: "analysisVideoURL"
                 },
                 {
-                    callVideo: "callVideoURL",
+                    callVideo: "andom Example url 2",
                     analysisVideo: "analysisVideoURL"
                 },
                 {
-                    callVideo: "callVideoURL",
+                    callVideo: "andom Example url 3",
                     analysisVideo: "analysisVideoURL"
                 }
             ]
@@ -47,6 +49,15 @@ function LessonContextProvider(props) {
         }
     ]);
 
+    // const createLessonList = () => {
+    //     firebase.database().ref('/lesson_packs/').once('value').then((snapshot) => {
+    //         var lessons = snapshot.val()
+    //         setLessonData([lessons])
+    //         console.log(lessons)
+            
+    //     });
+    // }
+
     const [currentLessonPack, setCurrentLessonPack] = useState()
 
     const setVideoFileName = (lessonPairIndex, videoType, videoName) => {
@@ -71,6 +82,10 @@ function LessonContextProvider(props) {
             })
         }
     }
+
+    // useEffect(() => {
+    //     createLessonList();
+    // }, []);
 
     return (
         <LessonDataContext.Provider value={{ lessonData, setLessonData, currentLessonPack, setCurrentLessonPack, setVideoFileName, uploadCurrentLesson}}>

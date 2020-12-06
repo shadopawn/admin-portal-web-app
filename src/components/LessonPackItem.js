@@ -1,7 +1,6 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { useHistory } from 'react-router-dom';
 import { LessonDataContext } from '../contexts/LessonDataContext'
-import firebase from 'firebase'
 
 
 export default function LessonPackItem({lessonPack, deleteItem}) {
