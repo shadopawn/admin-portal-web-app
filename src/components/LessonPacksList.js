@@ -6,7 +6,6 @@ export default function LessonPacksList() {
 
     const { lessonData, setLessonData } = useContext(LessonDataContext)
     const [rerender, setrerender] = useState(false)
-
     const handleRemove = (name) => {
         let choice = window.confirm("Are you sure you want to delete " + name)
         if(choice){
@@ -16,7 +15,7 @@ export default function LessonPacksList() {
     }
 
     const createLessonPack = () => {
-        lessonData.push({name:"No name", lessonPairs:[], calls:{}})
+        lessonData.push({name:"No name", lessonPairs:[], calls:{}, index:lessonData.length})
         setrerender(!rerender)
     }
 

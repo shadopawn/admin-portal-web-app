@@ -16,7 +16,7 @@ function LessonContextProvider(props) {
                 lesson.child("lesson_pairs").forEach(lessonPair => {
                     lessonPairList.push(lessonPair.val())
                 })
-                let tempLesson = {name:lesson.child("name").val(), lessonPairs:lessonPairList, calls:lesson.child("calls").val()}
+                let tempLesson = {name:lesson.child("name").val(), lessonPairs:lessonPairList, calls:lesson.child("calls").val(), index:lesson.child("index").val()}
                 lessonList.push(tempLesson)
             })
             setLessonData(lessonList)  
@@ -60,17 +60,17 @@ function LessonContextProvider(props) {
     const uploadCurrentLesson = (lessonPack) => {
         console.log(lessonPack)
         for(let i = 0; i < lessonPack.lessonPairs.length; i++){
-            firebase.database().ref('lesson_packs/' + lessonPack.name + '/lesson_pairs/lesson_pair' + i.toString()).update({
+            firebase.database().ref('lesson_packs/lesson_pack' + lessonPack.index + '/lesson_pairs/lesson_pair' + i.toString()).update({
                 call_video:lessonPack.lessonPairs[i]["call_video"],
                 analysis_video:lessonPack.lessonPairs[i]["analysis_video"]
             })
         }
-        firebase.database().ref('lesson_packs/' + lessonPack.name + '/calls').update({
+        firebase.database().ref('lesson_packs/lesson_pack' + lessonPack.index + '/calls').update({
             false_call0:lessonPack.calls["false_call0"],
             false_call1:lessonPack.calls["false_call1"],
             true_call:lessonPack.calls["true_call"],
         })
-        firebase.database().ref('lesson_packs/' + lessonPack.name).update({
+        firebase.database().ref('lesson_packs/lesson_pack' + lessonPack.index).update({
             name:lessonPack.name
         })
     }

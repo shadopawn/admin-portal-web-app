@@ -5,11 +5,17 @@ import '../css/LessonTree.css';
 
 export default function LessonTree() {
 
-    const { currentLessonPack } = useContext(LessonDataContext)
+    const { currentLessonPack, setNameText } = useContext(LessonDataContext)
     const [rerender, setrerender] = useState(false)
 
     const deleteLessonPair = (lessonPairIndex) => {
         currentLessonPack["lessonPairs"].splice(lessonPairIndex, 1)
+        setrerender(!rerender)
+    }
+
+    const changeName = () => {
+        const name = document.getElementById("nameChange").value;
+        setNameText(name)
         setrerender(!rerender)
     }
 
@@ -36,11 +42,12 @@ export default function LessonTree() {
     return (
         <div style={{textAlign:"left"}}>
             <h3>{packName}</h3>
-            <button className="standardButton">Edit Name</button>
+            <button className="standardButton" onClick={changeName}>Edit Name</button>
 			<button className="standardButton" onClick={addLessonPair}>Add lesson Pair</button>
             <dl>
                 {lessonPairComponentList}
             </dl>
+            <input id="nameChange"></input>
         </div>
     )
 }
