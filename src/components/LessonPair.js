@@ -27,13 +27,13 @@ export default function LessonPair({index, lessonPair, rerender, render, deleteP
                     <VideoSelectionTool index={index} videoType={"analysis_video"} />
                 </dd>
                 <dd>
-                    <Call index={index} callType={"false_call0"} />
+                    <Call index={index} callType={"false_call0"} callBool={"False"} />
                 </dd>
                 <dd>
-                    <Call index={index} callType={"false_call1"} />
+                    <Call index={index} callType={"false_call1"} callBool={"False"} />
                 </dd>
                 <dd>
-                    <Call index={index} callType={"true_call"} />
+                    <Call index={index} callType={"true_call"} callBool={"True"} />
                 </dd>
         </div>
     )
