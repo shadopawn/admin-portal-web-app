@@ -1,12 +1,14 @@
 import React, { useContext,  useState } from 'react'
 import { LessonDataContext } from '../contexts/LessonDataContext'
 import LessonPair from './LessonPair'
+import NameChangeModal from './NameChangeModal'
 import '../css/LessonTree.css';
 
 export default function LessonTree() {
 
     const { currentLessonPack, setNameText } = useContext(LessonDataContext)
     const [rerender, setrerender] = useState(false)
+    const [showNameModal, setshowNameModal] = useState(false)
 
     const deleteLessonPair = (lessonPairIndex) => {
         currentLessonPack["lessonPairs"].splice(lessonPairIndex, 1)
@@ -14,8 +16,9 @@ export default function LessonTree() {
     }
 
     const changeName = () => {
-        const name = document.getElementById("nameChange").value;
+        const name = document.getElementById("nameChangeInput").value;
         setNameText(name)
+        setshowNameModal(false)
         setrerender(!rerender)
     }
 
@@ -42,12 +45,12 @@ export default function LessonTree() {
     return (
         <div style={{textAlign:"left"}}>
             <h3>{packName}</h3>
-            <button className="standardButton" onClick={changeName}>Edit Name</button>
+            <button className="standardButton" onClick={() => setshowNameModal(true)}>Edit Name</button>
 			<button className="standardButton" onClick={addLessonPair}>Add lesson Pair</button>
             <dl>
                 {lessonPairComponentList}
             </dl>
-            <input id="nameChange"></input>
+            <NameChangeModal show={showNameModal} hide={setshowNameModal} changeName={changeName}></NameChangeModal>
         </div>
     )
 }
