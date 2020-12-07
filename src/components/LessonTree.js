@@ -36,6 +36,7 @@ export default function LessonTree() {
     return (
         <div style={{textAlign:"left"}}>
             <h3>{packName}</h3>
+            <button className="standardButton">Edit Name</button>
 			<button className="standardButton" onClick={addLessonPair}>Add lesson Pair</button>
             <dl>
                 {lessonPairComponentList}

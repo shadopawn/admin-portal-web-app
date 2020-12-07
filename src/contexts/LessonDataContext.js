@@ -16,7 +16,7 @@ function LessonContextProvider(props) {
                 lesson.child("lesson_pairs").forEach(lessonPair => {
                     lessonPairList.push(lessonPair.val())
                 })
-                let tempLesson = {name:lesson.key, lessonPairs:lessonPairList, calls:lesson.child("calls").val()}
+                let tempLesson = {name:lesson.child("name").val(), lessonPairs:lessonPairList, calls:lesson.child("calls").val()}
                 lessonList.push(tempLesson)
             })
             setLessonData(lessonList)  
@@ -27,12 +27,33 @@ function LessonContextProvider(props) {
         lessonData.forEach(lessonPack => {
             if(lessonPack === currentLessonPack){
                 lessonPack.lessonPairs[lessonPairIndex][videoType] = videoName
-                console.log(lessonPack.lessonPairs[lessonPairIndex][videoType])
             }
         })
-
-        currentLessonPack.lessonPairs[lessonPairIndex][videoType] = videoName
         setLessonData(lessonData)
+        
+        currentLessonPack.lessonPairs[lessonPairIndex][videoType] = videoName
+        setCurrentLessonPack(currentLessonPack)
+    }
+
+    const setCallText = (callType, callText) => {
+        lessonData.forEach(lessonPack => {
+            if(lessonPack === currentLessonPack)
+                lessonPack.calls[callType] = callText
+        })
+        setLessonData(lessonData)
+
+        currentLessonPack.calls[callType] = callText
+        setCurrentLessonPack(currentLessonPack)
+    }
+
+    const setNameText = (nameText) => {
+        lessonData.forEach(lessonPack => {
+            if(lessonPack === currentLessonPack)
+                lessonPack.name = nameText
+        })
+        setLessonData(lessonData)
+
+        currentLessonPack.name = nameText
         setCurrentLessonPack(currentLessonPack)
     }
 
@@ -49,6 +70,9 @@ function LessonContextProvider(props) {
             false_call1:lessonPack.calls["false_call1"],
             true_call:lessonPack.calls["true_call"],
         })
+        firebase.database().ref('lesson_packs/' + lessonPack.name).update({
+            name:lessonPack.name
+        })
     }
 
     useEffect(() => {
@@ -56,7 +80,7 @@ function LessonContextProvider(props) {
     }, []);
 
     return (
-        <LessonDataContext.Provider value={{ lessonData, setLessonData, currentLessonPack, setCurrentLessonPack, setVideoFileName, uploadCurrentLesson}}>
+        <LessonDataContext.Provider value={{ lessonData, setLessonData, currentLessonPack, setCurrentLessonPack, setVideoFileName, uploadCurrentLesson, setCallText, setNameText}}>
             {props.children}
         </LessonDataContext.Provider>
     )

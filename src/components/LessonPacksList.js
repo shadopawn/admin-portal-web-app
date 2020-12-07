@@ -16,7 +16,7 @@ export default function LessonPacksList() {
     }
 
     const createLessonPack = () => {
-        lessonData.push({name:"No name", lessonPairs:[]})
+        lessonData.push({name:"No name", lessonPairs:[], calls:{}})
         setrerender(!rerender)
     }
 

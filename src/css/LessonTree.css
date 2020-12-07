@@ -1,3 +1,11 @@
 .lessonPairName {
     display: flex;
 }
+
+.videoSelection{
+    display: flex;
+}
+
+.videoNameDisplay{
+    margin: auto 0 auto 0;
+}

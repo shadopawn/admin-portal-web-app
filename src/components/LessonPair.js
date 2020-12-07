@@ -14,20 +14,26 @@ export default function LessonPair({index, lessonPair, rerender, render, deleteP
     return (
         <div>
             <dt className="lessonPairName"><h3>Lesson Pair {index}</h3><button className="standardRedButton" onClick={() => deletePair(index)} >Delete</button></dt>
-                <dd onClick={() => handleSelection(index, "call_video")}>Call Video: {lessonPair.call_video}
+                <dd className="videoSelection" onClick={() => handleSelection(index, "call_video")}>
+                    <div className="videoNameDisplay">
+                        Call Video: {lessonPair.call_video}
+                    </div>
                     <VideoSelectionTool index={index} videoType={"call_video"} />
                 </dd>
-                <dd onClick={() => handleSelection(index, "analysis_video")}>Analysis Video: {lessonPair.analysis_video}
+                <dd className="videoSelection" onClick={() => handleSelection(index, "analysis_video")}>
+                    <div className="videoNameDisplay">
+                        Analysis Video: {lessonPair.analysis_video}
+                    </div>
                     <VideoSelectionTool index={index} videoType={"analysis_video"} />
                 </dd>
                 <dd>
-                    <Call callType={"True"} />
+                    <Call index={index} callType={"false_call0"} />
                 </dd>
                 <dd>
-                    <Call callType={"False"} />
+                    <Call index={index} callType={"false_call1"} />
                 </dd>
                 <dd>
-                    <Call callType={"False"} />
+                    <Call index={index} callType={"true_call"} />
                 </dd>
         </div>
     )
