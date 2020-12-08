@@ -26,7 +26,6 @@ export default function VideoContainerModal(props) {
         else {
             setVideoNameList([]);
         }
-        
     }, [props.show]);
 
     return(
@@ -34,7 +33,7 @@ export default function VideoContainerModal(props) {
             <section className='videoModal-main'>
                 <h2 className='heading'>What video would you like to add?</h2>
                 {videoNameList}
-                <button className="standardRedButton" onClick={props.hide}>Close</button>
+                <button className="standardRedButton" onClick={props.hide} data-testid="closeVModal">Close</button>
             </section>
         </div>
     )
