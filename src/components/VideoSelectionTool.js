@@ -3,7 +3,7 @@ import VideoContainerModal from './VideoContainerModal'
 import '../css/LessonPair.css'
 import { LessonDataContext } from '../contexts/LessonDataContext'
 
-export default function LessonPair({index, videoType}) {
+export default function VideoSelecionTool({index, videoType}) {
 
     const { setVideoFileName } = useContext(LessonDataContext)
 

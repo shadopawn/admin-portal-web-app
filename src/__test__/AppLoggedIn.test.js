@@ -20,6 +20,15 @@ jest.mock("firebase", () => ({
       currentUser: jest.fn(path => ({
         set: mockSet
       }))
+    }),
+    database: () => ({
+      ref: () => ({
+        once: () => ({
+          then: jest.fn(path => ({
+            set:mockSet
+          }))
+        })
+      })
     })
 }));
   

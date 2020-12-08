@@ -6,7 +6,7 @@ export const LessonDataContext = createContext();
 function LessonContextProvider(props) {
 
     const [lessonData, setLessonData] = useState([]);
-    const [currentLessonPack, setCurrentLessonPack] = useState()
+    const [currentLessonPack, setCurrentLessonPack] = useState({name:"test", calls:{true_call:"test"}, lessonPairs:[]})
 
     const createLessonList = () => {
         let lessonList = []

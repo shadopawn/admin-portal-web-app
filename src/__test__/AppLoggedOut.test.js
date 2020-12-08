@@ -1,6 +1,7 @@
 import { render, screen, cleanup } from '@testing-library/react';
 import App from '../App';
 import { BrowserRouter } from 'react-router-dom';
+import { database } from 'firebase-admin';
 
 afterEach(cleanup);
 
@@ -16,6 +17,15 @@ jest.mock("firebase", () => ({
     signInWithEmailAndPassword: jest.fn(path => ({
       set: mockSet
     }))
+  }),
+  database: () => ({
+    ref: () => ({
+      once: () => ({
+        then: jest.fn(path => ({
+          set:mockSet
+        }))
+      })
+    })
   })
 }));
 

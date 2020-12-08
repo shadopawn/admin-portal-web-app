@@ -10,7 +10,6 @@ export default function VideoContainerModal(props) {
 
     const getFirebaseVideos = () => {
         var listRef = firebase.storage().ref('training_videos/');
-
         listRef.listAll().then(function(res) {
         res.items.forEach(function(itemRef) {
             setVideoNameList(videoNameList => [...videoNameList, <VideoCard key={itemRef.name} name={itemRef.name} handleClick={props.getNameOfVideo} />])

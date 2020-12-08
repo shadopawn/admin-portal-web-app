@@ -15,7 +15,7 @@ export default function Call({ index, callType, callBool}) {
     return (
         <div className="call">
             <p>{callBool} call: </p>
-            <input id={UID} placeholder={placeholder} className="callTextbox" onChange={updateCall} ></input>
+            <input id={UID} placeholder={placeholder} className="callTextbox" onChange={updateCall} data-testid="callInput"></input>
         </div>
     )
 }
