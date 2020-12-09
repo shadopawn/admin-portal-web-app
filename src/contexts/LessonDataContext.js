@@ -58,7 +58,6 @@ function LessonContextProvider(props) {
     }
 
     const uploadCurrentLesson = (lessonPack) => {
-        console.log(lessonPack)
         for(let i = 0; i < lessonPack.lessonPairs.length; i++){
             firebase.database().ref('lesson_packs/lesson_pack' + lessonPack.index + '/lesson_pairs/lesson_pair' + i.toString()).update({
                 call_video:lessonPack.lessonPairs[i]["call_video"],

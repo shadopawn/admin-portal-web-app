@@ -13,7 +13,7 @@ export default function LessonPair({index, lessonPair, rerender, render, deleteP
     
     return (
         <div>
-            <dt className="lessonPairName"><h3>Lesson Pair {index}</h3><button className="standardRedButton" onClick={() => deletePair(index)} >Delete</button></dt>
+            <dt className="lessonPairName"><h3>Lesson Pair {index + 1}</h3><button className="standardRedButton" onClick={() => deletePair(index)} data-testid="btnDeletePair">Delete</button></dt>
                 <dd className="videoSelection" onClick={() => handleSelection(index, "call_video")} data-testid="btnCallSelection">
                     <div className="videoNameDisplay">
                         Call Video: {lessonPair.call_video}
