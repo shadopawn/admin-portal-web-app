@@ -44,10 +44,8 @@ test('Navigation to Login page', () => {
       <App />
     </BrowserRouter>
   )
-
   expect(screen.getByText(/Welcome to the Admin Portal/i)).toBeInTheDocument()
   screen.getByText(/Login Page/i).click();
-
   expect(screen.getByTestId("loginHeader")).toBeInTheDocument()
 })
 
@@ -57,9 +55,7 @@ test('Navigation redirect from Lesson Editor link to Login page when not logged 
       <App />
     </BrowserRouter>
   )
-
   screen.getByText(/Lessons Editor/i).click();
-
   expect(screen.getByTestId("loginHeader")).toBeInTheDocument()
 })
 
@@ -69,9 +65,7 @@ test('Navigation redirect from Analytics link to Login page when not logged in',
       <App />
     </BrowserRouter>
   )
-
   screen.getByText(/Analytics Dashboard/i).click();
-
   expect(screen.getByTestId("loginHeader")).toBeInTheDocument()
 })
 

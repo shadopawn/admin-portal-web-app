@@ -21,9 +21,11 @@ test("renders name prop", () => {
   expect(videoCard).toBeInTheDocument();
 })
 
-test("Can click Video Button without crashing", () => {
+test("Video button is on screen and clickable", () => {
   render(<VideoCard handleClick={mockHandleClick}/>);
-  screen.getByTestId("btnVideo").click()
+  const videoButton = screen.getByTestId("btnVideo");
+  videoButton.click();
+  expect(videoButton).toBeInTheDocument();
 })
 
 test("HandleClick to be called", () => {

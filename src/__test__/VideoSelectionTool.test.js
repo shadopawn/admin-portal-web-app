@@ -27,9 +27,11 @@ test("renders without crashing", () => {
   ReactDOM.render(<LessonDataContext.Provider value={{setVideoFileName}}><VideoSelectionTool /></LessonDataContext.Provider>, div);
 })
 
-test("showAVideoModal function works without crashing", () => {
+test("showAVideoModal is on screen and clickable", () => {
   render(<LessonDataContext.Provider value={{setVideoFileName}}><VideoSelectionTool /></LessonDataContext.Provider>);
-  screen.getByTestId("btnAddVideo").click();
+  const addVideoButton = screen.getByTestId("btnAddVideo");
+  addVideoButton.click();
+  expect(addVideoButton).toBeInTheDocument();
 })
 
 test("showAVideoModal function renders VideoContainerModal", () => {

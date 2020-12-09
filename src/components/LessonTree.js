@@ -1,5 +1,5 @@
 import React, { useContext,  useState } from 'react'
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { LessonDataContext } from '../contexts/LessonDataContext'
 import LessonPair from './LessonPair'
 import NameChangeModal from './NameChangeModal'
@@ -47,9 +47,9 @@ export default function LessonTree() {
 
     return (
         <div style={{textAlign:"left"}}>
-            <h3>{packName}</h3>
+            <h3 data-testid="packName">{packName}</h3>
             <button className="standardButton" onClick={() => setshowNameModal(true)}>Edit Name</button>
-			<button className="standardPurpleButton" onClick={addLessonPair}>Add Lesson Pair</button>
+			<button className="standardPurpleButton" onClick={addLessonPair} data-testid="btnAddPair">Add Lesson Pair</button>
             <dl>
                 {lessonPairComponentList}
             </dl>

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import VideoCard from './VideoCard';
 import '../css/VideoContainerModal.css'
 
 
@@ -10,7 +9,7 @@ export default function NameChangeModal(props) {
         <div className={showHideClassName}>
             <section className='videoModal-main'>
                 <h2 className='heading'>What would you like the name to be?</h2>
-                <input id="nameChangeInput"></input>
+                <input id="nameChangeInput" data-testid="nameChangeInput"></input>
                 <button className="standardButton" onClick={props.changeName}>Submit</button>
                 <button className="standardRedButton" onClick={() => props.hide(false)}>Close</button>
             </section>

@@ -1,12 +1,11 @@
 import ReactDOM from 'react-dom';
 import { render, screen } from '@testing-library/react';
 import VideoContainerModal from '../components/VideoContainerModal';
-import firebase from 'firebase'
 
 //setting up a mock version of firebase for testing
-const mockHide = jest.fn();
+const hide = jest.fn();
 const mockEffect = jest.fn();
-mockHide.mockReturnValue(true);
+hide.mockReturnValue(true);
 jest.mock("firebase", () => ({
   initializeApp: jest.fn(),
   storage: () => ({
@@ -44,16 +43,17 @@ test('Expect useEffect and firebase to be called', () => {
   expect(mockEffect).toHaveBeenCalled();
 })
 
-test('Expect close button', () => {
-  render(<VideoContainerModal show={true} hide={mockHide}/>);
+test('Close is on screen and clickable', () => {
+  render(<VideoContainerModal show={true} hide={hide}/>);
   const close = screen.getByText(/Close/i);
+  close.click();
   expect(close).toBeInTheDocument();
 })
 
 test('Expect to close to have been called', () => {
-  render(<VideoContainerModal show={true} hide={mockHide}/>);
+  render(<VideoContainerModal show={true} hide={hide}/>);
   screen.getByTestId("closeVModal").click();
-  expect(mockHide).toHaveBeenCalled();
+  expect(hide).toHaveBeenCalled();
 })
 
 test('Expect useEffect and firebase to not be called because it is not being shown', () => {
