@@ -73,6 +73,9 @@ function LessonContextProvider(props) {
         firebase.database().ref('lesson_packs/lesson_pack' + lessonPack.index).update({
             name:lessonPack.name
         })
+        firebase.database().ref('lesson_packs/lesson_pack' + lessonPack.index).update({
+            index:lessonPack.index
+        })
     }
 
     useEffect(() => {
