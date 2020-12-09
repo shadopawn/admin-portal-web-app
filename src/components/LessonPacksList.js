@@ -6,6 +6,7 @@ export default function LessonPacksList() {
 
     const { lessonData, setLessonData } = useContext(LessonDataContext)
     const [rerender, setrerender] = useState(false)
+    
     const handleRemove = (name) => {
         let choice = window.confirm("Are you sure you want to delete " + name)
         if(choice){
