@@ -3,7 +3,7 @@ import VideoContainerModal from './VideoContainerModal'
 import '../css/LessonPair.css'
 import { LessonDataContext } from '../contexts/LessonDataContext'
 
-export default function VideoSelecionTool({index, videoType}) {
+export default function VideoSelectionTool({index, videoType}) {
 
     const { setVideoFileName } = useContext(LessonDataContext)
 
@@ -29,7 +29,7 @@ export default function VideoSelecionTool({index, videoType}) {
             <VideoContainerModal show={showVideoModal} hide={hideVideoModal} getNameOfVideo={getNameOfVideo} />
             <div className="videoSelector">
                 <div className='addVideoButton'>
-                <button className="standardButton" onClick={showAVideoModal}>Add Video</button>
+                <button className="standardButton" onClick={showAVideoModal} data-testid="btnAddVideo">Add Video</button>
                 </div>                
             </div>
         </div>

@@ -1,8 +1,8 @@
-import React, {createContext} from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom';
 import { render, screen } from '@testing-library/react';
 import Call from '../components/Call';
-import LessonContextProvider, {LessonDataContext} from '../contexts/LessonDataContext';
+import {LessonDataContext} from '../contexts/LessonDataContext';
 
 //setting up a mock version of firebase for testing
 const mockSet = jest.fn();
@@ -40,26 +40,26 @@ test("renders index without crashing", () => {
 
 test('renders true call message', () => {
   render(<LessonDataContext.Provider value={{setCallText, currentLessonPack}}><Call callType={"true_call"} callBool={"True"} index={2} /></LessonDataContext.Provider>);
-  const linkElement = screen.getByText(/True call:/i);
-  expect(linkElement).toBeInTheDocument();
+  const callElement = screen.getByText(/True call:/i);
+  expect(callElement).toBeInTheDocument();
 });
 
 test('renders false call message', () => {
   render(<LessonDataContext.Provider value={{setCallText, currentLessonPack}}><Call callType={"false_call1"} callBool={"False"} index={1} /></LessonDataContext.Provider>);
-  const linkElement = screen.getByText(/False call:/i);
-  expect(linkElement).toBeInTheDocument();
+  const callElement = screen.getByText(/False call:/i);
+  expect(callElement).toBeInTheDocument();
 });
 
 test('generating correct UID', () => {
   render(<LessonDataContext.Provider value={{setCallText, currentLessonPack}}><Call callType={"true_call"} callBool={"True"} index={0} /></LessonDataContext.Provider>);
-  const linkElement = document.getElementById("true_call0");
-  expect(linkElement).toBeInTheDocument();
+  const callElement = document.getElementById("true_call0");
+  expect(callElement).toBeInTheDocument();
 });
 
 test('generating correct placeholder', () => {
   render(<LessonDataContext.Provider value={{setCallText, currentLessonPack}}><Call callType={"true_call"} callBool={"True"} index={0} /></LessonDataContext.Provider>);
-  const linkElement = document.getElementById("true_call0").placeholder;
-  expect(linkElement).toBe("testCall")
+  const callElement = document.getElementById("true_call0").placeholder;
+  expect(callElement).toBe("testCall")
 });
 
 it("update call function can be called",  () => {

@@ -44,7 +44,7 @@ test('Expect useEffect and firebase to be called', () => {
   expect(mockEffect).toHaveBeenCalled();
 })
 
-test('Expect to close button', () => {
+test('Expect close button', () => {
   render(<VideoContainerModal show={true} hide={mockHide}/>);
   const close = screen.getByText(/Close/i);
   expect(close).toBeInTheDocument();

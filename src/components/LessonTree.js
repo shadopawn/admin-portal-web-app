@@ -41,9 +41,8 @@ export default function LessonTree() {
             <LessonPair key={index} index={index} lessonPair={lessonPair} rerender={setrerender} render={rerender} deletePair={deleteLessonPair} />
         );
         packName = currentLessonPack.name
-        if(packName == "test"){
-            return <Redirect to="/lesson-packs" />
-        }
+    }else {
+        return <Redirect to="/lesson-packs" />
     }
 
     return (
