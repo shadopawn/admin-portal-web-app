@@ -1,7 +1,7 @@
 import React from 'react'
 import firebase from 'firebase';
 
-export default function VideoUploadButton() {
+export default function VideoUploader() {
 
     const fileChangeEvent = (e) => {
         var file = e.target.files[0];
