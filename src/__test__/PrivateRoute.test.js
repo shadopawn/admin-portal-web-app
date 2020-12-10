@@ -3,6 +3,8 @@ import PrivateRoute from '../components/PrivateRoute';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Analytics from '../components/Analytics';
 
+//Used to prevent routing when not logged in
+
 //setting up a mock version of firebase for testing
 const mockSet = jest.fn();
 mockSet.mockReturnValue(true);

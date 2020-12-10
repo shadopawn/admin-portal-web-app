@@ -24,7 +24,7 @@ export default function VideoUploadButton() {
 
     return (
         <div>
-            <input data-testid="upload" type="file" id="fileButton" onChange={fileChangeEvent} />
+            <input data-testid="btnUpload" type="file" id="fileButton" onChange={fileChangeEvent} />
             <progress value="0" max="100" id="uploader">0%</progress> <br />
         </div>
     )

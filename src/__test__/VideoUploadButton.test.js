@@ -1,3 +1,5 @@
+import React from 'react'
+import ReactDOM from 'react-dom';
 import { render, screen } from '@testing-library/react';
 import VideoUploadButton from '../components/VideoUploadButton';
 
@@ -19,11 +21,16 @@ jest.mock("firebase", () => ({
     })
 }));
 
+test('renders without crashing', () => {
+  const div = document.createElement("div");
+  ReactDOM.render(<VideoUploadButton />, div);
+});
 
-test('renders upload button', () => {
+test('Upload button is on screen and clickable', () => {
   render(<VideoUploadButton />);
-  const linkElement = screen.getByTestId("upload");
-  expect(linkElement).toBeInTheDocument();
+  const uploadButton = screen.getByTestId("btnUpload");
+  uploadButton.click();
+  expect(uploadButton).toBeInTheDocument();
 });
 
 //Due to secuirty reaons we are unable to automatically upload flies to the firebase storage

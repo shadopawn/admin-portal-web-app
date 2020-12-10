@@ -1,7 +1,7 @@
+import ReactDOM from 'react-dom';
 import { render, screen, cleanup } from '@testing-library/react';
-import App from '../App';
 import { BrowserRouter } from 'react-router-dom';
-import { database } from 'firebase-admin';
+import App from '../App';
 
 afterEach(cleanup);
 
@@ -29,13 +29,30 @@ jest.mock("firebase", () => ({
   })
 }));
 
-test('renders welcome message', () => {
+test('renders without crashing', () => {
+  const div = document.createElement("div");
+  ReactDOM.render(
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>, div);
+});
+
+test('renders Home welcome message', () => {
   render(
     <BrowserRouter>
       <App />
     </BrowserRouter>);
-  const linkElement = screen.getByText(/Welcome to the Admin Portal/i);
-  expect(linkElement).toBeInTheDocument();
+  const welcomeHeader = screen.getByText(/Welcome to the Admin Portal/i);
+  expect(welcomeHeader).toBeInTheDocument();
+});
+
+test('renders NavBar', () => {
+  render(
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>);
+  const loginHeader = screen.getByText(/Login Page/i);
+  expect(loginHeader).toBeInTheDocument();
 });
 
 test('Navigation to Login page', () => {

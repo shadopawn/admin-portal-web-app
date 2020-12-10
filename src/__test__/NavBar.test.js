@@ -27,15 +27,14 @@ jest.mock("firebase", () => ({
     })
   }));
 
-jest.mock("react-router-dom", () => ({
-    ...jest.requireActual("react-router-dom"),
-    useLocation: () => ({
-      pathname: "localhost:3000/home"
-    }),
+  const mockHistoryPush = jest.fn();
+
+  jest.mock('react-router-dom', () => ({
+    ...jest.requireActual('react-router-dom'),
     useHistory: () => ({
-      push: mockSet
-    })
-}));
+      push: mockHistoryPush,
+    }),
+  }));
 
 const lessonData = [
   {name:"TestLessonPack0", index:0, calls:{true_call:"testCall0"}, lessonPairs:[{analysis_video: "test_analysis_video0.mp4", call_video: "test_call_video0.mp4"}]},
@@ -132,4 +131,20 @@ test('Logout button runs LogoutEventListen', () => {
   const logoutButton = screen.getByText(/Log out/i);
   logoutButton.click();
   expect(mockSignOut).toBeCalled()
+});
+
+test('Logout button run redirect with correct path', () => {
+  
+  render(
+    <MemoryRouter initialEntries={["/analytics"]}>
+      <NavBar to={location}/>
+      <Switch>
+        <Route path="/admin-portal-web-app" component={Home} ></Route>
+        <Route path="/analytics" component={Analytics} ></Route>
+      </Switch>
+    </MemoryRouter>);
+
+  const logoutButton = screen.getByText(/Log out/i);
+  logoutButton.click();
+  expect(mockHistoryPush).toHaveBeenCalledWith("/admin-portal-web-app")
 });
