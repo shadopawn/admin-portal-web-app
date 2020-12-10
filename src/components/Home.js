@@ -9,7 +9,7 @@ export default function Home() {
             <div className="linkContainer">
                 
                 <Link to="/lesson-packs" data-testid="lessonLink">
-                    <div className="linkChoice" data-testid="linkLesson">
+                    <div className="linkChoice">
                         <h2>Lessons Editor</h2>
                         <img src='https://github.com/shadopawn/admin-portal-web-app/blob/master/public/lessons.png?raw=true'></img>
                     </div>

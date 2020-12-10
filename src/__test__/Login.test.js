@@ -4,8 +4,6 @@ import * as firebase from 'firebase'
 
 const mockSet = jest.fn();
 mockSet.mockReturnValue(true);
-
-
 jest.mock("firebase", () => ({
     initializeApp: jest.fn(),
     auth: () => ({
@@ -18,8 +16,6 @@ jest.mock("firebase", () => ({
       }))
     })
   }));
-
-const mockHistoryPush = jest.fn();
 
 jest.mock("react-router-dom", () => ({
     ...jest.requireActual("react-router-dom"),
