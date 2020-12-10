@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
 import { render, screen } from '@testing-library/react';
-import VideoUploadButton from '../components/VideoUploadButton';
+import VideoUploader from '../components/VideoUploader';
 
 //setting up a mock version of firebase for testing
 const mockSet = jest.fn();
@@ -23,11 +23,11 @@ jest.mock("firebase", () => ({
 
 test('renders without crashing', () => {
   const div = document.createElement("div");
-  ReactDOM.render(<VideoUploadButton />, div);
+  ReactDOM.render(<VideoUploader />, div);
 });
 
 test('Upload button is on screen and clickable', () => {
-  render(<VideoUploadButton />);
+  render(<VideoUploader />);
   const uploadButton = screen.getByTestId("btnUpload");
   uploadButton.click();
   expect(uploadButton).toBeInTheDocument();

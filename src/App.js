@@ -9,7 +9,7 @@ import './css/App.css';
 import LessonPacks from './components/LessonPacks';
 import LessonCreation from './components/LessonCreation';
 import LessonContextProvider from './contexts/LessonDataContext';
-import VideoUploadButton from './components/VideoUploadButton';
+import VideoUploader from './components/VideoUploader';
 
 function App() {
   
@@ -39,7 +39,7 @@ function App() {
 						<LessonCreation />
 					</PrivateRoute>
 					<PrivateRoute path="/video-uploader">
-						<VideoUploadButton />
+						<VideoUploader />
 					</PrivateRoute>				
 				</Switch>
 			</LessonContextProvider>
