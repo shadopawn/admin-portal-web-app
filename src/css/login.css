@@ -8,7 +8,7 @@
     justify-content: center;
 }
 
-#txtEmail {
+#emailInput {
     background-color: #3F3F3F;
     margin-bottom: .5em;
     height: 2em;
@@ -18,7 +18,7 @@
     padding-left: 10px;
 }
 
-#txtPassword {
+#passwordInput {
     background-color: #3F3F3F;
     margin-bottom: 2em;
     height: 2em;

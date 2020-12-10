@@ -10,7 +10,6 @@ export default function VideoContainerModal(props) {
 
     const getFirebaseVideos = () => {
         var listRef = firebase.storage().ref('training_videos/');
-
         listRef.listAll().then(function(res) {
         res.items.forEach(function(itemRef) {
             setVideoNameList(videoNameList => [...videoNameList, <VideoCard key={itemRef.name} name={itemRef.name} handleClick={props.getNameOfVideo} />])
@@ -27,7 +26,6 @@ export default function VideoContainerModal(props) {
         else {
             setVideoNameList([]);
         }
-        
     }, [props.show]);
 
     return(
@@ -35,7 +33,7 @@ export default function VideoContainerModal(props) {
             <section className='videoModal-main'>
                 <h2 className='heading'>What video would you like to add?</h2>
                 {videoNameList}
-                <button onClick={props.hide}>Close</button>
+                <button className="standardRedButton" onClick={props.hide} data-testid="closeVModal">Close</button>
             </section>
         </div>
     )

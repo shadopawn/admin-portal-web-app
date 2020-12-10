@@ -1,5 +1,7 @@
+import React from 'react'
+import ReactDOM from 'react-dom';
 import { render, screen } from '@testing-library/react';
-import LessonEditor from '../components/LessonEditor';
+import VideoUploader from '../components/VideoUploader';
 
 //setting up a mock version of firebase for testing
 const mockSet = jest.fn();
@@ -19,11 +21,16 @@ jest.mock("firebase", () => ({
     })
 }));
 
+test('renders without crashing', () => {
+  const div = document.createElement("div");
+  ReactDOM.render(<VideoUploader />, div);
+});
 
-test('renders heading message', () => {
-  render(<LessonEditor />);
-  const linkElement = screen.getByText(/Lesson Editor/i);
-  expect(linkElement).toBeInTheDocument();
+test('Upload button is on screen and clickable', () => {
+  render(<VideoUploader />);
+  const uploadButton = screen.getByTestId("btnUpload");
+  uploadButton.click();
+  expect(uploadButton).toBeInTheDocument();
 });
 
 //Due to secuirty reaons we are unable to automatically upload flies to the firebase storage

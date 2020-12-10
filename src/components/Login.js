@@ -10,8 +10,8 @@ export default function Login() {
     let { from } = location.state || { from: { pathname: "/" } };
 
     const LoginEventListen = () => {
-        const email = document.getElementById("txtEmail").value;
-        const pass = document.getElementById("txtPassword").value;
+        const email = document.getElementById("emailInput").value;
+        const pass = document.getElementById("passwordInput").value;
         const auth = firebase.auth();
         auth.signInWithEmailAndPassword(email, pass);
     }
@@ -32,9 +32,9 @@ export default function Login() {
     return (
         <div className="loginContainer">
             <h1 data-testid="loginHeader">Admin Portal Log in</h1>
-            <input id="txtEmail" type="email" data-testid="email" placeholder="Email"></input>
+            <input id="emailInput" type="email" data-testid="emailInput" placeholder="Email"></input>
 
-            <input id="txtPassword" type="password" data-testid="password" placeholder="Password"></input>
+            <input id="passwordInput" type="password" data-testid="passwordInput" placeholder="Password"></input>
 
             <button id="btnLogin" data-testid="btnLogin" onClick={LoginEventListen}>Log in</button>
         </div>
