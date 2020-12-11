@@ -50,6 +50,7 @@ export default function LessonTree() {
             <h3 data-testid="packName">{packName}</h3>
             <button className="standardButton" onClick={() => setshowNameModal(true)}>Edit Name</button>
 			<button className="standardPurpleButton" onClick={addLessonPair} data-testid="btnAddPair">Add Lesson Pair</button>
+            <button className="standardPurpleButton">Publish</button>
             <dl>
                 {lessonPairComponentList}
             </dl>
