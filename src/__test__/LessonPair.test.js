@@ -18,15 +18,15 @@ jest.mock("firebase", () => ({
   })
 }));
 
-const lessonPair = {analysis_video: "test_analysis_video.mp4", call_video: "test_call_video.mp4"}
-const currentLessonPack = {name:"testName", calls:{true_call:"testCall"}, lessonPairs:[{analysis_video: "test_analysis_video.mp4", call_video: "test_call_video.mp4"}]}
+const lessonPair = {analysis_video: "test_analysis_video.mp4", call_video: "test_call_video.mp4", calls:{true_call:"testCall", false_call1:"FalseCall"}}
+let currentLessonPack = {name:"testName", calls:{true_call:"testCall"}, lessonPairs:[{analysis_video: "test_analysis_video.mp4", call_video: "test_call_video.mp4", calls:{true_call:"testCall", false_call1:"FalseCall"}}]}
 let setCallText = jest.fn()
 let mockRender = jest.fn()
 let mockDelete = jest.fn()
 
 test("renders without crashing", () => {
   const div = document.createElement("div");
-  ReactDOM.render(<LessonDataContext.Provider value={{setCallText, currentLessonPack}}><LessonPair lessonPair={lessonPair} /></LessonDataContext.Provider>, div);
+  ReactDOM.render(<LessonDataContext.Provider value={{setCallText, currentLessonPack}}><LessonPair index={0} lessonPair={lessonPair} /></LessonDataContext.Provider>, div);
 })
 
 test("will rerender when changes are made without crashing", () => {

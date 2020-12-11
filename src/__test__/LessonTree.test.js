@@ -5,7 +5,7 @@ import {LessonDataContext} from '../contexts/LessonDataContext';
 import { BrowserRouter } from 'react-router-dom';
 
 let setNameText = jest.fn()
-let currentLessonPack = {name:"testName", calls:{true_call:"testCall"}, lessonPairs:[{analysis_video: "test_analysis_video.mp4", call_video: "test_call_video.mp4"}]}
+let currentLessonPack = {name:"testName", calls:{true_call:"testCall"}, lessonPairs:[{analysis_video: "test_analysis_video.mp4", call_video: "test_call_video.mp4", calls:{true_call:"testCall", false_call1:"FalseCall"}}]}
 
 test("renders without crashing", () => {
   const div = document.createElement("div");

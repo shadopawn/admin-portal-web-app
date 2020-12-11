@@ -14,9 +14,10 @@ function LessonContextProvider(props) {
             snapshot.forEach(lesson => {
                 let lessonPairList = []
                 lesson.child("lesson_pairs").forEach(lessonPair => {
+                    console.log(lessonPair.child("calls").val())
                     lessonPairList.push(lessonPair.val())
                 })
-                let tempLesson = {name:lesson.child("name").val(), lessonPairs:lessonPairList, calls:lesson.child("calls").val(), index:lesson.child("index").val()}
+                let tempLesson = {name:lesson.child("name").val(), lessonPairs:lessonPairList, index:lesson.child("index").val()}
                 lessonList.push(tempLesson)
             })
             setLessonData(lessonList)  
@@ -35,14 +36,14 @@ function LessonContextProvider(props) {
         setCurrentLessonPack(currentLessonPack)
     }
 
-    const setCallText = (callType, callText) => {
+    const setCallText = (lessonPairIndex, callType, callText) => {
         lessonData.forEach(lessonPack => {
             if(lessonPack === currentLessonPack)
-                lessonPack.calls[callType] = callText
+                lessonPack.lessonPairs[lessonPairIndex].calls[callType] = callText
         })
         setLessonData(lessonData)
 
-        currentLessonPack.calls[callType] = callText
+        currentLessonPack.lessonPairs[lessonPairIndex].calls[callType] = callText
         setCurrentLessonPack(currentLessonPack)
     }
 
@@ -61,14 +62,17 @@ function LessonContextProvider(props) {
         for(let i = 0; i < lessonPack.lessonPairs.length; i++){
             firebase.database().ref('lesson_packs/lesson_pack' + lessonPack.index + '/lesson_pairs/lesson_pair' + i.toString()).update({
                 call_video:lessonPack.lessonPairs[i]["call_video"],
-                analysis_video:lessonPack.lessonPairs[i]["analysis_video"]
+                analysis_video:lessonPack.lessonPairs[i]["analysis_video"],
+                
+            })
+            firebase.database().ref('lesson_packs/lesson_pack' + lessonPack.index + '/lesson_pairs/lesson_pair' + i.toString() + "/calls").update({
+                false_call0:lessonPack.lessonPairs[i].calls["false_call0"],
+                false_call1:lessonPack.lessonPairs[i].calls["false_call1"],
+                true_call:lessonPack.lessonPairs[i].calls["true_call"],
+                
             })
         }
-        firebase.database().ref('lesson_packs/lesson_pack' + lessonPack.index + '/calls').update({
-            false_call0:lessonPack.calls["false_call0"],
-            false_call1:lessonPack.calls["false_call1"],
-            true_call:lessonPack.calls["true_call"],
-        })
+
         firebase.database().ref('lesson_packs/lesson_pack' + lessonPack.index).update({
             name:lessonPack.name
         })
