@@ -5,11 +5,11 @@ export default function Call({ index, callType, callBool}) {
 
     const { setCallText, currentLessonPack } = useContext(LessonDataContext)
     const UID = callType + index
-    const placeholder = currentLessonPack.calls[callType]
+    const placeholder = currentLessonPack.lessonPairs[index].calls[callType]
 
     const updateCall = () => {
         const callText = document.getElementById(UID).value;
-        setCallText(callType, callText)
+        setCallText(index, callType, callText)
     }
 
     return (

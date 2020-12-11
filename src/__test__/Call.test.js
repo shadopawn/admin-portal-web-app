@@ -21,7 +21,7 @@ jest.mock("firebase", () => ({
 }));
 
 let setCallText = jest.fn()
-const currentLessonPack = {name:"testName", calls:{true_call:"testCall"}, lessonPairs:[]}
+const currentLessonPack = {name:"testName", lessonPairs:[{calls:{true_call:"testCall", false_call1:"FalseCall"}}]}
 
 test("renders without crashing", () => {
   const div = document.createElement("div");
@@ -35,17 +35,17 @@ test("renders different calls without crashing", () => {
 
 test("renders index without crashing", () => {
   const div = document.createElement("div");
-  ReactDOM.render(<LessonDataContext.Provider value={{setCallText, currentLessonPack}}><Call callType={"false_call0"} callBool={"False"} index={2} /></LessonDataContext.Provider>, div);
+  ReactDOM.render(<LessonDataContext.Provider value={{setCallText, currentLessonPack}}><Call callType={"false_call0"} callBool={"False"} index={0} /></LessonDataContext.Provider>, div);
 })
 
 test('renders true call message', () => {
-  render(<LessonDataContext.Provider value={{setCallText, currentLessonPack}}><Call callType={"true_call"} callBool={"True"} index={2} /></LessonDataContext.Provider>);
+  render(<LessonDataContext.Provider value={{setCallText, currentLessonPack}}><Call callType={"true_call"} callBool={"True"} index={0} /></LessonDataContext.Provider>);
   const callElement = screen.getByText(/True call:/i);
   expect(callElement).toBeInTheDocument();
 });
 
 test('renders false call message', () => {
-  render(<LessonDataContext.Provider value={{setCallText, currentLessonPack}}><Call callType={"false_call1"} callBool={"False"} index={1} /></LessonDataContext.Provider>);
+  render(<LessonDataContext.Provider value={{setCallText, currentLessonPack}}><Call callType={"false_call1"} callBool={"False"} index={0} /></LessonDataContext.Provider>);
   const callElement = screen.getByText(/False call:/i);
   expect(callElement).toBeInTheDocument();
 });
@@ -75,7 +75,7 @@ it("update call function can be called",  () => {
 });
 
 it("update call function will change the call",  () => {
-  setCallText = (callType, callText) => {currentLessonPack.calls[callType] = callText}
+  setCallText = (index, callType, callText) => {currentLessonPack.lessonPairs[index].calls[callType] = callText}
   render(<LessonDataContext.Provider value={{setCallText, currentLessonPack}}><Call callType={"true_call"} callBool={"True"} index={0} /></LessonDataContext.Provider>);
   document.getElementById("true_call0").value = "newCall";
   const input = document.getElementById("true_call0");
@@ -85,6 +85,6 @@ it("update call function will change the call",  () => {
     tracker.setValue("value");
   }
   input.dispatchEvent(event);
-  expect(currentLessonPack.calls["true_call"]).toBe("newCall")
+  expect(currentLessonPack.lessonPairs[0].calls["true_call"]).toBe("newCall")
 });
 
