@@ -7,9 +7,13 @@ import '../css/LessonTree.css';
 
 export default function LessonTree() {
 
-    const { currentLessonPack, setNameText } = useContext(LessonDataContext)
+    const { currentLessonPack, setNameText, uploadCurrentLesson } = useContext(LessonDataContext)
     const [rerender, setrerender] = useState(false)
     const [showNameModal, setshowNameModal] = useState(false)
+
+    const publishPack = () => {
+        uploadCurrentLesson(currentLessonPack)
+    }
 
     const deleteLessonPair = (lessonPairIndex) => {
         currentLessonPack["lessonPairs"].splice(lessonPairIndex, 1)
@@ -50,6 +54,7 @@ export default function LessonTree() {
             <h3 data-testid="packName">{packName}</h3>
             <button className="standardButton" onClick={() => setshowNameModal(true)}>Edit Name</button>
 			<button className="standardPurpleButton" onClick={addLessonPair} data-testid="btnAddPair">Add Lesson Pair</button>
+            <button className="standardPurpleButton" onClick={publishPack}>Publish</button>
             <dl>
                 {lessonPairComponentList}
             </dl>
