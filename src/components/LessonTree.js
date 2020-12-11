@@ -7,7 +7,7 @@ import '../css/LessonTree.css';
 
 export default function LessonTree() {
 
-    const { currentLessonPack, setNameText } = useContext(LessonDataContext)
+    const { currentLessonPack, setNameText, addNewLessonPair } = useContext(LessonDataContext)
     const [rerender, setrerender] = useState(false)
     const [showNameModal, setshowNameModal] = useState(false)
 
@@ -24,15 +24,7 @@ export default function LessonTree() {
     }
 
     const addLessonPair = () => {
-        currentLessonPack["lessonPairs"].push({
-            call_video: "Paceholder",
-            analysis_video: "Placeholder",
-            calls: {
-                "false_call0":"Placeholder",
-                "false_call1":"Placeholder",
-                "true_call":"Placeholder"
-            }
-        })
+        addNewLessonPair();
         lessonPairComponentList = currentLessonPack.lessonPairs.map((lessonPair, index) =>
             <LessonPair key={index} index={index} lessonPair={lessonPair} rerender={setrerender} render={rerender} deletePair={deleteLessonPair} />
         );

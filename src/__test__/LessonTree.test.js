@@ -4,7 +4,8 @@ import LessonTree from '../components/LessonTree';
 import {LessonDataContext} from '../contexts/LessonDataContext';
 import { BrowserRouter } from 'react-router-dom';
 
-let setNameText = jest.fn()
+let setNameText = jest.fn();
+let addNewLessonPair = jest.fn();
 let currentLessonPack = {name:"testName", calls:{true_call:"testCall"}, lessonPairs:[{analysis_video: "test_analysis_video.mp4", call_video: "test_call_video.mp4", calls:{true_call:"testCall", false_call1:"FalseCall"}}]}
 
 test("renders without crashing", () => {
@@ -60,16 +61,15 @@ test("Submit will run setNameText", () => {
   expect(setNameText).toBeCalled();
 })
 
-test("Edit Name is on screen and clickable", () => {
-  render(<LessonDataContext.Provider value={{setNameText, currentLessonPack}}><LessonTree /></LessonDataContext.Provider>);
+test("Add Lesson Pair is on screen and clickable", () => {
+  render(<LessonDataContext.Provider value={{setNameText, currentLessonPack, addNewLessonPair}}><LessonTree /></LessonDataContext.Provider>);
   screen.getByText(/Add Lesson Pair/i).click();
 })
 
 test("renders a new Lesson Pair", () => {
-  render(<LessonDataContext.Provider value={{setNameText, currentLessonPack}}><LessonTree /></LessonDataContext.Provider>);
+  render(<LessonDataContext.Provider value={{setNameText, currentLessonPack, addNewLessonPair}}><LessonTree /></LessonDataContext.Provider>);
   screen.getByTestId("btnAddPair").click();
-  const placeholderElement = screen.getAllByText(/placeholder/i)[0];
-  expect(placeholderElement).toBeInTheDocument();
+  expect(addNewLessonPair).toHaveBeenCalled();
 })
 
 test("Able to delete lesson", () => {

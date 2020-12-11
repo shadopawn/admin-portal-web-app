@@ -58,6 +58,18 @@ function LessonContextProvider(props) {
         setCurrentLessonPack(currentLessonPack)
     }
 
+    const addNewLessonPair = () => {
+        currentLessonPack["lessonPairs"].push({
+            call_video: "Paceholder",
+            analysis_video: "Placeholder",
+            calls: {
+                "false_call0":"Placeholder",
+                "false_call1":"Placeholder",
+                "true_call":"Placeholder"
+            }
+        })
+    }
+
     const uploadCurrentLesson = (lessonPack) => {
         for(let i = 0; i < lessonPack.lessonPairs.length; i++){
             firebase.database().ref('lesson_packs/lesson_pack' + lessonPack.index + '/lesson_pairs/lesson_pair' + i.toString()).update({
@@ -86,7 +98,7 @@ function LessonContextProvider(props) {
     }, []);
 
     return (
-        <LessonDataContext.Provider value={{ lessonData, setLessonData, currentLessonPack, setCurrentLessonPack, setVideoFileName, uploadCurrentLesson, setCallText, setNameText}}>
+        <LessonDataContext.Provider value={{ lessonData, setLessonData, currentLessonPack, setCurrentLessonPack, setVideoFileName, uploadCurrentLesson, setCallText, setNameText, addNewLessonPair}}>
             {props.children}
         </LessonDataContext.Provider>
     )
