@@ -1,6 +1,7 @@
+import ReactDOM from 'react-dom';
 import { render, screen, cleanup } from '@testing-library/react';
-import App from '../App';
 import { BrowserRouter } from 'react-router-dom';
+import App from '../App';
 
 afterEach(cleanup);
 
@@ -16,16 +17,42 @@ jest.mock("firebase", () => ({
     signInWithEmailAndPassword: jest.fn(path => ({
       set: mockSet
     }))
+  }),
+  database: () => ({
+    ref: () => ({
+      once: () => ({
+        then: jest.fn(path => ({
+          set:mockSet
+        }))
+      })
+    })
   })
 }));
 
-test('renders welcome message', () => {
+test('renders without crashing', () => {
+  const div = document.createElement("div");
+  ReactDOM.render(
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>, div);
+});
+
+test('renders Home welcome message', () => {
   render(
     <BrowserRouter>
       <App />
     </BrowserRouter>);
-  const linkElement = screen.getByText(/Welcome to the Admin Portal/i);
-  expect(linkElement).toBeInTheDocument();
+  const welcomeHeader = screen.getByText(/Welcome to the Admin Portal/i);
+  expect(welcomeHeader).toBeInTheDocument();
+});
+
+test('renders NavBar', () => {
+  render(
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>);
+  const loginHeader = screen.getByText(/Login Page/i);
+  expect(loginHeader).toBeInTheDocument();
 });
 
 test('Navigation to Login page', () => {
@@ -34,10 +61,8 @@ test('Navigation to Login page', () => {
       <App />
     </BrowserRouter>
   )
-
   expect(screen.getByText(/Welcome to the Admin Portal/i)).toBeInTheDocument()
   screen.getByText(/Login Page/i).click();
-
   expect(screen.getByTestId("loginHeader")).toBeInTheDocument()
 })
 
@@ -47,9 +72,7 @@ test('Navigation redirect from Lesson Editor link to Login page when not logged 
       <App />
     </BrowserRouter>
   )
-
   screen.getByText(/Lessons Editor/i).click();
-
   expect(screen.getByTestId("loginHeader")).toBeInTheDocument()
 })
 
@@ -59,9 +82,7 @@ test('Navigation redirect from Analytics link to Login page when not logged in',
       <App />
     </BrowserRouter>
   )
-
   screen.getByText(/Analytics Dashboard/i).click();
-
   expect(screen.getByTestId("loginHeader")).toBeInTheDocument()
 })
 

@@ -1,7 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import PrivateRoute from '../components/PrivateRoute';
-import LessonEditor from '../components/LessonEditor';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Analytics from '../components/Analytics';
+
+//Used to prevent routing when not logged in
 
 //setting up a mock version of firebase for testing
 const mockSet = jest.fn();
@@ -30,7 +32,7 @@ test("renders child component without crashing", () => {
     render(
         <BrowserRouter>
             <PrivateRoute path="/testpath">
-                <LessonEditor></LessonEditor>
+                <Analytics />
             </PrivateRoute>
         </BrowserRouter>
     )
@@ -41,12 +43,12 @@ test("navigation to child component while logged in", () => {
         <BrowserRouter>
             <Switch>
                 <PrivateRoute path="/">
-                        <LessonEditor></LessonEditor>
+                  	<Analytics />
                 </PrivateRoute>
             </Switch>
         </BrowserRouter>
     )
 
-    const linkLessons = screen.getByText(/Lesson Editor Page/i);
+    const linkLessons = screen.getByText(/Analytics/i);
     expect(linkLessons).toBeInTheDocument();
 })

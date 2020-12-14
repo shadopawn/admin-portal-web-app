@@ -1,0 +1,73 @@
+.lessonPacks {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #2F2F2F;
+	width: 60%;
+
+	border-radius: 25px;
+}
+
+.lessonPacks table {
+    margin-left: auto;
+	margin-right: auto;
+	padding-bottom: 25px;
+}
+
+.createButton {
+	background-color: transparent;
+    color: white;
+    border: 2px solid #BB86FC;
+    border-radius: 25px;
+    transition: .2s;
+	margin: 15px;
+	padding: 10px 25px;
+	font-size: 17px;
+}
+
+.createButton:hover {
+    background-color: #BB86FC;
+    color: white;
+    border: 2px solid #BB86FC;
+    border-radius: 25px;
+}
+
+.packName{
+	text-align: left;
+	padding-right: 25px;
+}
+
+.tableButton{
+	background-color: transparent;
+    color: white;
+    border: 2px solid #FF5656;
+	border-radius: 25px;
+	margin: 5px;
+    transition: .2s;
+	padding: 10px 25px;
+	font-size: 15px;
+}
+
+.tableButton:hover {
+    background-color: #FF5656;
+    color: white;
+    border: 2px solid #FF5656;
+    border-radius: 25px;
+}
+
+.editButton {
+	border: 2px solid #03DAC5;
+}
+
+.editButton:hover {
+	background-color: #03DAC5;
+	border: 2px solid #03DAC5;
+}
+
+.publishButton {
+	border: 2px solid #BB86FC;
+}
+
+.publishButton:hover {
+	background-color: #BB86FC;
+	border: 2px solid #BB86FC;
+}
