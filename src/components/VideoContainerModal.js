@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import firebase from 'firebase'
 import VideoCard from './VideoCard';
 import '../css/VideoContainerModal.css'
+import VideoUploader from './VideoUploader';
 
 export default function VideoContainerModal(props) {
 
@@ -32,6 +33,8 @@ export default function VideoContainerModal(props) {
         <div className={showHideClassName}>
             <section className='videoModal-main'>
                 <h2 className='heading'>What video would you like to add?</h2>
+                <h3>Upload a new video</h3>
+                <VideoUploader />
                 {videoNameList}
                 <button className="standardRedButton" onClick={props.hide} data-testid="closeVModal">Close</button>
             </section>
