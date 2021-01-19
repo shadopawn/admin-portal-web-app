@@ -71,28 +71,42 @@ function LessonContextProvider(props) {
     }
 
     const uploadCurrentLesson = (lessonPack) => {
-        firebase.database().ref('lesson_packs/lesson_pack' + lessonPack.index + '/lesson_pairs/').remove()
-        
-        for(let i = 0; i < lessonPack.lessonPairs.length; i++){
-            firebase.database().ref('lesson_packs/lesson_pack' + lessonPack.index + '/lesson_pairs/lesson_pair' + i.toString()).update({
-                call_video:lessonPack.lessonPairs[i]["call_video"],
-                analysis_video:lessonPack.lessonPairs[i]["analysis_video"],
-                
+        //firebase.database().ref('lesson_packs/lesson_pack' + lessonPack.index + '/lesson_pairs/').remove()
+        firebase.database().ref('lesson_packs/lesson_pack' + lessonPack.index + '/lesson_pairs/').once('value').then((snapshot) => {
+            var firebaseLength = 0
+            snapshot.forEach(lesson => {
+                firebaseLength = firebaseLength + 1
             })
-            firebase.database().ref('lesson_packs/lesson_pack' + lessonPack.index + '/lesson_pairs/lesson_pair' + i.toString() + "/calls").update({
-                false_call0:lessonPack.lessonPairs[i].calls["false_call0"],
-                false_call1:lessonPack.lessonPairs[i].calls["false_call1"],
-                true_call:lessonPack.lessonPairs[i].calls["true_call"],
-                
-            })
-        }
 
-        firebase.database().ref('lesson_packs/lesson_pack' + lessonPack.index).update({
-            name:lessonPack.name
+            for(let i = 0; i < lessonPack.lessonPairs.length; i++){
+                firebase.database().ref('lesson_packs/lesson_pack' + lessonPack.index + '/lesson_pairs/lesson_pair' + i.toString()).update({
+                    call_video:lessonPack.lessonPairs[i]["call_video"],
+                    analysis_video:lessonPack.lessonPairs[i]["analysis_video"],
+                    
+                })
+                firebase.database().ref('lesson_packs/lesson_pack' + lessonPack.index + '/lesson_pairs/lesson_pair' + i.toString() + "/calls").update({
+                    false_call0:lessonPack.lessonPairs[i].calls["false_call0"],
+                    false_call1:lessonPack.lessonPairs[i].calls["false_call1"],
+                    true_call:lessonPack.lessonPairs[i].calls["true_call"],
+                    
+                })
+            }
+
+            if(firebaseLength > lessonPack.lessonPairs.length){
+                for(let i = lessonPack.lessonPairs.length; i < firebaseLength; i++){
+                    firebase.database().ref('lesson_packs/lesson_pack' + lessonPack.index + '/lesson_pairs/lesson_pair' + i.toString()).remove()
+                }
+            }
+    
+            firebase.database().ref('lesson_packs/lesson_pack' + lessonPack.index).update({
+                name:lessonPack.name
+            })
+            firebase.database().ref('lesson_packs/lesson_pack' + lessonPack.index).update({
+                index:lessonPack.index
+            })
         })
-        firebase.database().ref('lesson_packs/lesson_pack' + lessonPack.index).update({
-            index:lessonPack.index
-        })
+
+        
     }
 
     const deleteLessonData = (lessonPackIndex) => {
