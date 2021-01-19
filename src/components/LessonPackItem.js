@@ -26,7 +26,7 @@ export default function LessonPackItem({lessonPack, deleteItem}) {
                 <button onClick={publishPack} className="tableButton publishButton" data-testid="btnPublishPack">Publish</button>
             </td>
             <td>
-                <button className="tableButton deleteButton" onClick={() => deleteItem(lessonPack.name)} data-testid="btnPackDelete" >Delete</button>
+                <button className="tableButton deleteButton" onClick={() => deleteItem(lessonPack.name, lessonPack.index)} data-testid="btnPackDelete" >Delete</button>
             </td>
         </tr>
     )

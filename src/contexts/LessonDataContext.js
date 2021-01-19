@@ -93,12 +93,16 @@ function LessonContextProvider(props) {
         })
     }
 
+    const deleteLessonData = (lessonPackIndex) => {
+        firebase.database().ref('lesson_packs/lesson_pack' + lessonPackIndex).remove()
+    }
+
     useEffect(() => {
         createLessonList();
     }, []);
 
     return (
-        <LessonDataContext.Provider value={{ lessonData, setLessonData, currentLessonPack, setCurrentLessonPack, setVideoFileName, uploadCurrentLesson, setCallText, setNameText, addNewLessonPair}}>
+        <LessonDataContext.Provider value={{ lessonData, setLessonData, currentLessonPack, setCurrentLessonPack, setVideoFileName, uploadCurrentLesson, setCallText, setNameText, addNewLessonPair, deleteLessonData}}>
             {props.children}
         </LessonDataContext.Provider>
     )
