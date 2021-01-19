@@ -6,7 +6,7 @@ export const LessonDataContext = createContext();
 function LessonContextProvider(props) {
 
     const [lessonData, setLessonData] = useState([]);
-    const [currentLessonPack, setCurrentLessonPack] = useState()
+    const [currentLessonPack, setCurrentLessonPack] = useState();
 
     const createLessonList = () => {
         let lessonList = []
@@ -71,6 +71,8 @@ function LessonContextProvider(props) {
     }
 
     const uploadCurrentLesson = (lessonPack) => {
+        firebase.database().ref('lesson_packs/lesson_pack' + lessonPack.index + '/lesson_pairs/').remove()
+        
         for(let i = 0; i < lessonPack.lessonPairs.length; i++){
             firebase.database().ref('lesson_packs/lesson_pack' + lessonPack.index + '/lesson_pairs/lesson_pair' + i.toString()).update({
                 call_video:lessonPack.lessonPairs[i]["call_video"],
@@ -102,7 +104,7 @@ function LessonContextProvider(props) {
     }, []);
 
     return (
-        <LessonDataContext.Provider value={{ lessonData, setLessonData, currentLessonPack, setCurrentLessonPack, setVideoFileName, uploadCurrentLesson, setCallText, setNameText, addNewLessonPair, deleteLessonData}}>
+        <LessonDataContext.Provider value={{ lessonData, setLessonData, currentLessonPack, setCurrentLessonPack, setVideoFileName, uploadCurrentLesson, setCallText, setNameText, addNewLessonPair, deleteLessonData }}>
             {props.children}
         </LessonDataContext.Provider>
     )
