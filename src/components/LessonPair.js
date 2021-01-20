@@ -1,13 +1,14 @@
 import React from 'react'
 import VideoSelectionTool from './VideoSelectionTool'
+import CallSelectionTool from './CallSelectionTool'
 import Call from './Call'
 import '../css/LessonTree.css';
 
 export default function LessonPair({index, lessonPair, rerender, render, deletePair}) {
 
-    const handleSelection = (lessonPairIndex, videoType) => {
+    const handleSelection = (lessonPairIndex, additionType) => {
         console.log("Lesson Pair " + lessonPairIndex);
-        console.log("Video Type " + videoType);
+        console.log("Addition Type " + additionType);
         rerender(!render)
     }
     
@@ -26,14 +27,23 @@ export default function LessonPair({index, lessonPair, rerender, render, deleteP
                     </div>
                     <VideoSelectionTool index={index} videoType={"analysis_video"} />
                 </dd>
-                <dd>
-                    <Call index={index} callType={"false_call0"} callBool={"False"} />
+                <dd className="videoSelection" onClick={() => handleSelection(index, "false_call0")}>
+                    <div className="videoNameDisplay">
+                        False Call 1: {lessonPair.calls.false_call0}
+                    </div>
+                    <CallSelectionTool index={index} callType={"false_call0"} callBool={"False"} />
                 </dd>
-                <dd>
-                    <Call index={index} callType={"false_call1"} callBool={"False"} />
+                <dd className="videoSelection" onClick={() => handleSelection(index, "false_call1")}>
+                    <div className="videoNameDisplay">
+                        False Call 2: {lessonPair.calls.false_call1}
+                    </div>
+                    <CallSelectionTool index={index} callType={"false_call1"} callBool={"False"} />
                 </dd>
-                <dd>
-                    <Call index={index} callType={"true_call"} callBool={"True"} />
+                <dd className="videoSelection" onClick={() => handleSelection(index, "true_call")}>
+                    <div className="videoNameDisplay">
+                        True Call: {lessonPair.calls.true_call}
+                    </div>
+                    <CallSelectionTool index={index} callType={"true_call"} callBool={"True"} />
                 </dd>
         </div>
     )

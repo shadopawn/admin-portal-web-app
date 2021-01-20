@@ -40,7 +40,7 @@ export default function VideoContainerModal(props) {
                 <h2 className='heading'>What video would you like to add?</h2>
                 <button className="standardPurpleButton" onClick={showUploader}>Upload Videos</button>
                 {videoNameList}
-                <button className="standardRedButton" onClick={props.hide} data-testid="closeVModal">Close</button>
+                <button className="standardRedButton" onClick={() => props.hide(false)} data-testid="closeVModal">Close</button>
 
                 <VideoUploaderModal show={showUploaderModal} hide={setshowUploaderModal} ></VideoUploaderModal>
             </section>
