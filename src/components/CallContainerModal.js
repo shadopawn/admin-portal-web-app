@@ -10,7 +10,10 @@ export default function CallContainerModal(props) {
         var listRef = firebase.storage().ref('basketball_signals/');
         listRef.listAll().then(function(res) {
         res.items.forEach(function(itemRef) {
-            setcallList(callList => [...callList, <CallCard key={itemRef.name} name={itemRef.name} handleClick={props.getNameOfCall} />])
+            itemRef.getDownloadURL().then(function(url) {
+                var test = url;
+                setcallList(callList => [...callList, <CallCard key={itemRef.name} name={itemRef.name} handleClick={props.getNameOfCall} imageURL={test}/>])
+            })
         });
         }).catch(function(error) {
             console.log(error);
