@@ -33,7 +33,9 @@ export default function CallContainerModal(props) {
         <div className={showHideClassName}>
             <section className='videoModal-main'>
                 <h2 className='heading'>What call would you like to add?</h2>
-                {callList}
+                <div className='callContainer'>
+                    {callList}
+                </div>
                 <button className="standardRedButton" onClick={() => props.hide(false)}>Close</button>
             </section>
         </div>
