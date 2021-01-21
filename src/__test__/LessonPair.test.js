@@ -71,9 +71,3 @@ test("will render the correct Analysis Video", () => {
   const analysisVideoElement = screen.getByText(/Analysis Video: test_analysis_video.mp4/i);
   expect(analysisVideoElement).toBeInTheDocument();
 })
-
-test("Call will have the correct UID given", () => {
-  render(<LessonDataContext.Provider value={{setCallText, currentLessonPack}}><LessonPair index={0} lessonPair={lessonPair} rerender={mockRender} render={false}/></LessonDataContext.Provider>);
-  const callElement = document.getElementById("true_call0")
-  expect(callElement).toBeInTheDocument();
-})

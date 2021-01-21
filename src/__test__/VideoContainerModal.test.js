@@ -45,9 +45,9 @@ test('Expect useEffect and firebase to be called', () => {
 
 test('Close is on screen and clickable', () => {
   render(<VideoContainerModal show={true} hide={hide}/>);
-  const close = screen.getByText(/Close/i);
-  close.click();
-  expect(close).toBeInTheDocument();
+  const close = screen.getAllByText(/Close/i);
+  close[0].click();
+  expect(close[0]).toBeInTheDocument();
 })
 
 test('Expect to close to have been called', () => {
