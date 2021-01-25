@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react'
 import firebase from 'firebase'
 import CallCard from './CallCard';
 
-export default function CallContainerModal(props) {
-    const showHideClassName = props.show ? "videoModal display-block" : "videoModal display-none";
+export default function CallContainerModal({show, hide, getNameOfCall}) {
+
+    const showHideClassName = show ? "modal display-block" : "modal display-none";
     const [callList, setcallList] = useState([])
 
     const getFirebaseCalls = () => {
@@ -12,7 +13,7 @@ export default function CallContainerModal(props) {
         res.items.forEach(function(itemRef) {
             itemRef.getDownloadURL().then(function(url) {
                 var test = url;
-                setcallList(callList => [...callList, <CallCard key={itemRef.name} name={itemRef.name} handleClick={props.getNameOfCall} imageURL={test}/>])
+                setcallList(callList => [...callList, <CallCard key={itemRef.name} name={itemRef.name} handleClick={getNameOfCall} imageURL={test}/>])
             })
         });
         }).catch(function(error) {
@@ -21,22 +22,22 @@ export default function CallContainerModal(props) {
     }
 
     useEffect(() => {
-        if(props.show){
+        if(show){
             getFirebaseCalls();
         }
         else {
             setcallList([]);
-        }
-    }, [props.show]);
+        } // eslint-disable-next-line 
+    }, [show]);
 
     return (
         <div className={showHideClassName}>
-            <section className='videoModal-main'>
+            <section className='modal-main'>
                 <h2 className='heading'>What call would you like to add?</h2>
                 <div className='callContainer'>
                     {callList}
                 </div>
-                <button className="standardRedButton" onClick={() => props.hide(false)}>Close</button>
+                <button className="standardRedButton" onClick={() => hide(false)}>Close</button>
             </section>
         </div>
     )

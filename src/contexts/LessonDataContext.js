@@ -14,7 +14,6 @@ function LessonContextProvider(props) {
             snapshot.forEach(lesson => {
                 let lessonPairList = []
                 lesson.child("lesson_pairs").forEach(lessonPair => {
-                    console.log(lessonPair.child("calls").val())
                     lessonPairList.push(lessonPair.val())
                 })
                 let tempLesson = {name:lesson.child("name").val(), lessonPairs:lessonPairList, index:lesson.child("index").val()}

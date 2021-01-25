@@ -1,10 +1,10 @@
 import React from 'react'
 
-export default function CallCard(props) {
+export default function CallCard({name, imageURL, handleClick}) {
     return (
         <div className='callCard'>
-            <img src={props.imageURL} className='call' width='200' height='200' />
-            <button className="standardButton call" onClick={() => props.handleClick(props.name)}>{props.name}</button>
+            <img src={imageURL} className='call' width='200' height='200' alt='call' />
+            <button className="standardButton call" onClick={() => handleClick(name)}>{name}</button>
         </div>
     )
 }

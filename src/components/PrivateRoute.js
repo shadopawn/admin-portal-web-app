@@ -1,6 +1,6 @@
 import React from "react";
-import firebase from 'firebase';
 import '../css/login.css';
+import firebase from 'firebase';
 import { Route, Redirect } from 'react-router-dom';
 
 export default function PrivateRoute({ children, ...rest }) {

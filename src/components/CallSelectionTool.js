@@ -2,13 +2,12 @@ import React, { useState, useContext } from 'react'
 import { LessonDataContext } from '../contexts/LessonDataContext'
 import CallContainerModal from './CallContainerModal'
 
-export default function CallSelectionTool({ index, callType, callBool}) {
-    const { setCallText, currentLessonPack } = useContext(LessonDataContext)
+export default function CallSelectionTool({ index, callType }) {
+
+    const { setCallText } = useContext(LessonDataContext)
     const [showCallModal, setshowCallModal] = useState(false)
-    const [name, setname] = useState("")
 
     const getNameOfCall = (callName) => {
-        setname(callName);
         setshowCallModal(false);
         setCallText(index, callType, callName)
     }

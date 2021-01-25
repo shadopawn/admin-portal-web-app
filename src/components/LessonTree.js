@@ -8,7 +8,6 @@ import '../css/LessonTree.css';
 export default function LessonTree() {
 
     const { currentLessonPack, setNameText, addNewLessonPair, uploadCurrentLesson } = useContext(LessonDataContext)
-
     const [rerender, setrerender] = useState(false)
     const [showNameModal, setshowNameModal] = useState(false)
 

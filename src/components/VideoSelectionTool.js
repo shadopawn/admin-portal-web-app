@@ -7,10 +7,8 @@ export default function VideoSelectionTool({index, videoType}) {
 
     const { setVideoFileName } = useContext(LessonDataContext)
     const [showVideoModal, setshowVideoModal] = useState(false)
-    const [name, setname] = useState("")
 
     const getNameOfVideo = (name) => {
-        setname(name);
         setshowVideoModal(false);
         setVideoFileName(index, videoType, name)
     }
