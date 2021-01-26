@@ -1,7 +1,7 @@
 import React from 'react'
 import VideoSelectionTool from './VideoSelectionTool'
 import CallSelectionTool from './CallSelectionTool'
-import '../css/LessonTree.css';
+import '../css/LessonPair.css';
 
 export default function LessonPair({index, lessonPair, rerender, render, deletePair}) {
 

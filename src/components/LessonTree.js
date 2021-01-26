@@ -3,7 +3,6 @@ import { Redirect } from 'react-router-dom';
 import { LessonDataContext } from '../contexts/LessonDataContext'
 import LessonPair from './LessonPair'
 import NameChangeModal from './NameChangeModal'
-import '../css/LessonTree.css';
 
 export default function LessonTree() {
 
