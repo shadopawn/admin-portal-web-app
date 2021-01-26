@@ -2,10 +2,10 @@
     display: flex;
 }
 
-.videoSelection{
+.selection{
     display: flex;
 }
 
-.videoNameDisplay{
+.nameDisplay{
     margin: auto 0 auto 0;
 }
