@@ -10,7 +10,7 @@ test("renders without crashing", () => {
   ReactDOM.render(<VideoCard />, div);
 })
 
-test("render button with props passed in", () => {
+test("renders button with props passed in", () => {
   const div = document.createElement("div");
   ReactDOM.render(<VideoCard name="testName" handleClick={()=>{}}/>, div);
 })

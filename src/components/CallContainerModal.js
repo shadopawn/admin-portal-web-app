@@ -37,7 +37,7 @@ export default function CallContainerModal({show, hide, getNameOfCall}) {
                 <div className='callContainer'>
                     {callList}
                 </div>
-                <button className="standardRedButton" onClick={() => hide(false)}>Close</button>
+                <button className="standardRedButton" onClick={() => hide(false)} data-testid="closeModal">Close</button>
             </section>
         </div>
     )

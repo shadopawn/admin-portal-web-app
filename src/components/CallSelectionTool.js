@@ -15,9 +15,9 @@ export default function CallSelectionTool({ index, callType }) {
     return (
         <div>
             <CallContainerModal show={showCallModal} hide={setshowCallModal} getNameOfCall={getNameOfCall} />
-            <div className="videoSelector">
-                <div className='addVideoButton'>
-                <button className="standardButton" onClick={() => setshowCallModal(true)} data-testid="btnAddVideo">Add Call</button>
+            <div className="callSelector">
+                <div className='addCallButton'>
+                <button className="standardButton" onClick={() => setshowCallModal(true)} data-testid="btnAddCall">Add Call</button>
                 </div>                
             </div>
         </div>

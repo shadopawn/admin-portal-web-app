@@ -161,3 +161,13 @@
   border-radius: 25px;
   padding: 20px;
 }
+
+.callSelector {
+  width: 30%;
+  display: grid;
+  grid-template-columns: 85% 15%;
+}
+
+.addCallButton {
+  margin: auto 0;
+}

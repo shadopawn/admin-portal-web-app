@@ -1,15 +1,35 @@
 import ReactDOM from 'react-dom';
 import { render, screen } from '@testing-library/react';
 import CallCard from '../components/CallCard';
+//Component is just a button
 
-//This page doesn't have anything in it yet but is there simply for routing
+const mockHandleClick = jest.fn();
+
 test("renders without crashing", () => {
   const div = document.createElement("div");
   ReactDOM.render(<CallCard />, div);
 })
 
-test('renders welcome message', () => {
-  render(<CallCard name={'Test Name'}/>);
-  const linkElement = screen.getByText(/Test Name/i);
-  expect(linkElement).toBeInTheDocument();
-});
+test("renders button with props passed in", () => {
+  const div = document.createElement("div");
+  ReactDOM.render(<CallCard name="testName" handleClick={()=>{}}/>, div);
+})
+
+test("renders name prop", () => {
+  render(<CallCard name="testName"/>);
+  const videoCard = screen.getByText(/testName/i)
+  expect(videoCard).toBeInTheDocument();
+})
+
+test("Call button is on screen and clickable", () => {
+  render(<CallCard handleClick={mockHandleClick}/>);
+  const videoButton = screen.getByTestId("btnCall");
+  videoButton.click();
+  expect(videoButton).toBeInTheDocument();
+})
+
+test("HandleClick to be called", () => {
+  render(<CallCard handleClick={mockHandleClick}/>);
+  screen.getByTestId("btnCall").click()
+  expect(mockHandleClick).toBeCalled()
+})
