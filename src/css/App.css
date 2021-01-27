@@ -171,3 +171,18 @@
 .addCallButton {
   margin: auto 0;
 }
+
+.lesson-pack-view {
+  display: grid;
+  grid-template-columns: 25% 75%;
+  background-color: #131313;
+  min-height: 80vh;
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.lesson-view {
+  color: white;
+  border-left: 2.5px #3F3F3F solid;
+  padding-left: 10px;
+}
