@@ -1,7 +1,6 @@
 import React, { useContext,  useState } from 'react'
 import { Redirect } from 'react-router-dom';
 import { LessonDataContext } from '../contexts/LessonDataContext'
-import LessonPair from './LessonPair'
 import NameChangeModal from './NameChangeModal'
 import LessonPreview from './LessonPreview'
 import LessonPairSelector from './LessonPairSelector'
@@ -37,7 +36,7 @@ export default function LessonTree() {
     const addLessonPair = () => {
         addNewLessonPair();
         lessonPairComponentList = currentLessonPack.lessonPairs.map((lessonPair, index) =>
-            <LessonPairSelector key={index} index={index} deletePair={deleteLessonPairIndex} display={displayLessonPair} />
+            <LessonPairSelector key={index} index={index} lessonPair={lessonPair} deletePair={deleteLessonPairIndex} display={displayLessonPair} />
         );
         setrerender(!rerender)
     }
@@ -46,13 +45,14 @@ export default function LessonTree() {
     let packName = "No Lesson Pack Selected"
     if (currentLessonPack){
         lessonPairComponentList = currentLessonPack.lessonPairs.map((lessonPair, index) =>
-            <LessonPairSelector key={index} index={index} deletePair={deleteLessonPairIndex} display={displayLessonPair} />
+            <LessonPairSelector key={index} index={index} lessonPair={lessonPair} deletePair={deleteLessonPairIndex} display={displayLessonPair} />
         );
         packName = currentLessonPack.name
     }else {
         return <Redirect to="/lesson-packs" />
     }
 
+    console.log(currentLessonPack['lessonPairs'])
     return (
         <div style={{textAlign:"left"}}>
             <h3 data-testid="packName">{packName}</h3>
