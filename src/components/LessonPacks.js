@@ -1,10 +1,11 @@
 import React from 'react'
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import '../css/LessonPacks.css';
 import LessonPacksList from './LessonPacksList';
 
 
 export default function LessonPacks() {
+    
     const history = useHistory();
 
     const redirectToUploadPage = () => {

@@ -3,12 +3,10 @@ import { Redirect } from 'react-router-dom';
 import { LessonDataContext } from '../contexts/LessonDataContext'
 import LessonPair from './LessonPair'
 import NameChangeModal from './NameChangeModal'
-import '../css/LessonTree.css';
 
 export default function LessonTree() {
 
     const { currentLessonPack, setNameText, addNewLessonPair, uploadCurrentLesson } = useContext(LessonDataContext)
-
     const [rerender, setrerender] = useState(false)
     const [showNameModal, setshowNameModal] = useState(false)
 
@@ -16,7 +14,7 @@ export default function LessonTree() {
         uploadCurrentLesson(currentLessonPack)
     }
 
-    const deleteLessonPair = (lessonPairIndex) => {
+    const deleteLessonPairIndex = (lessonPairIndex) => {
         currentLessonPack["lessonPairs"].splice(lessonPairIndex, 1)
         setrerender(!rerender)
     }
@@ -31,7 +29,7 @@ export default function LessonTree() {
     const addLessonPair = () => {
         addNewLessonPair();
         lessonPairComponentList = currentLessonPack.lessonPairs.map((lessonPair, index) =>
-            <LessonPair key={index} index={index} lessonPair={lessonPair} rerender={setrerender} render={rerender} deletePair={deleteLessonPair} />
+            <LessonPair key={index} index={index} lessonPair={lessonPair} rerender={setrerender} render={rerender} deletePair={deleteLessonPairIndex} />
         );
         setrerender(!rerender)
     }
@@ -40,7 +38,7 @@ export default function LessonTree() {
     let packName = "No Lesson Pack Selected"
     if (currentLessonPack){
         lessonPairComponentList = currentLessonPack.lessonPairs.map((lessonPair, index) =>
-            <LessonPair key={index} index={index} lessonPair={lessonPair} rerender={setrerender} render={rerender} deletePair={deleteLessonPair} />
+            <LessonPair key={index} index={index} lessonPair={lessonPair} rerender={setrerender} render={rerender} deletePair={deleteLessonPairIndex} />
         );
         packName = currentLessonPack.name
     }else {

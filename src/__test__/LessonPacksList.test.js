@@ -8,6 +8,7 @@ const lessonData = [
   {name:"TestLessonPack1", index:0, calls:{true_call:"testCall1"}, lessonPairs:[{analysis_video: "test_analysis_video1.mp4", call_video: "test_call_video1.mp4"}]}
 ]
 const setLessonData = jest.fn();
+const deleteLessonData = jest.fn();
 window.confirm = jest.fn().mockImplementation(() => true)
 
 test("renders without crashing", () => {
@@ -57,8 +58,8 @@ test("Delete is on screen and clickable", () => {
 })
 
 test("Delete will run handleRemove and remove lesson pack", () => {
-  render(<LessonDataContext.Provider value={{lessonData, setLessonData}}><LessonPacksList /></LessonDataContext.Provider>);
+  render(<LessonDataContext.Provider value={{lessonData, setLessonData, deleteLessonData}}><LessonPacksList /></LessonDataContext.Provider>);
   jest.spyOn(window, "confirm").mockImplementation(() => {return true});
   screen.getAllByText(/Delete/i)[0].click();
-  expect(setLessonData).toBeCalled();
+  expect(deleteLessonData).toBeCalled();
 })

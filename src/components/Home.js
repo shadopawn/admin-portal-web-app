@@ -11,14 +11,14 @@ export default function Home() {
                 <Link to="/lesson-packs" data-testid="lessonLink">
                     <div className="linkChoice">
                         <h2>Lessons Editor</h2>
-                        <img src='https://github.com/shadopawn/admin-portal-web-app/blob/master/public/lessons.png?raw=true'></img>
+                        <img src='https://github.com/shadopawn/admin-portal-web-app/blob/master/public/lessons.png?raw=true' alt='editor'></img>
                     </div>
                 </Link>
 
                 <Link to="/analytics" data-testid="analyticsLink">
                     <div className="linkChoice">
                         <h2>Analytics Dashboard</h2>
-                        <img src='https://github.com/shadopawn/admin-portal-web-app/blob/master/public/analytics.png?raw=true'></img>
+                        <img src='https://github.com/shadopawn/admin-portal-web-app/blob/master/public/analytics.png?raw=true' alt='graph'></img>
                     </div>
                 </Link>
                 

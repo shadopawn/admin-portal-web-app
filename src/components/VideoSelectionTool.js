@@ -6,30 +6,19 @@ import { LessonDataContext } from '../contexts/LessonDataContext'
 export default function VideoSelectionTool({index, videoType}) {
 
     const { setVideoFileName } = useContext(LessonDataContext)
-
     const [showVideoModal, setshowVideoModal] = useState(false)
-    const [name, setname] = useState("")
-
-    const hideVideoModal = () => {
-        setshowVideoModal(false);
-    }
-
-    const showAVideoModal = () => {
-        setshowVideoModal(true);
-    }
 
     const getNameOfVideo = (name) => {
-        setname(name);
-        hideVideoModal();
+        setshowVideoModal(false);
         setVideoFileName(index, videoType, name)
     }
 
     return (
         <div>
-            <VideoContainerModal show={showVideoModal} hide={hideVideoModal} getNameOfVideo={getNameOfVideo} />
+            <VideoContainerModal show={showVideoModal} hide={setshowVideoModal} getNameOfVideo={getNameOfVideo} />
             <div className="videoSelector">
                 <div className='addVideoButton'>
-                <button className="standardButton" onClick={showAVideoModal} data-testid="btnAddVideo">Add Video</button>
+                <button className="standardButton" onClick={() => setshowVideoModal(true)} data-testid="btnAddVideo">Add Video</button>
                 </div>                
             </div>
         </div>

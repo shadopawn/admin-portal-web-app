@@ -9,14 +9,15 @@ export default function Login() {
     const history = useHistory();
     let { from } = location.state || { from: { pathname: "/" } };
 
+    // eslint-disable-next-line 
+    const redirectToPreviousPage = useCallback(() => history.push(from), [history]);
+
     const LoginEventListen = () => {
         const email = document.getElementById("emailInput").value;
         const pass = document.getElementById("passwordInput").value;
         const auth = firebase.auth();
         auth.signInWithEmailAndPassword(email, pass);
     }
-
-    const redirectToPreviousPage = useCallback(() => history.push(from), [history]);
 
     firebase.auth().onAuthStateChanged(firebaseUser => {
         if(firebaseUser){

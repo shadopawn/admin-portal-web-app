@@ -6,7 +6,7 @@ export const LessonDataContext = createContext();
 function LessonContextProvider(props) {
 
     const [lessonData, setLessonData] = useState([]);
-    const [currentLessonPack, setCurrentLessonPack] = useState()
+    const [currentLessonPack, setCurrentLessonPack] = useState();
 
     const createLessonList = () => {
         let lessonList = []
@@ -14,7 +14,6 @@ function LessonContextProvider(props) {
             snapshot.forEach(lesson => {
                 let lessonPairList = []
                 lesson.child("lesson_pairs").forEach(lessonPair => {
-                    console.log(lessonPair.child("calls").val())
                     lessonPairList.push(lessonPair.val())
                 })
                 let tempLesson = {name:lesson.child("name").val(), lessonPairs:lessonPairList, index:lesson.child("index").val()}
@@ -71,6 +70,21 @@ function LessonContextProvider(props) {
     }
 
     const uploadCurrentLesson = (lessonPack) => {
+        firebase.database().ref('lesson_packs/lesson_pack' + lessonPack.index + '/lesson_pairs/').once('value').then((snapshot) => {
+            var firebaseLength = 0
+            snapshot.forEach(lesson => { firebaseLength = firebaseLength + 1 })
+            updateLessonPairs(lessonPack, firebaseLength)
+
+            firebase.database().ref('lesson_packs/lesson_pack' + lessonPack.index).update({
+                name:lessonPack.name
+            })
+            firebase.database().ref('lesson_packs/lesson_pack' + lessonPack.index).update({
+                index:lessonPack.index
+            })
+        })        
+    }
+
+    const updateLessonPairs = (lessonPack, firebaseLength) => {
         for(let i = 0; i < lessonPack.lessonPairs.length; i++){
             firebase.database().ref('lesson_packs/lesson_pack' + lessonPack.index + '/lesson_pairs/lesson_pair' + i.toString()).update({
                 call_video:lessonPack.lessonPairs[i]["call_video"],
@@ -81,16 +95,17 @@ function LessonContextProvider(props) {
                 false_call0:lessonPack.lessonPairs[i].calls["false_call0"],
                 false_call1:lessonPack.lessonPairs[i].calls["false_call1"],
                 true_call:lessonPack.lessonPairs[i].calls["true_call"],
-                
             })
         }
+        if(firebaseLength > lessonPack.lessonPairs.length){
+            for(let i = lessonPack.lessonPairs.length; i < firebaseLength; i++){
+                firebase.database().ref('lesson_packs/lesson_pack' + lessonPack.index + '/lesson_pairs/lesson_pair' + i.toString()).remove()
+            }
+        }
+    }
 
-        firebase.database().ref('lesson_packs/lesson_pack' + lessonPack.index).update({
-            name:lessonPack.name
-        })
-        firebase.database().ref('lesson_packs/lesson_pack' + lessonPack.index).update({
-            index:lessonPack.index
-        })
+    const deleteLessonData = (lessonPackIndex) => {
+        firebase.database().ref('lesson_packs/lesson_pack' + lessonPackIndex).remove()
     }
 
     useEffect(() => {
@@ -98,7 +113,7 @@ function LessonContextProvider(props) {
     }, []);
 
     return (
-        <LessonDataContext.Provider value={{ lessonData, setLessonData, currentLessonPack, setCurrentLessonPack, setVideoFileName, uploadCurrentLesson, setCallText, setNameText, addNewLessonPair}}>
+        <LessonDataContext.Provider value={{ lessonData, setLessonData, currentLessonPack, setCurrentLessonPack, setVideoFileName, uploadCurrentLesson, setCallText, setNameText, addNewLessonPair, deleteLessonData }}>
             {props.children}
         </LessonDataContext.Provider>
     )
