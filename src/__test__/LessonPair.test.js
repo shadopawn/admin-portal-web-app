@@ -47,12 +47,6 @@ test("will render the correct Lesson Pair and index", () => {
   expect(pairElement).toBeInTheDocument();
 })
 
-test("deletePair will be called", () => {
-  render(<LessonDataContext.Provider value={{setCallText, currentLessonPack}}><LessonPair index={0} lessonPair={lessonPair} rerender={mockRender} render={false} deletePair={mockDelete} /></LessonDataContext.Provider>);
-  screen.getByTestId("btnDeletePair").click();
-  expect(mockDelete).toBeCalled();
-})
-
 test("renders VideoContainerModal when clicking Add Video", () => {
   render(<LessonDataContext.Provider value={{setCallText, currentLessonPack}}><LessonPair index={0} lessonPair={lessonPair} rerender={mockRender} render={false} deletePair={mockDelete} /></LessonDataContext.Provider>);
   screen.getAllByTestId("btnAddVideo")[0].click();
