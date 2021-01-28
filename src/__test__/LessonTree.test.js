@@ -28,6 +28,7 @@ test("redirects when there is no currentLessonPack", () => {
 
 test("renders the correct Lesson Pair given", () => {
   render(<LessonDataContext.Provider value={{setNameText, currentLessonPack}}><LessonTree /></LessonDataContext.Provider>);
+  screen.getByText(/Lesson Pair 1/i).click();
   const analysisElement = screen.getByText(/test_analysis_video.mp4/i);
   const callElement = screen.getByText(/test_call_video.mp4/i);
   expect(analysisElement).toBeInTheDocument();
