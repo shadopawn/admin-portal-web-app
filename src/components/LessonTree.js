@@ -54,18 +54,21 @@ export default function LessonTree() {
 
     console.log(currentLessonPack['lessonPairs'])
     return (
-        <div style={{textAlign:"left"}}>
-            <h3 data-testid="packName">{packName}</h3>
-            <button className="standardButton" onClick={() => setshowNameModal(true)}>Edit Name</button>
-			<button className="standardPurpleButton" onClick={addLessonPair} data-testid="btnAddPair">Add Lesson Pair</button>
-            <button className="standardPurpleButton" onClick={publishPack}>Publish</button>
+        <div className='lessonCreation'>
+            <h3 data-testid="packName" className='packName'>{packName}</h3>
+            <div className='packButtons'>
+                <button className="standardButton" onClick={() => setshowNameModal(true)}>Edit Name</button>
+                <button className="standardPurpleButton" onClick={addLessonPair} data-testid="btnAddPair">Add Lesson Pair</button>
+                <button className="standardPurpleButton" onClick={publishPack}>Publish</button>
+            </div>
+            
 
-            <div className='lesson-pack-view'>
+            <div className='lessonPackView'>
                 <dl>
                     {lessonPairComponentList}
                 </dl>
 
-                <div className='lesson-view'>
+                <div className='lessonView'>
                     {lessonPreview}
                 </div>
             </div>

@@ -172,15 +172,30 @@
   margin: auto 0;
 }
 
-.lesson-pack-view {
+.lessonPackView {
   display: grid;
   grid-template-columns: 25% 75%;
   background-color: #131313;
   min-height: 80vh;
+  padding-left: 10px;
 }
 
-.lesson-view {
+.lessonView {
   color: white;
   border-left: 2.5px #3F3F3F solid;
-  padding-left: 10px;
+  padding-left: 13px;
+}
+
+.packName {
+  font-size: 30px;
+  margin: 8px 5px 4px 20px
+}
+
+.lessonCreation {
+  text-align: left;
+}
+
+.packButtons {
+  margin-left: 10px;
+  margin-bottom: 12px;
 }
