@@ -3,7 +3,7 @@ import VideoSelectionTool from './VideoSelectionTool'
 import CallSelectionTool from './CallSelectionTool'
 import '../css/LessonPair.css';
 
-export default function LessonPair({index, lessonPair, rerender, render, deletePair}) {
+export default function LessonPair({index, lessonPair, rerender, render}) {
 
     const handleSelection = (lessonPairIndex, additionType) => {
         console.log("Lesson Pair " + lessonPairIndex);
@@ -13,7 +13,7 @@ export default function LessonPair({index, lessonPair, rerender, render, deleteP
     
     return (
         <div>
-            <dt className="lessonPairName"><h3>Lesson Pair {index + 1}</h3><button className="standardRedButton" onClick={() => deletePair(index)} data-testid="btnDeletePair">Delete</button></dt>
+            <dt className="lessonPairName"><h3>Lesson Pair {index + 1}</h3></dt>
                 <dd className="selection" onClick={() => handleSelection(index, "call_video")} data-testid="btnCallSelection">
                     <div className="nameDisplay">
                         Call Video: {lessonPair.call_video}
