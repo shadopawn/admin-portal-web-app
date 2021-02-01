@@ -18,6 +18,7 @@ export default function LessonTree() {
 
     const deleteLessonPairIndex = (lessonPairIndex) => {
         currentLessonPack["lessonPairs"].splice(lessonPairIndex, 1)
+        setlessonPreview([])
         setrerender(!rerender)
     }
 
@@ -52,7 +53,6 @@ export default function LessonTree() {
         return <Redirect to="/lesson-packs" />
     }
 
-    console.log(currentLessonPack['lessonPairs'])
     return (
         <div className='lessonCreation'>
             <h3 data-testid="packName" className='packName'>{packName}</h3>
@@ -62,7 +62,6 @@ export default function LessonTree() {
                 <button className="standardPurpleButton" onClick={publishPack}>Publish</button>
             </div>
             
-
             <div className='lessonPackView'>
                 <dl>
                     {lessonPairComponentList}
@@ -72,7 +71,6 @@ export default function LessonTree() {
                     {lessonPreview}
                 </div>
             </div>
-            
 
             <NameChangeModal show={showNameModal} hide={setshowNameModal} changeName={changeName}></NameChangeModal>
         </div>

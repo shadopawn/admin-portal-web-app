@@ -14,17 +14,17 @@ export default function LessonPair({index, lessonPair, rerender, render}) {
     return (
         <div>
             <dt className="lessonPairName"><h3>Lesson Pair {index + 1}</h3></dt>
-                <dd className="selection" onClick={() => handleSelection(index, "call_video")} data-testid="btnCallSelection">
+                <dd className="selection" onClick={() => handleSelection(index, "call")} data-testid="btnCallSelection">
                     <div className="nameDisplay">
                         Call Video: {lessonPair.call_video}
                     </div>
-                    <VideoSelectionTool index={index} videoType={"call_video"} />
+                    <VideoSelectionTool index={index} videoType={"call"} />
                 </dd>
-                <dd className="selection" onClick={() => handleSelection(index, "analysis_video")} data-testid="btnAnalysisSelection">
+                <dd className="selection" onClick={() => handleSelection(index, "analysis")} data-testid="btnAnalysisSelection">
                     <div className="nameDisplay">
                         Analysis Video: {lessonPair.analysis_video}
                     </div>
-                    <VideoSelectionTool index={index} videoType={"analysis_video"} />
+                    <VideoSelectionTool index={index} videoType={"analysis"} />
                 </dd>
                 <dd className="selection" onClick={() => handleSelection(index, "false_call0")}>
                     <div className="nameDisplay">
