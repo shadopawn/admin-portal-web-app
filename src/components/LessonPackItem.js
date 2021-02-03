@@ -15,7 +15,7 @@ export default function LessonPackItem({lessonPack, deleteItem}) {
 
     return (
         <tr>
-            <td className="packNameList">{lessonPack.name}</td>
+            <td className="packNameList">{lessonPack.edited ? lessonPack.name + "*" : lessonPack.name}</td>
             <td>
                 <button onClick={redirectToCreation} className="tableButton editButton" data-testid="btnEditPack">Edit</button>
             </td>

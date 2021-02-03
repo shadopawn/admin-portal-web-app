@@ -16,9 +16,10 @@ function LessonContextProvider(props) {
                 lesson.child("lesson_pairs").forEach(lessonPair => {
                     lessonPairList.push(lessonPair.val())
                 })
-                let tempLesson = {name:lesson.child("name").val(), lessonPairs:lessonPairList, index:lesson.child("index").val()}
+                let tempLesson = {name:lesson.child("name").val(), lessonPairs:lessonPairList, index:lesson.child("index").val(), edited:false}
                 lessonList.push(tempLesson)
             })
+            console.log(lessonList)
             setLessonData(lessonList)  
         });
     }
@@ -34,6 +35,7 @@ function LessonContextProvider(props) {
         currentLessonPack.lessonPairs[lessonPairIndex][videoType + "_video"] = videoName
         currentLessonPack.lessonPairs[lessonPairIndex][videoType + "_url"] = videoUrl
         setCurrentLessonPack(currentLessonPack)
+        setEditedForPack(currentLessonPack)
     }
 
     const setCallText = (lessonPairIndex, callType, callText) => {
@@ -44,6 +46,7 @@ function LessonContextProvider(props) {
         setLessonData(lessonData)
         currentLessonPack.lessonPairs[lessonPairIndex].calls[callType] = callText
         setCurrentLessonPack(currentLessonPack)
+        setEditedForPack(currentLessonPack)
     }
 
     const setNameText = (nameText) => {
@@ -54,6 +57,7 @@ function LessonContextProvider(props) {
         setLessonData(lessonData)
         currentLessonPack.name = nameText
         setCurrentLessonPack(currentLessonPack)
+        setEditedForPack(currentLessonPack)
     }
 
     const addNewLessonPair = () => {
@@ -68,6 +72,7 @@ function LessonContextProvider(props) {
                 "true_call":"Placeholder"
             }
         })
+        setEditedForPack(currentLessonPack)
     }
 
     const uploadCurrentLesson = (lessonPack) => {
@@ -111,12 +116,16 @@ function LessonContextProvider(props) {
         firebase.database().ref('lesson_packs/lesson_pack' + lessonPackIndex).remove()
     }
 
+    const setEditedForPack = (lessonPack) => {
+        lessonPack.edited = true;
+    }
+
     useEffect(() => {
         createLessonList();
     }, []);
 
     return (
-        <LessonDataContext.Provider value={{ lessonData, setLessonData, currentLessonPack, setCurrentLessonPack, setVideoLessonData, uploadCurrentLesson, setCallText, setNameText, addNewLessonPair, deleteLessonData }}>
+        <LessonDataContext.Provider value={{ lessonData, setLessonData, currentLessonPack, setCurrentLessonPack, setVideoLessonData, uploadCurrentLesson, setCallText, setNameText, addNewLessonPair, deleteLessonData, setEditedForPack }}>
             {props.children}
         </LessonDataContext.Provider>
     )
