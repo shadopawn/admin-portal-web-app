@@ -16,13 +16,14 @@ export default function CallPairSelection({ index, callType, handleSelection, le
         } else {
             setcall("True Call: ")
             setcallBool("True")
-        }
+        }// eslint-disable-next-line
     }, []);
 
     return (
         <dd className="selection" onClick={() => handleSelection(index, callType)}>
             <div className="nameDisplay">
-                {call + lessonPair.calls[callType].replace(/\.[^/.]+$/, "")}
+                <h4 className="typeDisplay">{call}</h4>
+                {lessonPair.calls[callType].replace(/\.[^/.]+$/, "")}
             </div>
             <CallSelectionTool index={index} callType={callType} callBool={callBool} />
         </dd>
