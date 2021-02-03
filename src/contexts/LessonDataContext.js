@@ -1,4 +1,4 @@
-import React, {createContext, useState, useEffect} from 'react'
+import React, {createContext, useState, useEffect, useReducer} from 'react'
 import firebase from 'firebase'
 
 export const LessonDataContext = createContext();
@@ -7,6 +7,7 @@ function LessonContextProvider(props) {
 
     const [lessonData, setLessonData] = useState([]);
     const [currentLessonPack, setCurrentLessonPack] = useState();
+    const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
 
     const createLessonList = () => {
         let lessonList = []
@@ -19,7 +20,6 @@ function LessonContextProvider(props) {
                 let tempLesson = {name:lesson.child("name").val(), lessonPairs:lessonPairList, index:lesson.child("index").val(), edited:false}
                 lessonList.push(tempLesson)
             })
-            console.log(lessonList)
             setLessonData(lessonList)  
         });
     }
@@ -35,7 +35,7 @@ function LessonContextProvider(props) {
         currentLessonPack.lessonPairs[lessonPairIndex][videoType + "_video"] = videoName
         currentLessonPack.lessonPairs[lessonPairIndex][videoType + "_url"] = videoUrl
         setCurrentLessonPack(currentLessonPack)
-        setEditedForPack(currentLessonPack)
+        setEditedForPack(currentLessonPack, true)
     }
 
     const setCallText = (lessonPairIndex, callType, callText) => {
@@ -46,7 +46,7 @@ function LessonContextProvider(props) {
         setLessonData(lessonData)
         currentLessonPack.lessonPairs[lessonPairIndex].calls[callType] = callText
         setCurrentLessonPack(currentLessonPack)
-        setEditedForPack(currentLessonPack)
+        setEditedForPack(currentLessonPack, true)
     }
 
     const setNameText = (nameText) => {
@@ -57,7 +57,7 @@ function LessonContextProvider(props) {
         setLessonData(lessonData)
         currentLessonPack.name = nameText
         setCurrentLessonPack(currentLessonPack)
-        setEditedForPack(currentLessonPack)
+        setEditedForPack(currentLessonPack, true)
     }
 
     const addNewLessonPair = () => {
@@ -72,7 +72,7 @@ function LessonContextProvider(props) {
                 "true_call":"Placeholder"
             }
         })
-        setEditedForPack(currentLessonPack)
+        setEditedForPack(currentLessonPack, true)
     }
 
     const uploadCurrentLesson = (lessonPack) => {
@@ -87,7 +87,8 @@ function LessonContextProvider(props) {
             firebase.database().ref('lesson_packs/lesson_pack' + lessonPack.index).update({
                 index:lessonPack.index
             })
-        })        
+        })
+        setEditedForPack(lessonPack, false)       
     }
 
     const updateLessonPairs = (lessonPack, firebaseLength) => {
@@ -116,8 +117,9 @@ function LessonContextProvider(props) {
         firebase.database().ref('lesson_packs/lesson_pack' + lessonPackIndex).remove()
     }
 
-    const setEditedForPack = (lessonPack) => {
-        lessonPack.edited = true;
+    const setEditedForPack = (lessonPack, edited) => {
+        lessonPack.edited = edited;
+        forceUpdate();
     }
 
     useEffect(() => {

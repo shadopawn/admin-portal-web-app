@@ -54,7 +54,7 @@ export default function LessonTree() {
 
     return (
         <div className='lessonCreation'>
-            <h3 data-testid="packName" className='packName'>{currentLessonPack.name}</h3>
+            <h3 data-testid="packName" className='packName'>{currentLessonPack.edited ? currentLessonPack.name + "*" : currentLessonPack.name}</h3>
             <div className='packButtons'>
                 <button className="standardButton" onClick={() => setshowNameModal(true)}>Edit Name</button>
                 <button className="standardPurpleButton" onClick={addLessonPair} data-testid="btnAddPair">Add Lesson Pair</button>
