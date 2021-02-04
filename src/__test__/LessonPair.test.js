@@ -18,8 +18,8 @@ jest.mock("firebase", () => ({
   })
 }));
 
-const lessonPair = {analysis_video: "test_analysis_video.mp4", call_video: "test_call_video.mp4", calls:{true_call:"testCall", false_call1:"FalseCall"}}
-let currentLessonPack = {name:"testName", calls:{true_call:"testCall"}, lessonPairs:[{analysis_video: "test_analysis_video.mp4", call_video: "test_call_video.mp4", calls:{true_call:"testCall", false_call1:"FalseCall"}}]}
+const lessonPair = {analysis_video: "test_analysis_video.mp4", call_video: "test_call_video.mp4", calls:{true_call:"testCall", false_call1:"FalseCall", false_call0:"FalseCall"}}
+let currentLessonPack = {name:"testName", calls:{true_call:"testCall"}, lessonPairs:[{analysis_video: "test_analysis_video.mp4", call_video: "test_call_video.mp4", calls:{true_call:"testCall", false_call1:"FalseCall", false_call0:"FalseCall"}}]}
 let setCallText = jest.fn()
 let mockRender = jest.fn()
 let mockDelete = jest.fn()
@@ -31,12 +31,12 @@ test("renders without crashing", () => {
 
 test("will rerender when changes are made without crashing", () => {
   render(<LessonDataContext.Provider value={{setCallText, currentLessonPack}}><LessonPair index={0} lessonPair={lessonPair} rerender={mockRender} render={false}/></LessonDataContext.Provider>);
-  screen.getByTestId("btnCallSelection").click()
+  screen.getAllByTestId("btnCallSelection")[0].click()
 })
 
 test("rerender will be called", () => {
   render(<LessonDataContext.Provider value={{setCallText, currentLessonPack}}><LessonPair index={0} lessonPair={lessonPair} rerender={mockRender} render={false}/></LessonDataContext.Provider>);
-  screen.getByTestId("btnCallSelection").click();
+  screen.getAllByTestId("btnCallSelection")[0].click();
   expect(mockRender).toBeCalled();
 })
 
@@ -56,12 +56,12 @@ test("renders VideoContainerModal when clicking Add Video", () => {
 
 test("will render the correct Call Video", () => {
   render(<LessonDataContext.Provider value={{setCallText, currentLessonPack}}><LessonPair index={0} lessonPair={lessonPair} rerender={mockRender} render={false}/></LessonDataContext.Provider>);
-  const callVideoElement = screen.getByText(/Call Video: test_call_video.mp4/i);
+  const callVideoElement = screen.getByText(/test_call_video/i);
   expect(callVideoElement).toBeInTheDocument();
 })
 
 test("will render the correct Analysis Video", () => {
   render(<LessonDataContext.Provider value={{setCallText, currentLessonPack}}><LessonPair index={0} lessonPair={lessonPair} rerender={mockRender} render={false}/></LessonDataContext.Provider>);
-  const analysisVideoElement = screen.getByText(/Analysis Video: test_analysis_video.mp4/i);
+  const analysisVideoElement = screen.getByText(/test_analysis_video/i);
   expect(analysisVideoElement).toBeInTheDocument();
 })

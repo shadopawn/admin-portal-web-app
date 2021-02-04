@@ -119,6 +119,7 @@ function LessonContextProvider(props) {
 
     const setEditedForPack = (lessonPack, edited) => {
         lessonPack.edited = edited;
+        console.log(ignored)
         forceUpdate();
     }
 
