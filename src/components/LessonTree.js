@@ -7,7 +7,7 @@ import LessonPairSelector from './LessonPairSelector'
 
 export default function LessonTree() {
 
-    const { currentLessonPack, setNameText, addNewLessonPair, uploadCurrentLesson } = useContext(LessonDataContext)
+    const { currentLessonPack, setNameText, addNewLessonPair, uploadCurrentLesson, setEditedForPack } = useContext(LessonDataContext)
     const [rerender, setrerender] = useState(false)
     const [showNameModal, setshowNameModal] = useState(false)
     const [lessonPreview, setlessonPreview] = useState([])
@@ -18,6 +18,8 @@ export default function LessonTree() {
 
     const deleteLessonPairIndex = (lessonPairIndex) => {
         currentLessonPack["lessonPairs"].splice(lessonPairIndex, 1)
+        setEditedForPack(currentLessonPack)
+        setlessonPreview([])
         setrerender(!rerender)
     }
 
@@ -42,27 +44,23 @@ export default function LessonTree() {
     }
     
     let lessonPairComponentList = [];
-    let packName = "No Lesson Pack Selected"
     if (currentLessonPack){
         lessonPairComponentList = currentLessonPack.lessonPairs.map((lessonPair, index) =>
             <LessonPairSelector key={index} index={index} lessonPair={lessonPair} deletePair={deleteLessonPairIndex} display={displayLessonPair} />
         );
-        packName = currentLessonPack.name
     }else {
         return <Redirect to="/lesson-packs" />
     }
 
-    console.log(currentLessonPack['lessonPairs'])
     return (
         <div className='lessonCreation'>
-            <h3 data-testid="packName" className='packName'>{packName}</h3>
+            <h3 data-testid="packName" className='packName'>{currentLessonPack.edited ? currentLessonPack.name + "*" : currentLessonPack.name}</h3>
             <div className='packButtons'>
                 <button className="standardButton" onClick={() => setshowNameModal(true)}>Edit Name</button>
                 <button className="standardPurpleButton" onClick={addLessonPair} data-testid="btnAddPair">Add Lesson Pair</button>
                 <button className="standardPurpleButton" onClick={publishPack}>Publish</button>
             </div>
             
-
             <div className='lessonPackView'>
                 <dl>
                     {lessonPairComponentList}
@@ -72,7 +70,6 @@ export default function LessonTree() {
                     {lessonPreview}
                 </div>
             </div>
-            
 
             <NameChangeModal show={showNameModal} hide={setshowNameModal} changeName={changeName}></NameChangeModal>
         </div>

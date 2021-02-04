@@ -4,7 +4,7 @@ import VideoCard from './VideoCard';
 import '../css/VideoContainerModal.css'
 import VideoUploaderModal from './VideoUploaderModal';
 
-export default function VideoContainerModal({show, hide, getNameOfVideo}) {
+export default function VideoContainerModal({show, hide, setVideoData}) {
 
     const showHideClassName = show ? "videoModal display-block" : "videoModal display-none";
     const [showUploaderModal, setshowUploaderModal] = useState(false)
@@ -14,7 +14,9 @@ export default function VideoContainerModal({show, hide, getNameOfVideo}) {
         var listRef = firebase.storage().ref('training_videos/');
         listRef.listAll().then(function(res) {
         res.items.forEach(function(itemRef) {
-            setVideoNameList(videoNameList => [...videoNameList, <VideoCard key={itemRef.name} name={itemRef.name} handleClick={getNameOfVideo} />])
+            itemRef.getDownloadURL().then(function(url) {
+                setVideoNameList(videoNameList => [...videoNameList, <VideoCard key={itemRef.name} name={itemRef.name} url={url} handleClick={setVideoData} />])
+            })
         });
         }).catch(function(error) {
             console.log(error);

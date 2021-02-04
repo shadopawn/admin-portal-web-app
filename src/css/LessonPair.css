@@ -34,3 +34,8 @@
 .nameDisplay{
     margin: auto 0 auto 0;
 }
+
+.typeDisplay {
+    display:inline;
+    text-transform: capitalize;
+}
