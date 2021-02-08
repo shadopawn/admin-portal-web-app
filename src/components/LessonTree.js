@@ -18,7 +18,7 @@ export default function LessonTree() {
 
     const deleteLessonPairIndex = (lessonPairIndex) => {
         currentLessonPack["lessonPairs"].splice(lessonPairIndex, 1)
-        setEditedForPack(currentLessonPack)
+        setEditedForPack(currentLessonPack, true)
         setlessonPreview([])
         setrerender(!rerender)
     }
