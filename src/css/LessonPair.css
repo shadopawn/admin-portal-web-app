@@ -22,3 +22,20 @@
     padding-left: 10px;
     margin-left: 10px;
 }
+
+.lessonPairName {
+    display: flex;
+}
+
+.selection{
+    display: flex;
+}
+
+.nameDisplay{
+    margin: auto 0 auto 0;
+}
+
+.typeDisplay {
+    display:inline;
+    text-transform: capitalize;
+}

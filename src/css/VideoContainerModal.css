@@ -18,6 +18,7 @@
 
 .videoModal-main {
     position:fixed;
+    text-align: center;
     background: #292929;
     width: 80%;
     height: auto;

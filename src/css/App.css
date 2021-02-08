@@ -116,3 +116,92 @@
 :-moz-placeholder { /* Firefox 4 - 18 */
   opacity: .5 !important;
 }
+
+.packNameList {
+  font-size: 20px;
+  padding-right: 20px;
+  text-align: left;
+}
+
+.callContainer {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+.callCard {
+  display: grid;
+}
+
+.call {
+  margin: auto;
+}
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width:100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
+.modal-main {
+  position:fixed;
+  text-align: center;
+  background: #292929;
+  width: 80%;
+  height: auto;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  border: 2px solid #01CDC4;
+  border-radius: 25px;
+  padding: 20px;
+}
+
+.callSelector {
+  width: 30%;
+  display: grid;
+  grid-template-columns: 85% 15%;
+}
+
+.addCallButton {
+  margin: auto 0;
+}
+
+.lessonPackView {
+  display: grid;
+  grid-template-columns: 25% 75%;
+  background-color: #131313;
+  min-height: 80vh;
+  padding-left: 10px;
+}
+
+.lessonView {
+  color: white;
+  border-left: 2.5px #3F3F3F solid;
+  padding-left: 13px;
+}
+
+.packName {
+  font-size: 30px;
+  margin: 8px 5px 4px 20px
+}
+
+.lessonCreation {
+  text-align: left;
+}
+
+.packButtons {
+  margin-left: 10px;
+  margin-bottom: 12px;
+}

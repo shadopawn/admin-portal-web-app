@@ -3,6 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import firebase from 'firebase';
 
 export default function NavBar() {
+	
 	const history = useHistory();
 
 	const LogoutEventListen = () =>{
