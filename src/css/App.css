@@ -219,6 +219,11 @@
   
 }
 
+.highlightedPair {
+  background-color: white;
+  color: black;
+}
+
 .lessonPairButton:hover {
   background-color: #01CDC4;
   color: white;
