@@ -234,3 +234,15 @@
 .lessonPackListView {
   margin-top: 0;
 }
+
+.inputText {
+  background-color: transparent;
+  color: white;
+  border: 2px solid #BB86FC;
+  border-radius: 25px;
+  margin: 7px;
+  transition: .2s;
+  padding: 10px 15px;
+  font-size: 15px;
+  max-width: 10em;
+}

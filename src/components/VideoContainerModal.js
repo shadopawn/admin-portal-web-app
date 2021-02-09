@@ -38,9 +38,10 @@ export default function VideoContainerModal({show, hide, setVideoData}) {
             <section className='videoModal-main'>
                 <h2 className='heading'>What video would you like to add?</h2>
                 <button className="standardPurpleButton" onClick={() => setshowUploaderModal(true)}>Upload Videos</button>
-                <input type="text" placeholder="Search..." onChange={event => {setsearchTerm(event.target.value)}}></input>
-                {videoNameList.filter((val)=> {
-                    if (searchTerm =='') {
+                <input type="text" className="inputText" placeholder="Search..." onChange={event => {setsearchTerm(event.target.value)}}></input>
+                {// eslint-disable-next-line
+                videoNameList.filter((val)=> {
+                    if (searchTerm === '') {
                         return val
                     } else if (val["key"].toLowerCase().includes(searchTerm.toLowerCase())) {
                         return val
