@@ -180,10 +180,9 @@
 
 .lessonPackView {
   display: grid;
-  grid-template-columns: 25% 75%;
+  grid-template-columns: 20% 80%;
   background-color: #131313;
   min-height: 80vh;
-  padding-left: 10px;
 }
 
 .lessonView {
@@ -204,4 +203,29 @@
 .packButtons {
   margin-left: 10px;
   margin-bottom: 12px;
+}
+
+.lessonPairButton{
+	background-color: #3F3F3F;
+  color: white;
+  text-align: left;
+  border: 0px solid #01CDC4;
+  border-bottom: 1px solid black;
+	margin: 0px;
+  transition: .2s;
+	padding: 10px 15px;
+  font-size: 18px;
+  min-width: 100%;
+  
+}
+
+.lessonPairButton:hover {
+  background-color: #01CDC4;
+  color: white;
+  border: 0px solid #01CDC4;
+  border-bottom: 1px solid black;
+}
+
+.lessonPackListView {
+  margin-top: 0;
 }

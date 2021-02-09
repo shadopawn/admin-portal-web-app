@@ -76,6 +76,7 @@ test("renders a new Lesson Pair", () => {
 
 test("Able to delete lesson", () => {
   render(<LessonDataContext.Provider value={{setNameText, currentLessonPack, setEditedForPack}}><LessonTree /></LessonDataContext.Provider>);
+  screen.getByText(/Lesson Pair 1/i).click()
   screen.getAllByTestId("btnDeletePair")[0].click()
   const lessonElement = screen.queryByText(/test_analysis_video.mp4/i)
   expect(lessonElement).toBeNull()

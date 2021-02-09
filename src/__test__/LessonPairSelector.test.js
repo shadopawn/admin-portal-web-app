@@ -20,16 +20,3 @@ test('renders correct Lesson Pair index', () => {
   const lessonText = screen.getByText(/Lesson Pair 3/i);
   expect(lessonText).toBeInTheDocument();
 });
-
-test('deletePair is rendered and clickable', () => {
-  render(<LessonPairSelector index={2} deletePair={mockDelete} />);
-  const deleteButton = screen.getAllByText(/Delete/i)[0]
-  deleteButton.click();
-  expect(deleteButton).toBeInTheDocument();
-});
-
-test('deletePair will be called', () => {
-  render(<LessonPairSelector index={2} deletePair={mockDelete} />);
-  screen.getByTestId("btnDeletePair").click();
-  expect(mockDelete).toBeCalled();
-});

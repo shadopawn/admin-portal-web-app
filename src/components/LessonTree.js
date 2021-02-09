@@ -32,13 +32,13 @@ export default function LessonTree() {
 
     const displayLessonPair = (index) => {
         const currentLessonPair = currentLessonPack["lessonPairs"][index]
-        setlessonPreview(<LessonPreview index={index} lessonPair={currentLessonPair}></LessonPreview>)
+        setlessonPreview(<LessonPreview index={index} lessonPair={currentLessonPair} deletePair={deleteLessonPairIndex}></LessonPreview>)
     }
 
     const addLessonPair = () => {
         addNewLessonPair();
         lessonPairComponentList = currentLessonPack.lessonPairs.map((lessonPair, index) =>
-            <LessonPairSelector key={index} index={index} lessonPair={lessonPair} deletePair={deleteLessonPairIndex} display={displayLessonPair} />
+            <LessonPairSelector key={index} index={index} lessonPair={lessonPair} display={displayLessonPair} />
         );
         setrerender(!rerender)
     }
@@ -46,7 +46,7 @@ export default function LessonTree() {
     let lessonPairComponentList = [];
     if (currentLessonPack){
         lessonPairComponentList = currentLessonPack.lessonPairs.map((lessonPair, index) =>
-            <LessonPairSelector key={index} index={index} lessonPair={lessonPair} deletePair={deleteLessonPairIndex} display={displayLessonPair} />
+            <LessonPairSelector key={index} index={index} lessonPair={lessonPair} display={displayLessonPair} />
         );
     }else {
         return <Redirect to="/lesson-packs" />
@@ -62,7 +62,7 @@ export default function LessonTree() {
             </div>
             
             <div className='lessonPackView'>
-                <dl>
+                <dl className='lessonPackListView'>
                     {lessonPairComponentList}
                 </dl>
 
