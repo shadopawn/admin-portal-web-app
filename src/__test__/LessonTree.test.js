@@ -7,7 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 let setNameText = jest.fn();
 let addNewLessonPair = jest.fn();
 let setEditedForPack = jest.fn();
-let currentLessonPack = {name:"testName", calls:{true_call:"testCall"}, lessonPairs:[{analysis_video: "test_analysis_video.mp4", call_video: "test_call_video.mp4", calls:{true_call:"testCall", false_call1:"FalseCall", false_call0:"FalseCall"}}]}
+let currentLessonPack = {name:"testName", calls:{true_call:"testCall"}, lessonPairs:[{analysis_video: "test_analysis_video.mp4", call_video: "test_call_video.mp4", name:"Lesson Pair 1", calls:{true_call:"testCall", false_call1:"FalseCall", false_call0:"FalseCall"}}]}
 
 test("renders without crashing", () => {
   const div = document.createElement("div");

@@ -25,7 +25,7 @@ export default function LessonTree() {
     }
 
     const changeName = () => {
-        const name = document.getElementById("nameChangeInput").value;
+        const name = document.getElementById("nameChangeInput-1").value;
         setNameText(name)
         setshowNameModal(false)
         setrerender(!rerender)
@@ -73,7 +73,7 @@ export default function LessonTree() {
                 </div>
             </div>
 
-            <NameChangeModal show={showNameModal} hide={setshowNameModal} changeName={changeName}></NameChangeModal>
+            <NameChangeModal show={showNameModal} hide={setshowNameModal} changeName={changeName} index={-1}></NameChangeModal>
         </div>
     )
 }

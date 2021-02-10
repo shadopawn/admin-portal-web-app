@@ -60,12 +60,25 @@ function LessonContextProvider(props) {
         setEditedForPack(currentLessonPack, true)
     }
 
+    const setPairNameText = (pairNameText, index) => {
+        lessonData.forEach(lessonPack => {
+            if(lessonPack === currentLessonPack) {
+                lessonPack.lessonPairs[index]["name"] = pairNameText
+            }
+        })
+        setLessonData(lessonData)
+        currentLessonPack.lessonPairs[index]["name"] = pairNameText
+        setCurrentLessonPack(currentLessonPack)
+        setEditedForPack(currentLessonPack, true)
+    }
+
     const addNewLessonPair = () => {
         currentLessonPack["lessonPairs"].push({
             call_video: "Paceholder",
             call_url: "Placeholder",
             analysis_video: "Placeholder",
             analysis_url: "Placeholder",
+            name:"Placeholder",
             calls: {
                 "false_call0":"Placeholder",
                 "false_call1":"Placeholder",
@@ -98,7 +111,7 @@ function LessonContextProvider(props) {
                 analysis_video:lessonPack.lessonPairs[i]["analysis_video"],
                 call_url:lessonPack.lessonPairs[i]["call_url"],
                 analysis_url:lessonPack.lessonPairs[i]["analysis_url"],
-                
+                name:lessonPack.lessonPairs[i]["name"]
             })
             firebase.database().ref('lesson_packs/lesson_pack' + lessonPack.index + '/lesson_pairs/lesson_pair' + i.toString() + "/calls").update({
                 false_call0:lessonPack.lessonPairs[i].calls["false_call0"],
@@ -128,7 +141,7 @@ function LessonContextProvider(props) {
     }, []);
 
     return (
-        <LessonDataContext.Provider value={{ lessonData, setLessonData, currentLessonPack, setCurrentLessonPack, setVideoLessonData, uploadCurrentLesson, setCallText, setNameText, addNewLessonPair, deleteLessonData, setEditedForPack }}>
+        <LessonDataContext.Provider value={{ lessonData, setLessonData, currentLessonPack, setCurrentLessonPack, setVideoLessonData, uploadCurrentLesson, setCallText, setNameText, addNewLessonPair, deleteLessonData, setEditedForPack, setPairNameText }}>
             {props.children}
         </LessonDataContext.Provider>
     )
