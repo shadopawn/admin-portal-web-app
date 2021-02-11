@@ -74,7 +74,7 @@ function LessonContextProvider(props) {
 
     const addNewLessonPair = () => {
         currentLessonPack["lessonPairs"].push({
-            call_video: "Paceholder",
+            call_video: "Placeholder",
             call_url: "Placeholder",
             analysis_video: "Placeholder",
             analysis_url: "Placeholder",
@@ -89,6 +89,27 @@ function LessonContextProvider(props) {
     }
 
     const uploadCurrentLesson = (lessonPack) => {
+        if (checkLessonForPlaceholders(lessonPack)) {
+            alert('This lesson pack has placeholders and is not complete')
+        }
+        else {
+            publishCurrentLesson(lessonPack);
+        }
+    }
+
+    const checkLessonForPlaceholders = (lessonPack) => {
+        var placeholder = false
+        lessonPack["lessonPairs"].forEach(lessonPair => {
+            if (lessonPair["call_video"] === "Placeholder" || lessonPair["analysis_video"] === "Placeholder" || lessonPair["name"] === "Placeholder") {
+                placeholder = true
+            } else if (lessonPair["calls"]["false_call0"] === "Placeholder" || lessonPair["calls"]["false_call1"] === "Placeholder" || lessonPair["calls"]["true_call"] === "Placeholder") {
+                placeholder = true
+            }
+        })
+        return placeholder
+    }
+
+    const publishCurrentLesson = (lessonPack) => {
         firebase.database().ref('lesson_packs/lesson_pack' + lessonPack.index + '/lesson_pairs/').once('value').then((snapshot) => {
             var firebaseLength = 0
             snapshot.forEach(lesson => { firebaseLength = firebaseLength + 1 })
