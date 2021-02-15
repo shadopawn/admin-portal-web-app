@@ -1,7 +1,5 @@
 .videoSelector {
-    width: 30%;
-    display: grid;
-    grid-template-columns: 85% 15%;
+    width: 100%;
 }
   
 .addVideoButton {
@@ -25,17 +23,40 @@
 
 .lessonPairName {
     display: flex;
+    margin-bottom: 12px;
 }
 
 .selection{
-    display: flex;
+    display: flex;   
+    background-color: #292929;
+    width: 575px;
+    max-width: 75%;
+    border-radius: 25px;
+    margin: 0 auto;
+    margin-bottom: 20px;
 }
 
 .nameDisplay{
-    margin: auto 0 auto 0;
+    width: 100%;
+    margin: auto 0;
+    text-align: center;
+    padding-top: 12px;
+}
+
+.callDisplay{
+    width: 100%;
+    margin: auto 0 auto 25%;
 }
 
 .typeDisplay {
     display:inline;
     text-transform: capitalize;
+}
+
+
+.lessonPairSections {
+    width: 100%;
+    display: grid;
+    text-align: center;
+    grid-template-columns: auto auto;
 }
