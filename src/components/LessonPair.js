@@ -1,9 +1,21 @@
-import React from 'react'
+import React, {useContext, useState} from 'react'
 import VideoPairSelection from './VideoPairSelection'
 import CallPairSelection from './CallPairSelection'
+import { LessonDataContext } from '../contexts/LessonDataContext'
 import '../css/LessonPair.css';
+import NameChangeModal from './NameChangeModal';
 
-export default function LessonPair({index, lessonPair, rerender, render}) {
+export default function LessonPair({index, lessonPair, rerender, render, deletePair}) {
+
+    const [showNameModal, setshowNameModal] = useState(false)
+    const { setPairNameText } = useContext(LessonDataContext)
+
+    const changeName = () => {
+        const name = document.getElementById("nameChangeInput"+index).value;
+        setPairNameText(name, index)
+        setshowNameModal(false)
+        rerender(!render)
+    }
 
     const handleSelection = (lessonPairIndex, additionType) => {
         console.log("Lesson Pair " + lessonPairIndex);

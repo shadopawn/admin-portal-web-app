@@ -6,7 +6,7 @@ export default function CallContainerModal({show, hide, getNameOfCall}) {
 
     const showHideClassName = show ? "modal display-block" : "modal display-none";
     const [callList, setcallList] = useState([])
-    
+    const [searchTerm, setsearchTerm] = useState('')
 
     const getFirebaseCalls = () => {
         var listRef = firebase.storage().ref('basketball_signals/');
@@ -35,9 +35,9 @@ export default function CallContainerModal({show, hide, getNameOfCall}) {
         <div className={showHideClassName}>
             <section className='modal-main'>
                 <h2 className='heading'>What call would you like to add?</h2>
+                <input type="text" className="inputText" placeholder="Search..." onChange={event => {setsearchTerm(event.target.value)}}></input>
                 <div className='callContainer'>
-                    {// eslint-disable-next-line
-                    callList.filter((val)=> {
+                    {callList.filter((val)=> {
                         if (searchTerm === '') {
                             return val
                         } else if (val["key"].toLowerCase().includes(searchTerm.toLowerCase())) {

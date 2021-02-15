@@ -9,6 +9,7 @@ export default function VideoContainerModal({show, hide, setVideoData}) {
     const showHideClassName = show ? "videoModal display-block" : "videoModal display-none";
     const [showUploaderModal, setshowUploaderModal] = useState(false)
     const [videoNameList, setVideoNameList] = useState([])
+    const [searchTerm, setsearchTerm] = useState('')
 
     const getFirebaseVideos = () => {
         var listRef = firebase.storage().ref('training_videos/');
@@ -37,7 +38,15 @@ export default function VideoContainerModal({show, hide, setVideoData}) {
             <section className='videoModal-main'>
                 <h2 className='heading'>What video would you like to add?</h2>
                 <button className="standardPurpleButton" onClick={() => setshowUploaderModal(true)}>Upload Videos</button>
-                {videoNameList}
+                <input type="text" className="inputText" placeholder="Search..." onChange={event => {setsearchTerm(event.target.value)}}></input>
+                {// eslint-disable-next-line
+                videoNameList.filter((val)=> {
+                    if (searchTerm === '') {
+                        return val
+                    } else if (val["key"].toLowerCase().includes(searchTerm.toLowerCase())) {
+                        return val
+                    }
+                })}
                 <button className="standardRedButton" onClick={() => hide(false)} data-testid="closeVModal">Close</button>
 
                 <VideoUploaderModal show={showUploaderModal} hide={setshowUploaderModal} ></VideoUploaderModal>

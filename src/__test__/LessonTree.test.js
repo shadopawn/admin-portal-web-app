@@ -7,7 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 let setNameText = jest.fn();
 let addNewLessonPair = jest.fn();
 let setEditedForPack = jest.fn();
-let currentLessonPack = {name:"testName", calls:{true_call:"testCall"}, lessonPairs:[{analysis_video: "test_analysis_video.mp4", call_video: "test_call_video.mp4", calls:{true_call:"testCall", false_call1:"FalseCall", false_call0:"FalseCall"}}]}
+let currentLessonPack = {name:"testName", calls:{true_call:"testCall"}, lessonPairs:[{analysis_video: "test_analysis_video.mp4", call_video: "test_call_video.mp4", name:"Lesson Pair 1", calls:{true_call:"testCall", false_call1:"FalseCall", false_call0:"FalseCall"}}]}
 
 test("renders without crashing", () => {
   const div = document.createElement("div");
@@ -76,6 +76,7 @@ test("renders a new Lesson Pair", () => {
 
 test("Able to delete lesson", () => {
   render(<LessonDataContext.Provider value={{setNameText, currentLessonPack, setEditedForPack}}><LessonTree /></LessonDataContext.Provider>);
+  screen.getByText(/Lesson Pair 1/i).click()
   screen.getAllByTestId("btnDeletePair")[0].click()
   const lessonElement = screen.queryByText(/test_analysis_video.mp4/i)
   expect(lessonElement).toBeNull()

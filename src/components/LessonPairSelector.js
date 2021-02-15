@@ -1,12 +1,14 @@
 import React from 'react'
 
-export default function LessonPairSelector({ index, display, deletePair }) {
+export default function LessonPairSelector({ index, display, highlightedPair, lessonPair }) {
+    const showHighlightedPair = highlightedPair == index ? "lessonPairButton highlightedPair" : "lessonPairButton";
+
     return (
         <div>
-            <button className='standardButton' onClick={() => display(index)}>
-                Lesson Pair {index + 1}
+            <button className={showHighlightedPair} onClick={() => display(index)}>
+                {lessonPair.name}              
             </button>
-            <button className="standardRedButton" onClick={() => deletePair(index)} data-testid="btnDeletePair">Delete</button>
+            
         </div>
     )
 }
