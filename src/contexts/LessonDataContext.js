@@ -73,12 +73,13 @@ function LessonContextProvider(props) {
     }
 
     const addNewLessonPair = () => {
+        let lessonPairName = "Video " + currentLessonPack["lessonPairs"].length
         currentLessonPack["lessonPairs"].push({
             call_video: "Placeholder",
             call_url: "Placeholder",
             analysis_video: "Placeholder",
             analysis_url: "Placeholder",
-            name:"Placeholder",
+            name: lessonPairName,
             calls: {
                 "false_call0":"Placeholder",
                 "false_call1":"Placeholder",
