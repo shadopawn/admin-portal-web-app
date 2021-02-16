@@ -36,7 +36,7 @@ export default function LessonPair({index, lessonPair, rerender, render, deleteP
             <CallPairSelection index={index} callType="false_call1" handleSelection={handleSelection} lessonPair={lessonPair}></CallPairSelection>
             <CallPairSelection index={index} callType="true_call" handleSelection={handleSelection} lessonPair={lessonPair}></CallPairSelection>
 
-            <NameChangeModal show={showNameModal} hide={setshowNameModal} changeName={changeName} index={index}></NameChangeModal>
+            <NameChangeModal show={showNameModal} hide={setshowNameModal} changeName={changeName} index={index} maxLength={8}></NameChangeModal>
         </div>
     )
 }

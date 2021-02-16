@@ -73,7 +73,7 @@ export default function LessonTree() {
                 </div>
             </div>
 
-            <NameChangeModal show={showNameModal} hide={setshowNameModal} changeName={changeName} index={-1}></NameChangeModal>
+            <NameChangeModal show={showNameModal} hide={setshowNameModal} changeName={changeName} index={-1} maxLength={20}></NameChangeModal>
         </div>
     )
 }
