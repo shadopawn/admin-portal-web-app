@@ -25,11 +25,12 @@ export default function LessonPair({index, lessonPair, rerender, render, deleteP
     
     return (
         <div>
-            <dt className="lessonPairName">
+            <dt className="lessonPairHeader">
                 <h2>{lessonPair.name}</h2>
                 <button className="standardButton" onClick={() => setshowNameModal(true)}>Edit Name</button>
-                <button className="standardRedButton" onClick={() => deletePair(index)} data-testid="btnDeletePair">Delete</button>                
+                <button className="standardRedButton" onClick={() => deletePair(index)} data-testid="btnDeletePair">Delete</button>                                
             </dt>
+            
             <div className="lessonPairSections">
                 <VideoPairSelection index={index} videoType="call" handleSelection={handleSelection} lessonPair={lessonPair}></VideoPairSelection>
                 <VideoPairSelection index={index} videoType="analysis" handleSelection={handleSelection} lessonPair={lessonPair}></VideoPairSelection>
