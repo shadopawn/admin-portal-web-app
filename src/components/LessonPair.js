@@ -25,13 +25,17 @@ export default function LessonPair({index, lessonPair, rerender, render, deleteP
     
     return (
         <div>
-            <dt className="lessonPairName">
-                <h3>{lessonPair.name}</h3>
+            <dt className="lessonPairHeader">
+                <h2>{lessonPair.name}</h2>
                 <button className="standardButton" onClick={() => setshowNameModal(true)}>Edit Name</button>
-                <button className="standardRedButton" onClick={() => deletePair(index)} data-testid="btnDeletePair">Delete</button>                
+                <button className="standardRedButton" onClick={() => deletePair(index)} data-testid="btnDeletePair">Delete</button>                                
             </dt>
-            <VideoPairSelection index={index} videoType="call" handleSelection={handleSelection} lessonPair={lessonPair}></VideoPairSelection>
-            <VideoPairSelection index={index} videoType="analysis" handleSelection={handleSelection} lessonPair={lessonPair}></VideoPairSelection>
+            
+            <div className="lessonPairSections">
+                <VideoPairSelection index={index} videoType="call" handleSelection={handleSelection} lessonPair={lessonPair}></VideoPairSelection>
+                <VideoPairSelection index={index} videoType="analysis" handleSelection={handleSelection} lessonPair={lessonPair}></VideoPairSelection>
+            </div>
+            
             <CallPairSelection index={index} callType="false_call0" handleSelection={handleSelection} lessonPair={lessonPair}></CallPairSelection>
             <CallPairSelection index={index} callType="false_call1" handleSelection={handleSelection} lessonPair={lessonPair}></CallPairSelection>
             <CallPairSelection index={index} callType="true_call" handleSelection={handleSelection} lessonPair={lessonPair}></CallPairSelection>
