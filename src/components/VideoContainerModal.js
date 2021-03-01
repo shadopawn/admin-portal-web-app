@@ -15,24 +15,35 @@ export default function VideoContainerModal({show, hide, setVideoData}) {
         var listRef = firebase.storage().ref('training_videos/');
         listRef.listAll().then(function(res) {
         res.items.forEach(function(itemRef) {
-            itemRef.getDownloadURL().then(function(url) {
-                setVideoNameList(videoNameList => [...videoNameList, <VideoCard key={itemRef.name} name={itemRef.name} url={url} handleClick={setVideoData} />])
+            itemRef.getMetadata().then(function(data) {
+                itemRef.getDownloadURL().then(function(url) {
+                    setVideoNameList(videoNameList => [...videoNameList, <VideoCard key={itemRef.name} name={itemRef.name} url={url} handleClick={setVideoData} timeCreated={data["timeCreated"]}/>])
+                })
             })
+            
         });
         }).catch(function(error) {
             console.log(error);
         });
     }
 
+    const sortVideosByTime = () => {
+        console.log(videoNameList)
+        videoNameList.sort(function(a, b){return Date.parse(b.props["timeCreated"]) - Date.parse(a.props["timeCreated"])})
+        console.log(videoNameList)
+    }
+
     useEffect(() => {
         if(show && showUploaderModal === false){
             getFirebaseVideos();
+            
         }
         else {
             setVideoNameList([]);
         } // eslint-disable-next-line 
     }, [show, showUploaderModal]) 
-
+    
+    sortVideosByTime();
     return(
         <div className={showHideClassName}>
             <section className='videoModal-main'>
