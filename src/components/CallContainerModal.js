@@ -13,8 +13,8 @@ export default function CallContainerModal({show, hide, getNameOfCall}) {
         listRef.listAll().then(function(res) {
         res.items.forEach(function(itemRef) {
             itemRef.getDownloadURL().then(function(url) {
-                var test = url;
-                setcallList(callList => [...callList, <CallCard key={itemRef.name} name={itemRef.name} handleClick={getNameOfCall} imageURL={test}/>])
+                var imageURL = url;
+                setcallList(callList => [...callList, <CallCard key={itemRef.name} name={itemRef.name} handleClick={getNameOfCall} imageURL={imageURL}/>])
             })
         });
         }).catch(function(error) {
