@@ -30,13 +30,13 @@ test("renders without crashing", () => {
 
 test('renders the correct analysis video pre-text', () => {
   render(<LessonDataContext.Provider value={{setCallText, currentLessonPack}}><VideoPairSelection index={0} videoType="analysis" lessonPair={lessonPair} /></LessonDataContext.Provider>);
-  const analysisElement = screen.getByText(/analysis Video:/i);
+  const analysisElement = screen.getByText(/analysis Video/i);
   expect(analysisElement).toBeInTheDocument();
 });
 
 test('renders the correct call video pre-text', () => {
   render(<LessonDataContext.Provider value={{setCallText, currentLessonPack}}><VideoPairSelection index={0} videoType="call" lessonPair={lessonPair} /></LessonDataContext.Provider>);
-  const callElement = screen.getByText(/call Video:/i);
+  const callElement = screen.getByText(/call Video/i);
   expect(callElement).toBeInTheDocument();
 });
 

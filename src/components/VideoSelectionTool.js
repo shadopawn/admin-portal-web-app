@@ -17,9 +17,7 @@ export default function VideoSelectionTool({index, videoType}) {
         <div>
             <VideoContainerModal show={showVideoModal} hide={setshowVideoModal} setVideoData={setVideoData} />
             <div className="videoSelector">
-                <div className='addVideoButton'>
-                <button className="standardButton" onClick={() => setshowVideoModal(true)} data-testid="btnAddVideo">Add Video</button>
-                </div>                
+                <button className="videoButton" onClick={() => setshowVideoModal(true)} data-testid="btnAddVideo">Add Video</button>               
             </div>
         </div>
     )

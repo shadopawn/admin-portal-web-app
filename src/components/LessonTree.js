@@ -11,6 +11,7 @@ export default function LessonTree() {
     const [rerender, setrerender] = useState(false)
     const [showNameModal, setshowNameModal] = useState(false)
     const [lessonPreview, setlessonPreview] = useState([])
+    const [highlightedPair, sethighlightedPair] = useState(null)
 
     const publishPack = () => {
         uploadCurrentLesson(currentLessonPack)
@@ -24,7 +25,7 @@ export default function LessonTree() {
     }
 
     const changeName = () => {
-        const name = document.getElementById("nameChangeInput").value;
+        const name = document.getElementById("nameChangeInput-1").value;
         setNameText(name)
         setshowNameModal(false)
         setrerender(!rerender)
@@ -32,13 +33,14 @@ export default function LessonTree() {
 
     const displayLessonPair = (index) => {
         const currentLessonPair = currentLessonPack["lessonPairs"][index]
-        setlessonPreview(<LessonPreview index={index} lessonPair={currentLessonPair}></LessonPreview>)
+        sethighlightedPair(index)
+        setlessonPreview(<LessonPreview index={index} lessonPair={currentLessonPair} deletePair={deleteLessonPairIndex}></LessonPreview>)
     }
 
     const addLessonPair = () => {
         addNewLessonPair();
         lessonPairComponentList = currentLessonPack.lessonPairs.map((lessonPair, index) =>
-            <LessonPairSelector key={index} index={index} lessonPair={lessonPair} deletePair={deleteLessonPairIndex} display={displayLessonPair} />
+            <LessonPairSelector key={index} index={index} lessonPair={lessonPair} display={displayLessonPair} highlightedPair={highlightedPair} />
         );
         setrerender(!rerender)
     }
@@ -46,7 +48,7 @@ export default function LessonTree() {
     let lessonPairComponentList = [];
     if (currentLessonPack){
         lessonPairComponentList = currentLessonPack.lessonPairs.map((lessonPair, index) =>
-            <LessonPairSelector key={index} index={index} lessonPair={lessonPair} deletePair={deleteLessonPairIndex} display={displayLessonPair} />
+            <LessonPairSelector key={index} index={index} lessonPair={lessonPair} display={displayLessonPair} highlightedPair={highlightedPair} />
         );
     }else {
         return <Redirect to="/lesson-packs" />
@@ -62,7 +64,7 @@ export default function LessonTree() {
             </div>
             
             <div className='lessonPackView'>
-                <dl>
+                <dl className='lessonPackListView'>
                     {lessonPairComponentList}
                 </dl>
 
@@ -71,7 +73,7 @@ export default function LessonTree() {
                 </div>
             </div>
 
-            <NameChangeModal show={showNameModal} hide={setshowNameModal} changeName={changeName}></NameChangeModal>
+            <NameChangeModal show={showNameModal} hide={setshowNameModal} changeName={changeName} index={-1} maxLength={20}></NameChangeModal>
         </div>
     )
 }
