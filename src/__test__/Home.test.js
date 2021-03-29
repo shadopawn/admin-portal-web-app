@@ -105,6 +105,6 @@ test('Analytics Dashboard Link redirects', () => {
 
   const analyticsLink = screen.getByTestId("analyticsLink");
   analyticsLink.click();
-  const analyticsElement = screen.getByText(/You found the Analytics page/i);
+  const analyticsElement = screen.getByText(/Analytics/i);
   expect(analyticsElement).toBeInTheDocument();
 });
