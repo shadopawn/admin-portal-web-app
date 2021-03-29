@@ -17,9 +17,9 @@ export default function NavBar() {
 				<h3>Lessons Editor</h3>
 			</Link>
 
-			<Link to="/analytics" className="navLink" data-testid="analyticsLink">
+			<a href="https://analytics.cloud.unity3d.com/projects/" target="_blank" className="navLink" data-testid="analyticsLink">
 				<h3>Analytics Dashboard</h3>
-			</Link>
+			</a>
 
 			<Link to="/login" className="navLink" id="loginLink" data-testid="loginLink">
 				<h3>Login Page</h3>
