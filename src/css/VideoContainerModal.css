@@ -21,13 +21,14 @@
     text-align: center;
     background: #292929;
     width: 80%;
-    height: auto;
+    max-height: 80vh;
     top:50%;
     left:50%;
     transform: translate(-50%,-50%);
     border: 2px solid #01CDC4;
     border-radius: 25px;
     padding: 20px;
+    overflow-y: scroll;
 }
 
 .heading {
