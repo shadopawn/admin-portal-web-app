@@ -28,7 +28,7 @@ export default function CallPairSelection({ index, callType, handleSelection, le
         }
         getFirebaseURL()
         // eslint-disable-next-line
-    }, [lessonPair]);
+    }, [handleSelection]);
 
     return (
         <dd className="selection" onClick={() => handleSelection(index, callType)}>
