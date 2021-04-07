@@ -8,7 +8,7 @@ export default function VideoPairSelection({ index, videoType, handleSelection, 
         if(lessonPair[videoType+"_url"] != null){
             video.src = lessonPair[videoType+"_url"];
         }
-    }, [lessonPair])
+    }, [handleSelection])
 
     return (
         <dd className="selection" onClick={() => handleSelection(index, videoType)} data-testid="btnCallSelection">
