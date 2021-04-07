@@ -23,7 +23,10 @@ export default function CallPairSelection({ index, callType, handleSelection, le
         <dd className="selection" onClick={() => handleSelection(index, callType)}>
             <div className="nameDisplay">
                 <h4 className="typeDisplay">{call}</h4><br></br>
-                {lessonPair.calls[callType].replace(/\.[^/.]+$/, "")}
+                <img width='200' height='200'>
+                
+                </img>
+                <p>{lessonPair.calls[callType].replace(/\.[^/.]+$/, "")}</p>
                 <CallSelectionTool index={index} callType={callType} callBool={callBool} />
             </div>      
         </dd>

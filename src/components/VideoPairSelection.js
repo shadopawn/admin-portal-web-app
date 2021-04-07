@@ -20,7 +20,6 @@ export default function VideoPairSelection({ index, videoType, handleSelection, 
                 <p>{lessonPair[videoType+"_video"].replace(/\.[^/.]+$/, "")}</p>
                 <VideoSelectionTool index={index} videoType={videoType} />
             </div>
-            
         </dd>
     )
 }
