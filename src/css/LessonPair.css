@@ -51,11 +51,6 @@
     padding-top: 12px;
 }
 
-.callDisplay{
-    width: 100%;
-    margin: auto 0 auto 25%;
-}
-
 .typeDisplay {
     display:inline;
     text-transform: capitalize;
@@ -66,5 +61,12 @@
     width: 100%;
     display: grid;
     text-align: center;
-    grid-template-columns: auto auto;
+    grid-template-columns: 50% 50%;
+}
+
+.callPairSections {
+    width: 100%;
+    display: grid;
+    text-align: center;
+    grid-template-columns: 33% 33% 33%;
 }

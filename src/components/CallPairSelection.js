@@ -21,11 +21,11 @@ export default function CallPairSelection({ index, callType, handleSelection, le
 
     return (
         <dd className="selection" onClick={() => handleSelection(index, callType)}>
-            <div className="callDisplay">
+            <div className="nameDisplay">
                 <h4 className="typeDisplay">{call}</h4>
                 {lessonPair.calls[callType].replace(/\.[^/.]+$/, "")}
-            </div>
-            <CallSelectionTool index={index} callType={callType} callBool={callBool} />
+                <CallSelectionTool index={index} callType={callType} callBool={callBool} />
+            </div>      
         </dd>
     )
 }
