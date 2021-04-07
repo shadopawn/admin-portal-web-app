@@ -65,9 +65,9 @@
 }
 
 .callPairSections {
-    width: 100%;
+    width: 90%;
     display: grid;
     text-align: center;
     grid-template-columns: 30% 30% 30%;
-    padding-left: 5%;
+    padding-left: 10%;
 }
