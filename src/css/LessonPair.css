@@ -68,5 +68,5 @@
     width: 100%;
     display: grid;
     text-align: center;
-    grid-template-columns: 33% 33% 33%;
+    grid-template-columns: 30% 30% 30%;
 }
