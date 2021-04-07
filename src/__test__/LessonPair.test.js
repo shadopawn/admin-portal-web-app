@@ -13,6 +13,11 @@ jest.mock("firebase", () => ({
         then: jest.fn(path => ({
           catch:mockEffect
         }))
+      }),
+      getDownloadURL: () => ({
+        then: jest.fn(path => ({
+          catch:mockEffect
+        }))
       })
     })
   })
