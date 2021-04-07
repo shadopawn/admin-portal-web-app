@@ -9,7 +9,7 @@ export default function CallPairSelection({ index, callType, handleSelection, le
     const [imageURL, setimageURL] = useState()
 
     const getFirebaseURL = () => {
-        if(lessonPair.calls[callType] != "Placeholder"){
+        if(lessonPair.calls[callType] !== "Placeholder"){
             var listRef = firebase.storage().ref('basketball_signals/' + lessonPair.calls[callType]);
             listRef.getDownloadURL().then(function(url) {
                 setimageURL(url)
@@ -36,7 +36,7 @@ export default function CallPairSelection({ index, callType, handleSelection, le
         <dd className="selection" onClick={() => handleSelection(index, callType)}>
             <div className="nameDisplay">
                 <h4 className="typeDisplay">{call}</h4><br></br>
-                <img src={imageURL} width='200' height='200'></img>
+                <img src={imageURL} width='200' height='200' alt=""></img>
                 <p>{lessonPair.calls[callType].replace(/\.[^/.]+$/, "")}</p>
                 <CallSelectionTool index={index} callType={callType} callBool={callBool} />
             </div>      
