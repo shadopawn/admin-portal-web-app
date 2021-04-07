@@ -169,16 +169,6 @@
   overflow-y: scroll;
 }
 
-.callSelector {
-  width: 30%;
-  display: grid;
-  grid-template-columns: 85% 15%;
-}
-
-.addCallButton {
-  margin: auto 0;
-}
-
 .lessonPackView {
   display: grid;
   grid-template-columns: 20% 80%;

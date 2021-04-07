@@ -4,6 +4,26 @@ import LessonTree from '../components/LessonTree';
 import {LessonDataContext} from '../contexts/LessonDataContext';
 import { BrowserRouter } from 'react-router-dom';
 
+//setting up a mock version of firebase for testing
+const mockEffect = jest.fn();
+jest.mock("firebase", () => ({
+  initializeApp: jest.fn(),
+  storage: () => ({
+    ref: () => ({
+      listAll: () => ({
+        then: jest.fn(path => ({
+          catch:mockEffect
+        }))
+      }),
+      getDownloadURL: () => ({
+        then: jest.fn(path => ({
+          catch:mockEffect
+        }))
+      })
+    })
+  })
+}));
+
 let setNameText = jest.fn();
 let addNewLessonPair = jest.fn();
 let setEditedForPack = jest.fn();
