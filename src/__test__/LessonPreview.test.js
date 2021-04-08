@@ -5,6 +5,7 @@ import {LessonDataContext} from '../contexts/LessonDataContext';
 
 //setting up a mock version of firebase for testing
 const mockEffect = jest.fn();
+const mockDownload = jest.fn();
 jest.mock("firebase", () => ({
   initializeApp: jest.fn(),
   storage: () => ({
@@ -15,9 +16,7 @@ jest.mock("firebase", () => ({
         }))
       }),
       getDownloadURL: () => ({
-        then: jest.fn(path => ({
-          catch:mockEffect
-        }))
+        then: mockDownload
       })
     })
   })
@@ -26,7 +25,6 @@ jest.mock("firebase", () => ({
 const lessonPair = {analysis_video: "test_analysis_video.mp4", call_video: "test_call_video.mp4", name:"Lesson Pair 1", calls:{true_call:"testCall", false_call1:"FalseCall", false_call0:"FalseCall"}}
 let currentLessonPack = {name:"testName", calls:{true_call:"testCall"}, lessonPairs:[{analysis_video: "test_analysis_video.mp4", call_video: "test_call_video.mp4", name:"Lesson Pair 1", calls:{true_call:"testCall", false_call1:"FalseCall", false_call0:"FalseCall"}}]}
 let setCallText = jest.fn()
-let mockDelete = jest.fn()
 
 test("renders without crashing", () => {
   const div = document.createElement("div");
@@ -62,4 +60,9 @@ test("will render the correct Analysis Video", () => {
   render(<LessonDataContext.Provider value={{setCallText, currentLessonPack}}><LessonPreview index={0} lessonPair={lessonPair} /></LessonDataContext.Provider>);
   const analysisVideoElement = screen.getByText(/test_analysis_video/i);
   expect(analysisVideoElement).toBeInTheDocument();
+})
+
+test("will query database for firebase images", () => {
+  render(<LessonDataContext.Provider value={{setCallText, currentLessonPack}}><LessonPreview index={0} lessonPair={lessonPair} /></LessonDataContext.Provider>);
+  expect(mockDownload).toBeCalled();
 })

@@ -4,9 +4,7 @@ import CallSelectionTool from '../components/CallSelectionTool';
 import {LessonDataContext} from '../contexts/LessonDataContext';
 
 //setting up a mock version of firebase for testing
-const mockHide = jest.fn();
 const mockEffect = jest.fn();
-mockHide.mockReturnValue(true);
 jest.mock("firebase", () => ({
   initializeApp: jest.fn(),
   storage: () => ({
