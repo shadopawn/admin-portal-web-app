@@ -15,6 +15,9 @@ export default function CallPairSelection({ index, callType, handleSelection, le
                 setimageURL(url)
             })
         }
+        else {
+            setimageURL("")
+        }
     }
 
     useEffect(() => {
