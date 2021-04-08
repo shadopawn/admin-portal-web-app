@@ -2,6 +2,7 @@ import ReactDOM from 'react-dom';
 import { render, screen } from '@testing-library/react';
 import Login from '../components/Login';
 
+const host = "localhost:3000/"
 const mockSet = jest.fn();
 mockSet.mockReturnValue(true);
 jest.mock("firebase", () => ({
@@ -20,7 +21,7 @@ jest.mock("firebase", () => ({
 jest.mock("react-router-dom", () => ({
     ...jest.requireActual("react-router-dom"),
     useLocation: () => ({
-      pathname: "localhost:3000/home"
+      pathname: host + "home"
     }),
     useHistory: () => ({
       push: mockSet

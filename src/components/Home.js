@@ -15,12 +15,12 @@ export default function Home() {
                     </div>
                 </Link>
 
-                <Link to="/analytics" data-testid="analyticsLink">
+                <a href="https://analytics.cloud.unity3d.com/projects/" target="_blank" data-testid="analyticsLink">
                     <div className="linkChoice">
                         <h2>Analytics Dashboard</h2>
                         <img src='https://github.com/shadopawn/admin-portal-web-app/blob/master/public/analytics.png?raw=true' alt='graph'></img>
                     </div>
-                </Link>
+                </a>
                 
             </div>
         </div>

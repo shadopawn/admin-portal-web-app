@@ -36,9 +36,11 @@ export default function LessonPair({index, lessonPair, rerender, render, deleteP
                 <VideoPairSelection index={index} videoType="analysis" handleSelection={handleSelection} lessonPair={lessonPair}></VideoPairSelection>
             </div>
             
-            <CallPairSelection index={index} callType="false_call0" handleSelection={handleSelection} lessonPair={lessonPair}></CallPairSelection>
-            <CallPairSelection index={index} callType="false_call1" handleSelection={handleSelection} lessonPair={lessonPair}></CallPairSelection>
-            <CallPairSelection index={index} callType="true_call" handleSelection={handleSelection} lessonPair={lessonPair}></CallPairSelection>
+            <div className="callPairSections">
+                <CallPairSelection index={index} callType="false_call0" handleSelection={handleSelection} lessonPair={lessonPair}></CallPairSelection>
+                <CallPairSelection index={index} callType="false_call1" handleSelection={handleSelection} lessonPair={lessonPair}></CallPairSelection>
+                <CallPairSelection index={index} callType="true_call" handleSelection={handleSelection} lessonPair={lessonPair}></CallPairSelection>
+            </div>
 
             <NameChangeModal show={showNameModal} hide={setshowNameModal} changeName={changeName} index={index} maxLength={8}></NameChangeModal>
         </div>

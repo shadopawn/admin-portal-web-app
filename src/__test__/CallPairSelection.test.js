@@ -5,6 +5,7 @@ import {LessonDataContext} from '../contexts/LessonDataContext';
 
 //setting up a mock version of firebase for testing
 const mockEffect = jest.fn();
+const mockDownload = jest.fn();
 jest.mock("firebase", () => ({
   initializeApp: jest.fn(),
   storage: () => ({
@@ -13,6 +14,9 @@ jest.mock("firebase", () => ({
         then: jest.fn(path => ({
           catch:mockEffect
         }))
+      }),
+      getDownloadURL: () => ({
+        then: mockDownload
       })
     })
   })
@@ -76,4 +80,9 @@ test("showCallModal function renders CallContainerModal", () => {
   screen.getByTestId("btnAddCall").click();
   const callContainerModal = screen.getByText(/What call/i);
   expect(callContainerModal).toBeInTheDocument();
+})
+
+test("calls getFirebaseURL on start", () => {
+  render(<LessonDataContext.Provider value={{setCallText}}><CallPairSelection index={0} callType="false_call1" lessonPair={lessonPair} handleSelection={setHandle} /></LessonDataContext.Provider>);
+  expect(mockDownload).toBeCalled();
 })

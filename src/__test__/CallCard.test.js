@@ -4,6 +4,7 @@ import CallCard from '../components/CallCard';
 //Component is just a button
 
 const mockHandleClick = jest.fn();
+const host = "http://localhost/"
 
 test("renders without crashing", () => {
   const div = document.createElement("div");
@@ -32,4 +33,10 @@ test("HandleClick to be called", () => {
   render(<CallCard handleClick={mockHandleClick}/>);
   screen.getByTestId("btnCall").click()
   expect(mockHandleClick).toBeCalled()
+})
+
+test("correct imageURL being used", () => {
+  render(<CallCard handleClick={mockHandleClick} imageURL="call.png"/>);
+  const callImage = screen.getByAltText("call")
+  expect(callImage.src).toBe(host + "call.png")
 })

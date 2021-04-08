@@ -67,5 +67,5 @@ test('Navigation to Analytics when logged in', () => {
   screen.getByTestId("btnLogin").click();
   screen.getByTestId("analyticsLink").click();
 
-  expect(screen.getByText(/You found the Analytics page/i)).toBeInTheDocument()
+  expect(screen.getByText(/Analytics/i)).toBeInTheDocument()
 })

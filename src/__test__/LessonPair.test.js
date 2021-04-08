@@ -5,6 +5,7 @@ import {LessonDataContext} from '../contexts/LessonDataContext';
 
 //setting up a mock version of firebase for testing
 const mockEffect = jest.fn();
+const mockDownload = jest.fn();
 jest.mock("firebase", () => ({
   initializeApp: jest.fn(),
   storage: () => ({
@@ -13,6 +14,9 @@ jest.mock("firebase", () => ({
         then: jest.fn(path => ({
           catch:mockEffect
         }))
+      }),
+      getDownloadURL: () => ({
+        then: mockDownload
       })
     })
   })
@@ -77,6 +81,11 @@ test("will render the correct Analysis Video", () => {
   render(<LessonDataContext.Provider value={{setCallText, currentLessonPack}}><LessonPair index={0} lessonPair={lessonPair} rerender={mockRender} render={false} deletePair={mockDelete}/></LessonDataContext.Provider>);
   const analysisVideoElement = screen.getByText(/test_analysis_video/i);
   expect(analysisVideoElement).toBeInTheDocument();
+})
+
+test("will query database for firebase images", () => {
+  render(<LessonDataContext.Provider value={{setCallText, currentLessonPack}}><LessonPair index={0} lessonPair={lessonPair} rerender={mockRender} render={false} deletePair={mockDelete}/></LessonDataContext.Provider>);
+  expect(mockDownload).toBeCalled();
 })
 
 test("change name is on screen able clickable", () => {
