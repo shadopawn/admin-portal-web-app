@@ -7,7 +7,6 @@ export default function VideoUploaderModal({ show, hide }) {
     return (
         <div className={showHideClassName}>
             <section className='videoModal-main'>
-                <h2 className='heading'>Upload Videos</h2>
                 <VideoUploader />
                 <button className="standardRedButton" onClick={() => hide(false)}>Close</button>
             </section>
