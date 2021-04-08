@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/admin-portal-web-app/static/css/main.af1d9ece.chunk.css",
-    "main.js": "/admin-portal-web-app/static/js/main.8249ac95.chunk.js",
-    "main.js.map": "/admin-portal-web-app/static/js/main.8249ac95.chunk.js.map",
+    "main.css": "/admin-portal-web-app/static/css/main.a49b9058.chunk.css",
+    "main.js": "/admin-portal-web-app/static/js/main.74662465.chunk.js",
+    "main.js.map": "/admin-portal-web-app/static/js/main.74662465.chunk.js.map",
     "runtime-main.js": "/admin-portal-web-app/static/js/runtime-main.5dfbf0e0.js",
     "runtime-main.js.map": "/admin-portal-web-app/static/js/runtime-main.5dfbf0e0.js.map",
-    "static/js/2.91204c9e.chunk.js": "/admin-portal-web-app/static/js/2.91204c9e.chunk.js",
-    "static/js/2.91204c9e.chunk.js.map": "/admin-portal-web-app/static/js/2.91204c9e.chunk.js.map",
+    "static/js/2.30457fe6.chunk.js": "/admin-portal-web-app/static/js/2.30457fe6.chunk.js",
+    "static/js/2.30457fe6.chunk.js.map": "/admin-portal-web-app/static/js/2.30457fe6.chunk.js.map",
     "static/js/3.036c4f8c.chunk.js": "/admin-portal-web-app/static/js/3.036c4f8c.chunk.js",
     "static/js/3.036c4f8c.chunk.js.map": "/admin-portal-web-app/static/js/3.036c4f8c.chunk.js.map",
     "index.html": "/admin-portal-web-app/index.html",
-    "static/css/main.af1d9ece.chunk.css.map": "/admin-portal-web-app/static/css/main.af1d9ece.chunk.css.map",
-    "static/js/2.91204c9e.chunk.js.LICENSE.txt": "/admin-portal-web-app/static/js/2.91204c9e.chunk.js.LICENSE.txt"
+    "static/css/main.a49b9058.chunk.css.map": "/admin-portal-web-app/static/css/main.a49b9058.chunk.css.map",
+    "static/js/2.30457fe6.chunk.js.LICENSE.txt": "/admin-portal-web-app/static/js/2.30457fe6.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.5dfbf0e0.js",
-    "static/js/2.91204c9e.chunk.js",
-    "static/css/main.af1d9ece.chunk.css",
-    "static/js/main.8249ac95.chunk.js"
+    "static/js/2.30457fe6.chunk.js",
+    "static/css/main.a49b9058.chunk.css",
+    "static/js/main.74662465.chunk.js"
   ]
 }
