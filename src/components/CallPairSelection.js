@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import CallSelectionTool from './CallSelectionTool'
 import firebase from 'firebase'
+import placeholder from '../placeholder.png'
 
 export default function CallPairSelection({ index, callType, handleSelection, lessonPair }) {
 
@@ -16,7 +17,7 @@ export default function CallPairSelection({ index, callType, handleSelection, le
             })
         }
         else {
-            setimageURL("")
+            setimageURL(placeholder)
         }
     }
 
