@@ -1,5 +1,5 @@
 import React, { useContext,  useState } from 'react'
-import { Redirect, useHistory } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { LessonDataContext } from '../contexts/LessonDataContext'
 import NameChangeModal from './NameChangeModal'
 import LessonPreview from './LessonPreview'
@@ -12,12 +12,9 @@ export default function LessonTree() {
     const [showNameModal, setshowNameModal] = useState(false)
     const [lessonPreview, setlessonPreview] = useState([])
     const [highlightedPair, sethighlightedPair] = useState(null)
-    const history = useHistory();
-
 
     const publishPack = () => {
         uploadCurrentLesson(currentLessonPack)
-        history.push("/lesson-packs")
     }
 
     const deleteLessonPairIndex = (lessonPairIndex) => {

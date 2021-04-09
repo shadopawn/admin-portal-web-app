@@ -1,5 +1,6 @@
 import React, {createContext, useState, useEffect, useReducer} from 'react'
 import firebase from 'firebase'
+import { useHistory } from 'react-router-dom';
 
 export const LessonDataContext = createContext();
 
@@ -8,6 +9,7 @@ function LessonContextProvider(props) {
     const [lessonData, setLessonData] = useState([]);
     const [currentLessonPack, setCurrentLessonPack] = useState();
     const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
+    const history = useHistory();
 
     const createLessonList = () => {
         let lessonList = []
@@ -95,6 +97,7 @@ function LessonContextProvider(props) {
         }
         else {
             publishCurrentLesson(lessonPack);
+            history.push("/lesson-packs")
         }
     }
 
