@@ -18,10 +18,14 @@ export default function LessonTree() {
     }
 
     const deleteLessonPairIndex = (lessonPairIndex) => {
-        currentLessonPack["lessonPairs"].splice(lessonPairIndex, 1)
-        setEditedForPack(currentLessonPack, true)
-        setlessonPreview([])
-        setrerender(!rerender)
+        const displayIndex = lessonPairIndex + 1
+        let choice = window.confirm("Are you sure you want to delete Lesson Pair " + displayIndex)
+        if(choice){
+            currentLessonPack["lessonPairs"].splice(lessonPairIndex, 1)
+            setEditedForPack(currentLessonPack, true)
+            setlessonPreview([])
+            setrerender(!rerender)
+        }
     }
 
     const changeName = () => {
