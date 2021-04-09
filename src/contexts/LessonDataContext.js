@@ -94,8 +94,9 @@ function LessonContextProvider(props) {
     const uploadCurrentLesson = (lessonPack) => {
         if (checkLessonForPlaceholders(lessonPack)) {
             alert('This lesson pack has placeholders and is not complete')
-        }
-        else {
+        } else if (checkLessonForDuplicates(lessonPack)) {
+            alert('This lesson pack has duplicate names')
+        } else {
             publishCurrentLesson(lessonPack);
             history.push("/lesson-packs")
         }
@@ -111,6 +112,16 @@ function LessonContextProvider(props) {
             }
         })
         return placeholder
+    }
+
+    const checkLessonForDuplicates = (lessonPack) => {
+        var duplicates = false
+        var nameArray = []
+        lessonPack["lessonPairs"].forEach(lessonPair => {
+            nameArray.push(lessonPair["name"])
+        })
+        duplicates = nameArray.some((element, index) => {return nameArray.indexOf(element) !== index});
+        return duplicates
     }
 
     const publishCurrentLesson = (lessonPack) => {
