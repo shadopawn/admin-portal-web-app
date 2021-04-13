@@ -24,6 +24,7 @@ jest.mock("firebase", () => ({
   })
 }));
 
+window.confirm = jest.fn()
 let setNameText = jest.fn();
 let addNewLessonPair = jest.fn();
 let setEditedForPack = jest.fn();
