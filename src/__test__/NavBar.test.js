@@ -134,7 +134,10 @@ test('Logout button runs LogoutEventListen', () => {
 });
 
 test('Logout button run redirect with correct path', () => {
-  
+  const location = {
+    pathname: '/admin-portal-web-app',
+    state: { fromDashboard: true }
+  } 
   render(
     <MemoryRouter initialEntries={["/analytics"]}>
       <NavBar to={location}/>
