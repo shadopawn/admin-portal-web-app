@@ -3,6 +3,7 @@ import { render, screen } from '@testing-library/react';
 import LessonPackItem from '../components/LessonPackItem';
 import { LessonDataContext } from '../contexts/LessonDataContext'
 
+const host = "localhost:3000/"
 let uploadCurrentLesson = jest.fn()
 let setCurrentLessonPack = jest.fn()
 const mockDelete = jest.fn()
@@ -12,7 +13,7 @@ const lessonPack = {name:"TestLessonPack", index:0, calls:{true_call:"testCall"}
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
   useLocation: () => ({
-    pathname: "localhost:3000/home"
+    pathname: host + "home"
   }),
   useHistory: () => ({
     push: mockSet
